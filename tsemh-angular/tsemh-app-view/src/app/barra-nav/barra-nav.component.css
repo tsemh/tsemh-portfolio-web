@@ -13,7 +13,10 @@
 
 .nav-center {
   width: 90vw;
-  max-width: 1120px;
+  max-width: 1420px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .nav-header {
@@ -58,6 +61,7 @@
 .nav-links {
   display: flex;
   flex-direction: column;
+  justify-content: flex-end;
   height: 0;
   overflow: hidden;
   transition: 0.3s ease-in-out all;

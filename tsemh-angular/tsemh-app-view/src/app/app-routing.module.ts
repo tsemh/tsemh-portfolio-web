@@ -13,7 +13,6 @@ import { RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'painel-de-controle', component: PainelControleComponent },
-  { path: 'home', component: HomeComponent },
   { path: 'certificados', component: CertificadoComponent },
   { path: 'formacoes', component: FormacaoComponent },
   { path: 'artigos', component: ArtigoComponent },

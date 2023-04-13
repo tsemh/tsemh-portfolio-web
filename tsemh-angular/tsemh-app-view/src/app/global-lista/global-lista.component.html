@@ -13,7 +13,6 @@
     let item of itens | paginate: { itemsPerPage: 6, currentPage: pages }
   ">
 
-        <div class="item-lista">
           <a (click)="redirectTo('detalhes')" class="item-link">
             <h5>{{ item.titulo }}</h5>
             <img src=" {{ item.imagem }} " alt=" {{ item.imgDesc }} " class="img item-img">
@@ -23,7 +22,6 @@
             <a *ngFor="let tag of item.tags" (click)="redirectTo(tag.link)" class="tag"> {{ tag.titulo }}
             </a>
 
-          </div>
         </div>
       </div>
     </div>

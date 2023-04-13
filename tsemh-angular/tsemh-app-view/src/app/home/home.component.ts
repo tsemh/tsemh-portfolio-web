@@ -140,7 +140,7 @@ export class HomeComponent implements OnInit {
   public tiago = {
     nome: 'Tiago B. da Silva',
     titulo: 'Desenvolvedor Angular | Java | .NET',
-    curriculo: '../../assets\curriculo\Tiago-Junior-Angular-Java-dotNet.pdf'
+    curriculo: '../../assets\\curriculo\\Tiago-Junior-Angular-Java-dotNet.pdf'
   };
 
   constructor() {}

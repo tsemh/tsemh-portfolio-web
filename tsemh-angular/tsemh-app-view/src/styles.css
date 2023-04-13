@@ -16,7 +16,7 @@ body {
 .page {
   justify-content: center;
   width: 90vw;
-  max-width: 1120px;
+  max-width: 1420px;
   margin: 0 auto;
   padding-top: 2rem;
   min-height: calc(100vh - (6rem + 4rem));

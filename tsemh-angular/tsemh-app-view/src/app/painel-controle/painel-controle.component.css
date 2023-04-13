@@ -1,0 +1,18 @@
+main {
+  display: flex;
+  }
+.setor-usuario {
+  width: 30%;
+}
+.setor-vitrine {
+  width: 70%;
+}
+h2 {
+  color: #ff79c6;
+}
+.hover:hover {
+  background-color: #967db8;
+}
+td, th {
+  color: #fff;
+}

@@ -18,14 +18,9 @@ h2 {
 }
 
 .recipiente-listas{
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 0 8rem;
-  width: auto;
+  justify-content: space-between;
 }
 .recipiente-lista {
-  margin: 2rem 0 2rem 0;
-  height: auto;
 }
 .recipiente-lista:hover {
   cursor: pointer;

@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class BarraNavComponent {
 
-  public acessoPainel = false;
+ public acessoPainel = true;
 
 }
 
