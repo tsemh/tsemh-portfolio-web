@@ -1,0 +1,39 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous"/>
+
+<nav class="navbar">
+  <div class="nav-center">
+    <!-- header -->
+    <div class="nav-header">
+      <a routerLink="home" class="nav-logo">
+        <p>tsemh</p>
+      </a>
+      <button class="btn nav-btn" type="button">
+      </button>
+    </div>
+    
+    <!-- Links -->
+    <div class="nav-links">
+      <a routerLink="home" class="nav-link">Home</a>
+      <a routerLink="formacoes" class="nav-link">Formações</a>
+      <a routerLink="certificados" class="nav-link">Certificações</a>
+      <a routerLink="projetos" class="nav-link">Projetos</a>
+      <a routerLink="profissional" class="nav-link">Profissional</a>
+      <a routerLink="postagens" class="nav-link">Postagens</a>
+
+        <ul class="socials">
+          <li><a class="nav-link networks">Sociais &dtrif;</a>
+            <ul class="dropdown">
+              <li><a href="https://github.com/tsemh" class="nav-link link-net" target="_blank" >Github</a></li>
+              <li><a href="https://www.tabnews.com.br/tsemh" class="nav-link link-net" target="_blank" >Tabnews</a></li>
+              <li><a href="https://www.linkedin.com/in/tsemh/" class="nav-link link-net" target="_blank" >Linkedin</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <div *ngIf="acessoPainel == true">
+          <a routerLink="painel-de-controle" class="nav-link">Painel</a>
+        </div>
+          
+    </div>
+    </div>
+</nav>

@@ -1,0 +1,31 @@
+/* CATEGORIAS */
+
+.recipiente-categorias {
+  margin:1.6rem 1rem 0 0;
+  font-weight: 500;
+  padding: 0;
+}
+.recipiente-categorias h4 {
+  color:#ff79c6;
+  padding: 0;
+  margin: 0 0 1rem 0 ;
+}
+.lista-categorias {
+  display: grid;
+  grid-template-columns: 1fr;
+  padding: 0;
+
+}
+.lista-categorias a {
+  text-transform: capitalize;
+  display: flex;
+  color: #f8f8f2;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+  margin: 0;
+}
+.lista-categorias a:hover {
+  color: #bd93f9;
+}
+
+/* FIM DE CATEGORIAS */

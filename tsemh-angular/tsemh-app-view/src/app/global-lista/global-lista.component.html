@@ -1,0 +1,36 @@
+<div class="h2">
+  <h2> {{ tituloMain }} </h2>
+</div>
+
+<div class="categorias-itens">
+  <div class="categorias" *ngIf="visaoCategoria == true">
+    <tsemh-categoria [categorias]="categorias" [tituloMain]="tituloMain"></tsemh-categoria>
+  </div>
+
+  <div class="tudo-lista">
+    <div class="recipiente-listas">
+      <div class="recipiente-lista" *ngFor="
+    let item of itens | paginate: { itemsPerPage: 6, currentPage: pages }
+  ">
+
+        <div class="item-lista">
+          <a (click)="redirectTo('detalhes')" class="item-link">
+            <h5>{{ item.titulo }}</h5>
+            <img src=" {{ item.imagem }} " alt=" {{ item.imgDesc }} " class="img item-img">
+          </a>
+
+          <div class="tag-lista">
+            <a *ngFor="let tag of item.tags" (click)="redirectTo(tag.link)" class="tag"> {{ tag.titulo }}
+            </a>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="paginacao" *ngIf="visaoPaginacao == true">
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+
+  </div>
+</div>

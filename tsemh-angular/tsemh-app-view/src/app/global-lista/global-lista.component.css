@@ -1,0 +1,93 @@
+.categorias-itens {
+  display: flex;
+}
+/* COMEÇO DA LISTA */
+
+.global-lista {
+  display: flex;
+  flex-direction: column;
+}
+.h2 {
+  width: 100%;
+  text-align: center;
+}
+h2 {
+  width: auto;
+  color: #ff79c6;
+  text-transform: uppercase;
+}
+
+.recipiente-listas{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 8rem;
+  width: auto;
+}
+.recipiente-lista {
+  margin: 2rem 0 2rem 0;
+  height: auto;
+}
+.recipiente-lista:hover {
+  cursor: pointer;
+}
+h5 {
+  font-size: 1.30rem;
+  line-height: 1;
+  color: #f8f8f2;
+  text-transform: uppercase;
+}
+.tag {
+  margin: 0.5rem;
+  background: #bd93f9;
+  color: #282a36;
+  border-radius: 0.25rem;
+  padding: 0.05rem 0.5rem;
+  margin: 0 0.25rem;
+  text-transform: capitalize;
+  line-height: 1.75;
+}
+.tag:hover {
+  color: #282a36;
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 576px) {
+  .recipiente-listas {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+@media screen and (min-width: 992px) {
+  .recipiente-listas  {
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 55vh;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .recipiente-listas  {
+    min-height: 70vh;
+  }
+}
+
+/* NAVIGATION */
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}
+
+::ng-deep .ngx-pagination span {
+  color: #f8f8f2 !important;
+}
+::ng-deep .ngx-pagination .current {
+  background: #bd93f9 !important;
+}
+::ng-deep .pagination-previous,
+::ng-deep .pagination-next
+{
+  color: #bd93f9;
+}
+
+/* FIM DO NAVIGATION */

@@ -1,0 +1,79 @@
+/*
+=============== 
+COMEÇO DO HERO
+===============
+*/
+.header {
+  height: 40vh;
+  background: url('../../assets/imagens/computadores.png') center/cover no-repeat;
+  margin-bottom: 2rem;
+  border-radius: 0.25rem;
+  position: relative;
+}
+.recipiente-header {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius:  0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header-texto, 
+.curriculo {
+  text-align: center;
+  color: #fff;
+}
+.header-texto h4 {
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 376px) {
+  .header-texto h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.3rem;
+  }
+  }
+
+@media screen and (min-width: 476px) {
+  .header-texto h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (min-width: 768px) {
+  .header-texto h1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 900px) {
+  .header-texto h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.6rem;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .header-texto h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.7rem;
+  }
+}
+/*FIM DO HEADER*/

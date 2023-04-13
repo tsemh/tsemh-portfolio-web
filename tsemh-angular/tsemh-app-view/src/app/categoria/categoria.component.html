@@ -1,0 +1,12 @@
+<div class="recipiente-categorias">
+  <h4>Categories</h4>
+  <div class="lista-categorias">
+
+    <div >
+      <div *ngFor="let categoria of categorias" onclick="openPage('All/all', 'update')">
+        <a *ngIf="categoria.grupo == tituloMain"> {{ categoria.titulo }} </a>
+      </div>
+      </div>
+
+  </div>
+</div>
