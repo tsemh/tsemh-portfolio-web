@@ -21,3 +21,11 @@ body {
   padding-top: 2rem;
   min-height: calc(100vh - (6rem + 4rem));
 }
+
+/* NAVIGATION */
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  width: auto;
+}

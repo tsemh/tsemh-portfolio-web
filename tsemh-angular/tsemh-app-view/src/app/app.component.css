@@ -2,3 +2,18 @@
   margin: 0;
   padding: 0;
 }
+/* NAVIGATION */
+
+::ng-deep .ngx-pagination span {
+  color: #f8f8f2 !important;
+}
+::ng-deep .ngx-pagination .current {
+  background: #bd93f9 !important;
+}
+::ng-deep .pagination-previous,
+::ng-deep .pagination-next
+{
+  color: #bd93f9;
+}
+
+/* FIM DO NAVIGATION */

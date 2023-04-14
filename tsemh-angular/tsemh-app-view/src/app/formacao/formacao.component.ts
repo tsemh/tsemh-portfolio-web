@@ -82,6 +82,86 @@ export class FormacaoComponent {
       imagem: 'image',
       imgDesc: 'descrição'
     },
+    { id: 2,
+      titulo: 'Segundo Destaque',
+      link: 'link terceiro destaque',
+      tags: [
+        { id: 1,
+          titulo: 'tag 1',
+          link: 'link da tag' 
+        },
+        { id: 2,
+          titulo: 'tag 2',
+          link: 'link da tag' 
+        },
+        { id: 3,
+          titulo: 'tag 3',
+          link: 'link da tag' 
+        },
+      ],
+      imagem: 'image',
+      imgDesc: 'descrição'
+    },
+    { id: 2,
+      titulo: 'Segundo Destaque',
+      link: 'link terceiro destaque',
+      tags: [
+        { id: 1,
+          titulo: 'tag 1',
+          link: 'link da tag' 
+        },
+        { id: 2,
+          titulo: 'tag 2',
+          link: 'link da tag' 
+        },
+        { id: 3,
+          titulo: 'tag 3',
+          link: 'link da tag' 
+        },
+      ],
+      imagem: 'image',
+      imgDesc: 'descrição'
+    },
+    { id: 2,
+      titulo: 'Segundo Destaque',
+      link: 'link terceiro destaque',
+      tags: [
+        { id: 1,
+          titulo: 'tag 1',
+          link: 'link da tag' 
+        },
+        { id: 2,
+          titulo: 'tag 2',
+          link: 'link da tag' 
+        },
+        { id: 3,
+          titulo: 'tag 3',
+          link: 'link da tag' 
+        },
+      ],
+      imagem: 'image',
+      imgDesc: 'descrição'
+    },
+    { id: 2,
+      titulo: 'Segundo Destaque',
+      link: 'link terceiro destaque',
+      tags: [
+        { id: 1,
+          titulo: 'tag 1',
+          link: 'link da tag' 
+        },
+        { id: 2,
+          titulo: 'tag 2',
+          link: 'link da tag' 
+        },
+        { id: 3,
+          titulo: 'tag 3',
+          link: 'link da tag' 
+        },
+      ],
+      imagem: 'image',
+      imgDesc: 'descrição'
+    },
   ];
 
   determinaBoolean() {

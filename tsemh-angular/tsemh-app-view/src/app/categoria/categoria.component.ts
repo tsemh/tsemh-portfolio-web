@@ -9,12 +9,5 @@ export class CategoriaComponent {
 
   @Input() tituloMain: string = '';
 
-  @Input() categorias = [
-    { 
-      id: 0,
-      titulo: '',
-      link: '' ,
-      grupo: ''
-    },
-  ] 
+  @Input() categorias = [] 
 }

@@ -1,28 +1,111 @@
 <main class="page">
-  <section class="setor-usuario">
-    <tr>
-      <th colspan="3">Lista de Clientes</th>
-    </tr>
-  </section>
+  <section class="setor-inicial">
 
-  <section class="setor-vitrine">
-    <section class="setor-interno-projetos">
-      <h2>Projetos</h2>
-      <table class="table">
-        <thead >
-          <th>ID</th>
-          <th>Titulo</th>
-          <th>Link</th>
+    <section class="setor-usuario">
+      <tr>
+        <th colspan="3">Lista de Clientes</th>
+      </tr>
+    </section>
+    
+    <section class="setor-vitrine">
+      <section class="setor-interno-projetos">
+        <h2>Projetos</h2>
+        <table class="table">
+          <thead >
+            <th>ID</th>
+            <th>Titulo</th>
+            <th>Link</th>
         </thead>
         <tbody>
-          <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 6, currentPage: pages }" >
+          <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 4, currentPage: pages }" >
             <td>{{ projeto.id }}</td>
             <td>{{ projeto.titulo }}</td>
             <td>{{ projeto.link }}</td>
           </tr>
         </tbody>
       </table>
-
+      <div class="paginacao" *ngIf="visaoPaginacao == true">
+        <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+      </div>
     </section>
   </section>
+</section>
+
+<section class="setor-corpo">
+  <section class="setor-interno-profissional">
+    <h2>Profissional</h2>
+    <table class="table">
+      <thead >
+        <th>ID</th>
+        <th>Titulo</th>
+      </thead>
+      <tbody>
+        <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 4, currentPage: pages }" >
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.titulo }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginacao" *ngIf="visaoPaginacao == true">
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </section>
+
+  <section class="setor-interno-formacoes">
+    <h2>Formações</h2>
+    <table class="table">
+      <thead >
+        <th>ID</th>
+        <th>Titulo</th>
+      </thead>
+      <tbody>
+        <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 4, currentPage: pages }" >
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.titulo }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginacao" *ngIf="visaoPaginacao == true">
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </section>
+
+  <section class="setor-interno-certificados">
+    <h2>Certificados</h2>
+    <table class="table">
+      <thead >
+        <th>ID</th>
+        <th>Titulo</th>
+      </thead>
+      <tbody>
+        <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 4, currentPage: pages }" >
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.titulo }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginacao" *ngIf="visaoPaginacao == true">
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </section>
+
+  <section class="setor-interno-artigos">
+    <h2>Artigos</h2>
+    <table class="table">
+      <thead >
+        <th>ID</th>
+        <th>Titulo</th>
+      </thead>
+      <tbody>
+        <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 4, currentPage: pages }" >
+          <td>{{ projeto.id }}</td>
+          <td>{{ projeto.titulo }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="paginacao" *ngIf="visaoPaginacao == true">
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
+  </section>
+</section>
 </main>

@@ -1,14 +1,24 @@
 main {
   display: flex;
+  flex-direction: column;
   }
+.setor-inicial{
+  display: flex;
+}
 .setor-usuario {
   width: 30%;
 }
 .setor-vitrine {
   width: 70%;
 }
+.setor-corpo{
+  display: flex;
+  justify-content: space-between;
+}
 h2 {
   color: #ff79c6;
+  width: 100%;
+  text-align: center;
 }
 .hover:hover {
   background-color: #967db8;
@@ -16,3 +26,6 @@ h2 {
 td, th {
   color: #fff;
 }
+.table{
+  border: #967db8 1px solid;
+} 
