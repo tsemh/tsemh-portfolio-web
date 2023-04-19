@@ -10,7 +10,7 @@ public class Postagem {
 	@Column(name="id_postagem")
 	@SequenceGenerator(name="postagem", sequenceName="sq_tb_postagem", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="postagem")
-	private Integer idPostagem;
+	private Integer id;
 	
     @ManyToOne
     @JoinColumn(name="id_usuario")
@@ -21,124 +21,142 @@ public class Postagem {
 	private Categoria categoria;
 
     @Column(name="tp_postagem")
-	private String  tipoPostagem; //tipo
+	private String  tipo; //tipo
     
     @Column(name="tt_postagem")
-	private String  tituloPostagem; //titulo
+	private String  titulo; //titulo
     
     @Column(name="lk_postagem")
-	private String  linkPostagem; //link
+	private String  link; //link
     
     @Column(name="ds_postagem")
-	private String  descricaoPostagem; //descrição
+	private String  descricao; //descrição
     
     @Column(name="img_postagem")
-	private String  imagemPostagem;
+	private String  imagem;
     
     @Column(name="ds_imagem_postagem")
-	private String  descricaoImagemPostagem;
+	private String  descricaoImagem;
 		
 	public Postagem() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Postagem(Integer idPostagem, Usuario usuario, Categoria categoria, String tipoPostagem,
-			String tituloPostagem, String linkPostagem, String descricaoPostagem, String imagemPostagem,
-			String descricaoImagemPostagem) {
+	public Postagem(Integer id, Usuario usuario, Categoria categoria, String tipo, String titulo, String link,
+			String descricao, String imagem, String descricaoImagem) {
 		super();
-		this.idPostagem = idPostagem;
+		this.id = id;
 		this.usuario = usuario;
 		this.categoria = categoria;
-		this.tipoPostagem = tipoPostagem;
-		this.tituloPostagem = tituloPostagem;
-		this.linkPostagem = linkPostagem;
-		this.descricaoPostagem = descricaoPostagem;
-		this.imagemPostagem = imagemPostagem;
-		this.descricaoImagemPostagem = descricaoImagemPostagem;
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.link = link;
+		this.descricao = descricao;
+		this.imagem = imagem;
+		this.descricaoImagem = descricaoImagem;
 	}
 
-	public Integer getIdPostagem() {
-		return idPostagem;
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdPostagem(Integer idPostagem) {
-		this.idPostagem = idPostagem;
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
 
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-	public String getTipoPostagem() {
-		return tipoPostagem;
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setTipoPostagem(String tipoPostagem) {
-		this.tipoPostagem = tipoPostagem;
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getTituloPostagem() {
-		return tituloPostagem;
+
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTituloPostagem(String tituloPostagem) {
-		this.tituloPostagem = tituloPostagem;
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getLinkPostagem() {
-		return linkPostagem;
+
+	public String getLink() {
+		return link;
 	}
 
-	public void setLinkPostagem(String linkPostagem) {
-		this.linkPostagem = linkPostagem;
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
-	public String getDescricaoPostagem() {
-		return descricaoPostagem;
+
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoPostagem(String descricaoPostagem) {
-		this.descricaoPostagem = descricaoPostagem;
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getImagemPostagem() {
-		return imagemPostagem;
+
+	public String getImagem() {
+		return imagem;
 	}
 
-	public void setImagemPostagem(String imagemPostagem) {
-		this.imagemPostagem = imagemPostagem;
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
-	public String getDescricaoImagemPostagem() {
-		return descricaoImagemPostagem;
+
+	public String getDescricaoImagem() {
+		return descricaoImagem;
 	}
 
-	public void setDescricaoImagemPostagem(String descricaoImagemPostagem) {
-		this.descricaoImagemPostagem = descricaoImagemPostagem;
+
+	public void setDescricaoImagem(String descricaoImagem) {
+		this.descricaoImagem = descricaoImagem;
 	}
+
 
 	@Override
 	public String toString() {
-		return "Postagem:\n[id_postagem   =" +idPostagem      +  ",\n"
+		return "Postagem:\n[id_postagem   =" +id    +  ",\n"
 						+"id_usuario      =" +usuario          +  ",\n"
 						+"id_categoria    =" +categoria        +  ",\n"
-						+"tp_formacao     =" +tipoPostagem      +  ",\n"
-						+"ds_formacao     =" +descricaoPostagem      +  ",\n"
-						+"img_formacao    =" +imagemPostagem      +  ",\n"
-						+"ds_img_formacao =" +descricaoImagemPostagem      +  ",\n"
+						+"tp_formacao     =" +tipo     +  ",\n"
+						+"ds_formacao     =" +descricao      +  ",\n"
+						+"img_formacao    =" +imagem      +  ",\n"
+						+"ds_img_formacao =" +descricaoImagem      +  ",\n"
 				+"]";
 	}
 }

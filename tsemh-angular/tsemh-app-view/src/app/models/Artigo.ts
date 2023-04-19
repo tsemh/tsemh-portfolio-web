@@ -1,20 +1,27 @@
-export class Artigo {
-  idArtigo: number;
-  tipoPostagem: string;
-  tituloPostagem: string;
-  linkPostagem: string;
-  descricaoPostagem: string;
-  imagemPostagem: string;
-  descricaoImagemPostagem: string;
+import { Categoria } from "./Categoria";
+import { Usuario } from "./usuariro";
 
-  constructor(idArtigo: number, tipoPostagem: string, tituloPostagem: string, linkPostagem: string, descricaoPostagem: string, imagemPostagem: string, descricaoImagemPostagem: string) {
+export class Artigo {
+  id: number;
+  usuario: Usuario;
+  categoria: Categoria;
+  tipo: string;
+  titulo: string;
+  link: string;
+  descricao: string;
+  imagem: string;
+  descricaoImagem: string;
+
+  constructor(idArtigo: number, usuario: Usuario, categoria: Categoria, tipo: string, titulo: string, link: string, descricao: string, imagem: string, descricaoImagem: string) {
     
-    this.idArtigo = idArtigo;
-    this.tipoPostagem = tipoPostagem;
-    this.tituloPostagem = tituloPostagem;
-    this.linkPostagem = linkPostagem;
-    this.descricaoPostagem = descricaoPostagem;
-    this.imagemPostagem = imagemPostagem;
-    this.descricaoImagemPostagem = descricaoImagemPostagem;
+    this.id = idArtigo;
+    this.usuario = usuario;
+    this.categoria = categoria;
+    this.tipo = tipo;
+    this.titulo = titulo;
+    this.link = link;
+    this.descricao = descricao;
+    this.imagem = imagem;
+    this.descricaoImagem = descricaoImagem;
   }
 }

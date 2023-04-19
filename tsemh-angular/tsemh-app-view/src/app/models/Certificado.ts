@@ -1,4 +1,5 @@
 import { Categoria } from "./Categoria";
+import { Usuario } from "./usuariro";
 
 export class Certificado {
   idCertificado: number;

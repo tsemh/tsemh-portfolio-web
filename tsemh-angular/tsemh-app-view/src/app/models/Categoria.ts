@@ -1,3 +1,5 @@
+import { Usuario } from "./usuariro";
+
 export class Categoria {
     idCategoria: number;
     usuario: Usuario;

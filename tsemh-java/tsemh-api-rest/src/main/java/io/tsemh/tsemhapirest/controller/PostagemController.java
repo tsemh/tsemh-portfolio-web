@@ -35,7 +35,7 @@ public class PostagemController {
 		
 		@PutMapping("{idPostagem}")
 		public Postagem putPostagem(@RequestBody Postagem postagem, @PathVariable int idPostagem) {
-			postagem.setIdPostagem(idPostagem);
+			postagem.setId(idPostagem);
 			return postagemRepository.save(postagem);
 		}
 		

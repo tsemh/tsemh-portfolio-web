@@ -11,43 +11,41 @@ public class Categoria {
 	@Column(name="id_categoira")
 	@SequenceGenerator(name="categoria", sequenceName="sq_tb_categoria", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="categoria")
-	private Integer idCategoria;
+	private Integer id;
 	
     @ManyToOne
     @JoinColumn(name="id_usuario")
 	private Usuario usuario;
 	
 	@Column(name="tp_categoria",nullable=false, length=50)
-	private String  tipoCategoria; //tipo
+	private String  tipo;
 	
 	@Column(name="tt_categoria",nullable=false, length=50)
-	private String  tituloCategoria; //titulo
+	private String  titulo;
 	
 	@Column(name="lk_categoria",nullable=false)
-	private String  linkCategoria; //link
+	private String  link;
 
 	public Categoria() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Categoria(Integer idCategoria, Usuario usuario, String tipoCategoria, String tituloCategoria,
-			String linkCategoria, List<Certificado> certificados, List<Formacao> formacoes, List<Postagem> postagens,
-			List<Profissional> profissionais, List<Projeto> projetos) {
+	public Categoria(Integer id, Usuario usuario, String tipo, String titulo, String link) {
 		super();
-		this.idCategoria = idCategoria;
+		this.id = id;
 		this.usuario = usuario;
-		this.tipoCategoria = tipoCategoria;
-		this.tituloCategoria = tituloCategoria;
-		this.linkCategoria = linkCategoria;
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.link = link;
 	}
 
-	public Integer getIdCategoria() {
-		return idCategoria;
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdCategoria(Integer idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setId(Integer id) {
+		this.id = id;
 	}
 
 	public Usuario getUsuario() {
@@ -58,37 +56,37 @@ public class Categoria {
 		this.usuario = usuario;
 	}
 
-	public String getTipoCategoria() {
-		return tipoCategoria;
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setTipoCategoria(String tipoCategoria) {
-		this.tipoCategoria = tipoCategoria;
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getTituloCategoria() {
-		return tituloCategoria;
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTituloCategoria(String tituloCategoria) {
-		this.tituloCategoria = tituloCategoria;
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getLinkCategoria() {
-		return linkCategoria;
+	public String getLink() {
+		return link;
 	}
 
-	public void setLinkCategoria(String linkCategoria) {
-		this.linkCategoria = linkCategoria;
+	public void setLink(String link) {
+		this.link = link;
 	}
 
 	@Override
 	public String toString() {
-		return "Categoria:\n[id_categoria = "+idCategoria+",\n"
+		return "Categoria:\n[id_categoria = "+id+",\n"
 						  +" usuario   = "+usuario  +",\n"
-						  +" tp_categoria = "+tipoCategoria+",\n"
-					      +" tt_categoria = "+tituloCategoria+",\n"
-					      +" lk_categoria = "+linkCategoria+"  ]";
+						  +" tp_categoria = "+tipo+",\n"
+					      +" tt_categoria = "+titulo+",\n"
+					      +" lk_categoria = "+link+"  ]";
 	}
 	
 }

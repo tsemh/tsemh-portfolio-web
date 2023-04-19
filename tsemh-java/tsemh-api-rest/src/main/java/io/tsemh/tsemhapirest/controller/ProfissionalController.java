@@ -35,7 +35,7 @@ public class ProfissionalController {
 		
 		@PutMapping("{idProfissional}")
 		public Profissional putProfissional(@RequestBody Profissional profissional, @PathVariable int idProfissional) {
-			profissional.setIdProfissional(idProfissional);
+			profissional.setId(idProfissional);
 			return profissionalRepository.save(profissional);
 		}
 		

@@ -34,7 +34,7 @@ public class CertificadoController {
 		
 		@PutMapping("{idCertificado}")
 		public Certificado putCertificado(@RequestBody Certificado certificado, @PathVariable int idCertificado) {
-			certificado.setIdCertificado(idCertificado);
+			certificado.setId(idCertificado);
 			return certificadoRepository.save(certificado);
 		}
 		

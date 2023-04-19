@@ -4,7 +4,7 @@
 
     <div >
       <div *ngFor="let categoria of categorias" onclick="openPage('All/all', 'update')">
-        <a *ngIf="categoria.grupo == tituloMain"> {{ categoria.titulo }} </a>
+        <a *ngIf="categoria.tipoCategoria == tituloMain"> {{ categoria.tituloCategoria }} </a>
       </div>
       </div>
 

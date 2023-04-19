@@ -12,81 +12,21 @@ export class ProfissionalComponent {
   public visaoCategoria: boolean = true;
 
   public categorias = [
-
-    { id: 0,
-      titulo: 'tag 0',
-      link: '0' ,
-      grupo: 'projetos'
-    },
-    { id: 1,
-      titulo: 'tag 1',
-      link: '0',
-      grupo: 'postagens'
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: '0', 
-      grupo: 'profissional'
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: '0',
-      grupo: 'certificados'
-    },
-    { id: 4,
-      titulo: 'tag 4',
-      link: '0',
-      grupo: 'formações'
-    },
-];
-
+    {idCategoria: 1, tipoCategoria: "projetos", tituloCategoria: "titulo 01", linkCategoria: "Link 01"},
+    {idCategoria: 2, tipoCategoria: "profissional", tituloCategoria: "titulo 02", linkCategoria: "Link 02"},
+    {idCategoria: 3, tipoCategoria: "artigos", tituloCategoria: "titulo 03", linkCategoria: "Link 03"},
+    {idCategoria: 4, tipoCategoria: "certificados", tituloCategoria: "titulo 04", linkCategoria: "Link 04"},
+    {idCategoria: 5, tipoCategoria: "formacões", tituloCategoria: "titulo 05", linkCategoria: "Link 05"},
+  ] 
   
-  public itens= [
-
-    { id: 1,
-      titulo: 'Primeiro Destaque',
-      link: 'link terceiro destaque',
-      tags: [
-        { id: 1,
-          titulo: 'tag 1',
-          link: 'postagens' 
-        },
-        { id: 2,
-          titulo: 'tag 2',
-          link: 'link da tag' 
-        },
-        { id: 3,
-          titulo: 'tag 3',
-          link: 'link da tag' 
-        },
-      ],
-      imagem: 'image',
-      imgDesc: 'descrição'
-    },
-    { id: 2,
-      titulo: 'Segundo Destaque',
-      link: 'link terceiro destaque',
-      tags: [
-        { id: 1,
-          titulo: 'tag 1',
-          link: 'link da tag' 
-        },
-        { id: 2,
-          titulo: 'tag 2',
-          link: 'link da tag' 
-        },
-        { id: 3,
-          titulo: 'tag 3',
-          link: 'link da tag' 
-        },
-      ],
-      imagem: 'image',
-      imgDesc: 'descrição'
-    },
-  ];
+  public entidades= [ 
+    {
+     id: 1, tipo: 'profissional', titulo: 'G+D', link: 'link', descricao: 'descrição', imagem: 'caminho da imagem', descricaoImagem: 'descrição da imagem'
+    } 
+  ]
 
   determinaBoolean() {
-    if(this.itens.length >= 6) {
+    if(this.entidades.length >= 6) {
       this.visaoPaginacao = true
     }
     return this.visaoPaginacao;

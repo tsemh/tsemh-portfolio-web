@@ -34,7 +34,7 @@ public class CategoriaController {
 	
 	@PutMapping("{idCategoria}")
 	public Categoria putCategoria(@RequestBody Categoria categoria, @PathVariable int idCategoria) {
-		categoria.setIdCategoria(idCategoria);
+		categoria.setId(idCategoria);
 		return categoriaRepository.save(categoria);
 	}
 	

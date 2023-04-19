@@ -10,7 +10,7 @@ public class Projeto {
 	@Column(name="id_projeto")
 	@SequenceGenerator(name="projeto", sequenceName="sq_tb_projeto", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="projeto")
-	private Integer idProjeto;
+	private Integer id;
 	
     @ManyToOne
     @JoinColumn(name="usuario")
@@ -21,123 +21,161 @@ public class Projeto {
 	private Categoria categoria;
     
     @Column(name="tp_projeto")
-	private String  tipoProjeto;	//tipo
+	private String  tipo;	//tipo
     
     @Column(name="tt_projeto")
-	private String  tituloProjeto;	//titulo
+	private String  titulo;	//titulo
     
     @Column(name="lk_projeto")
-	private String  linkProjeto;	//link
+	private String  link;	//link
     
     @Column(name="ds_projeto")
-	private String  descricaoProjeto;	//descrição
+	private String  descricao;	//descrição
     
     @Column(name="im_projeto")
-	private String  iimagemProjeto;
+	private String  iimagem;
     
     @Column(name="di_projeto")
-	private String  descricaoimagemProjeto;
+	private String  descricaoimagem;
 	
 	public Projeto() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Projeto(Integer idProjeto, Usuario usuario, Categoria categoria, String tipoProjeto, String tituloProjeto,
-			String linkProjeto, String descricaoProjeto, String iimagemProjeto, String descricaoimagemProjeto) {
+	public Projeto(Integer id, Usuario usuario, Categoria categoria, String tipo, String titulo, String link,
+			String descricao, String iimagem, String descricaoimagem) {
 		super();
-		this.idProjeto = idProjeto;
+		this.id = id;
 		this.usuario = usuario;
 		this.categoria = categoria;
-		this.tipoProjeto = tipoProjeto;
-		this.tituloProjeto = tituloProjeto;
-		this.linkProjeto = linkProjeto;
-		this.descricaoProjeto = descricaoProjeto;
-		this.iimagemProjeto = iimagemProjeto;
-		this.descricaoimagemProjeto = descricaoimagemProjeto;
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.link = link;
+		this.descricao = descricao;
+		this.iimagem = iimagem;
+		this.descricaoimagem = descricaoimagem;
 	}
 
-	public Integer getIdProjeto() {
-		return idProjeto;
+
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdProjeto(Integer idProjeto) {
-		this.idProjeto = idProjeto;
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
+
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+
 
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
+
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-	public String getTipoProjeto() {
-		return tipoProjeto;
+
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setTipoProjeto(String tipoProjeto) {
-		this.tipoProjeto = tipoProjeto;
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getTituloProjeto() {
-		return tituloProjeto;
+
+
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTituloProjeto(String tituloProjeto) {
-		this.tituloProjeto = tituloProjeto;
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getLinkProjeto() {
-		return linkProjeto;
+
+
+	public String getLink() {
+		return link;
 	}
 
-	public void setLinkProjeto(String linkProjeto) {
-		this.linkProjeto = linkProjeto;
+
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
-	public String getDescricaoProjeto() {
-		return descricaoProjeto;
+
+
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoProjeto(String descricaoProjeto) {
-		this.descricaoProjeto = descricaoProjeto;
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getIimagemProjeto() {
-		return iimagemProjeto;
+
+
+	public String getIimagem() {
+		return iimagem;
 	}
 
-	public void setIimagemProjeto(String iimagemProjeto) {
-		this.iimagemProjeto = iimagemProjeto;
+
+
+	public void setIimagem(String iimagem) {
+		this.iimagem = iimagem;
 	}
 
-	public String getDescricaoimagemProjeto() {
-		return descricaoimagemProjeto;
+
+
+	public String getDescricaoimagem() {
+		return descricaoimagem;
 	}
 
-	public void setDescricaoimagemProjeto(String descricaoimagemProjeto) {
-		this.descricaoimagemProjeto = descricaoimagemProjeto;
+
+
+	public void setDescricaoimagem(String descricaoimagem) {
+		this.descricaoimagem = descricaoimagem;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Projeto:\n[id_formacao   	  =" +idProjeto      +  ",\n"
+		return "Projeto:\n[id_formacao   	  =" +id      +  ",\n"
 							+"id_usuario      =" +usuario      +  ",\n"
 							+"id_categoria    =" +categoria	  +  ",\n"
-							+"tp_formacao     =" +tipoProjeto      +  ",\n"
-							+"ds_formacao     =" +descricaoProjeto      +  ",\n"
-							+"im_formacao     =" +iimagemProjeto      +  ",\n"
-							+"di_formacao     =" +descricaoimagemProjeto      +  ",\n"
+							+"tp_formacao     =" +tipo      +  ",\n"
+							+"ds_formacao     =" +descricao  +  ",\n"
+							+"im_formacao     =" +iimagem    +  ",\n"
+							+"di_formacao     =" +descricaoimagem    +  ",\n"
 				+"]";
 	}
 }

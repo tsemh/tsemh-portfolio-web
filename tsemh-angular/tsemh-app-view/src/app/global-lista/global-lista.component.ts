@@ -15,35 +15,21 @@ export class GlobalListaComponent {
 
   @Input() pages: number = 1;
 
-  @Input() itens = [
+  @Input() public entidades= [ 
+    {
+     id: 0, tipo: '', titulo: '', link: '', descricao: '', imagem: '', descricaoImagem: ''
+    } 
+  ]
 
-    { id: 0,
-      titulo: '',
-      link: '',
-      tags: [
-        { id: 0,
-          titulo: '',
-          link: '0' 
-        }
-      ],
-      imagem: '',
-      imgDesc: ''     
-    },
-  ];
-  @Input() categorias = [
-    { 
-      id: 0,
-      titulo: '',
-      link: '' ,
-      grupo: ''
-    },
-  ]  
+  @Input() public categorias = [
+    {idCategoria: 0, tipoCategoria: "", tituloCategoria: "", linkCategoria: ""},
+  ] 
 
   constructor(private router: Router) {}
 
-  redirectTo(uri:string){
+  redirectTo(url:string){
     this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([uri]));
+    this.router.navigate([url]));
  }
 
 }

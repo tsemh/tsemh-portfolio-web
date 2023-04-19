@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Categoria } from '../models/Categoria';
 
 @Component({
   selector: 'tsemh-categoria',
@@ -9,5 +10,8 @@ export class CategoriaComponent {
 
   @Input() tituloMain: string = '';
 
-  @Input() categorias = [] 
+  @Input() public categorias = [
+    {idCategoria: 0, tipoCategoria: "", tituloCategoria: "", linkCategoria: ""},
+  ]  
 }
+

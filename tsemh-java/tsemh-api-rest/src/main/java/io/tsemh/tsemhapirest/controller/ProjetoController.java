@@ -34,7 +34,7 @@ public class ProjetoController {
 		
 		@PutMapping("{idProjeto}")
 		public Projeto putProjeto(@RequestBody Projeto projeto, @PathVariable int idProjeto) {
-			projeto.setIdProjeto(idProjeto);
+			projeto.setId(idProjeto);
 			return projetoRepository.save(projeto);
 		}
 		

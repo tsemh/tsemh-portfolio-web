@@ -3,16 +3,16 @@
   <header class="header">
     <div class="recipiente-header">
       <div class="header-texto">
-        <h1> {{ tiago.nome }} </h1>
-        <h4> {{ tiago.titulo }} </h4>
-        <a class="curriculo" href=" {{ tiago.curriculo }} " download>Baixar curriculo </a>
+        <h1> {{ usuario[0].nomeUsuario }} </h1>
+        <h4> {{ usuario[0].tituloUsuario }} </h4>
+        <a class="curriculo" href=" {{ usuario[0].curriculumVitaeUsuario }} " download>Baixar curriculo </a>
       </div>
     </div>
   </header>
 
   <section>
     <div class="global-lista">
-      <tsemh-global-lista [tituloMain]="tituloMain"  [itens]="itens" [visaoCategoria]="visaoCategoria" [visaoPaginacao]="visaoPaginacao"></tsemh-global-lista>
+      <tsemh-global-lista [tituloMain]="tituloMain"  [entidades]="entidades" [visaoCategoria]="visaoCategoria" [visaoPaginacao]="visaoPaginacao"></tsemh-global-lista>
     </div>
   </section>
 

@@ -10,7 +10,7 @@ public class Profissional {
 	@Column(name="id_profissional")
 	@SequenceGenerator(name="profissional", sequenceName="sq_tb_profissional", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="profissional")
-	private Integer idProfissional;
+	private Integer id;
 	
     @ManyToOne
     @JoinColumn(name="id_usuario")
@@ -21,124 +21,162 @@ public class Profissional {
 	private Categoria categoria;
     
     @Column(name="tp_profisional")
-	private String  tipoProfissional; //Tipo
+	private String  tipo; //Tipo
     
     @Column(name="tt_profisional")
-	private String  tituloProfissional; //Titulo
+	private String  titulo; //Titulo
     
     @Column(name="lk_profissional")
-	private String  linkProfissional; //Link
+	private String  link; //Link
     
     @Column(name="ds_profissional")
-	private String  descricaoProfissional; //Descrição
+	private String  descricao; //Descrição
     
     @Column(name="img_profissional")
-	private String  iimagemProfissional;
+	private String  iimagem;
     
     @Column(name="ds_imagem_profissional")
-	private String  descricaoImagemProfissional;
+	private String  descricaoImagem;
 	
 	public Profissional() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Profissional(Integer idProfissional, Usuario usuario, Categoria categoria, String tipoProfissional,
-			String tituloProfissional, String linkProfissional, String descricaoProfissional,
-			String iimagemProfissional, String descricaoImagemProfissional) {
+
+	public Profissional(Integer id, Usuario usuario, Categoria categoria, String tipo, String titulo, String link,
+			String descricao, String iimagem, String descricaoImagem) {
 		super();
-		this.idProfissional = idProfissional;
+		this.id = id;
 		this.usuario = usuario;
 		this.categoria = categoria;
-		this.tipoProfissional = tipoProfissional;
-		this.tituloProfissional = tituloProfissional;
-		this.linkProfissional = linkProfissional;
-		this.descricaoProfissional = descricaoProfissional;
-		this.iimagemProfissional = iimagemProfissional;
-		this.descricaoImagemProfissional = descricaoImagemProfissional;
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.link = link;
+		this.descricao = descricao;
+		this.iimagem = iimagem;
+		this.descricaoImagem = descricaoImagem;
 	}
 
-	public Integer getIdProfissional() {
-		return idProfissional;
+
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdProfissional(Integer idProfissional) {
-		this.idProfissional = idProfissional;
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
+
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+
 
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
+
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-	public String getTipoProfissional() {
-		return tipoProfissional;
+
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setTipoProfissional(String tipoProfissional) {
-		this.tipoProfissional = tipoProfissional;
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getTituloProfissional() {
-		return tituloProfissional;
+
+
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTituloProfissional(String tituloProfissional) {
-		this.tituloProfissional = tituloProfissional;
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getLinkProfissional() {
-		return linkProfissional;
+
+
+	public String getLink() {
+		return link;
 	}
 
-	public void setLinkProfissional(String linkProfissional) {
-		this.linkProfissional = linkProfissional;
+
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
-	public String getDescricaoProfissional() {
-		return descricaoProfissional;
+
+
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoProfissional(String descricaoProfissional) {
-		this.descricaoProfissional = descricaoProfissional;
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getIimagemProfissional() {
-		return iimagemProfissional;
+
+
+	public String getIimagem() {
+		return iimagem;
 	}
 
-	public void setIimagemProfissional(String iimagemProfissional) {
-		this.iimagemProfissional = iimagemProfissional;
+
+
+	public void setIimagem(String iimagem) {
+		this.iimagem = iimagem;
 	}
 
-	public String getDescricaoImagemProfissional() {
-		return descricaoImagemProfissional;
+
+
+	public String getDescricaoImagem() {
+		return descricaoImagem;
 	}
 
-	public void setDescricaoImagemProfissional(String descricaoImagemProfissional) {
-		this.descricaoImagemProfissional = descricaoImagemProfissional;
+
+
+	public void setDescricaoImagem(String descricaoImagem) {
+		this.descricaoImagem = descricaoImagem;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Profissional:\n[id_profissional   =" +idProfissional      +  ",\n"
+		return "Profissional:\n[id_profissional   =" +id      +  ",\n"
 							+"usuario          	  =" +usuario       	   +  ",\n"
 							+"categoria           =" +categoria		   +  ",\n"
-							+"tp_profissional     =" +tipoProfissional      +  ",\n"
-							+"ds_profissional     =" +descricaoProfissional      +  ",\n"
-							+"im_profissional     =" +iimagemProfissional      +  ",\n"
-							+"di_profissional     =" +descricaoImagemProfissional      +  ",\n"
+							+"tp_profissional     =" +tipo      +  ",\n"
+							+"ds_profissional     =" +descricao    +  ",\n"
+							+"im_profissional     =" +iimagem   +  ",\n"
+							+"di_profissional     =" +descricaoImagem      +  ",\n"
 				+"]";
 	}
 }

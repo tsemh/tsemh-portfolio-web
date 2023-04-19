@@ -10,7 +10,7 @@ public class Certificado {
 	@Column(name="id_certificado")
 	@SequenceGenerator(name="certificado", sequenceName="sq_tb_certificado", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="certificado")
-	private Integer idCertificado;
+	private Integer id;
 	
     @ManyToOne
     @JoinColumn(name="id_usuario")
@@ -21,126 +21,165 @@ public class Certificado {
 	private Categoria categoria;
     
     @Column(name="tp_certificado")
-	private String  tipoCertificado;	//Tipo
+	private String  tipo;	//Tipo
 	
     @Column(name="tt_certificado")
-	private String  tituloCertificado;	//Titulo
+	private String  titulo;	//Titulo
     
     @Column(name="lk_certificado")
-	private String  linkCertificado; //Link
+	private String  link; //Link
     
     @Column(name="ds_certificado")
-	private String  descricaoCertificado; //Descrição
+	private String  descricao; //Descrição
     
     @Column(name="img_Certificado")
-	private String  imagemCertificado; //Imagem
+	private String  imagem; //Imagem
     
     @Column(name="ds_imagem_certificado")
-	private String  descricaoImagemCertificado; //Descrição Imagem
+	private String  descricaoImagem; //Descrição Imagem
 
 	public Certificado() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Certificado(Integer idCertificado, Usuario usuario, Categoria categoria, String tipoCertificado,
-			String tituloCertificado, String linkCertificado, String descricaoCertificado, String imagemCertificado,
-			String descricaoImagemCertificado) {
+	
+
+	public Certificado(Integer id, Usuario usuario, Categoria categoria, String tipo, String titulo, String link,
+			String descricao, String imagem, String descricaoImagem) {
 		super();
-		this.idCertificado = idCertificado;
+		this.id = id;
 		this.usuario = usuario;
 		this.categoria = categoria;
-		this.tipoCertificado = tipoCertificado;
-		this.tituloCertificado = tituloCertificado;
-		this.linkCertificado = linkCertificado;
-		this.descricaoCertificado = descricaoCertificado;
-		this.imagemCertificado = imagemCertificado;
-		this.descricaoImagemCertificado = descricaoImagemCertificado;
+		this.tipo = tipo;
+		this.titulo = titulo;
+		this.link = link;
+		this.descricao = descricao;
+		this.imagem = imagem;
+		this.descricaoImagem = descricaoImagem;
 	}
 
-	public Integer getIdCertificado() {
-		return idCertificado;
+
+
+	public Integer getId() {
+		return id;
 	}
 
-	public void setIdCertificado(Integer idCertificado) {
-		this.idCertificado = idCertificado;
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
+
+
 
 	public Usuario getUsuario() {
 		return usuario;
 	}
 
+
+
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
+
+
 
 	public Categoria getCategoria() {
 		return categoria;
 	}
 
+
+
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
 	}
 
-	public String getTipoCertificado() {
-		return tipoCertificado;
+
+
+	public String getTipo() {
+		return tipo;
 	}
 
-	public void setTipoCertificado(String tipoCertificado) {
-		this.tipoCertificado = tipoCertificado;
+
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
 	}
 
-	public String getTituloCertificado() {
-		return tituloCertificado;
+
+
+	public String getTitulo() {
+		return titulo;
 	}
 
-	public void setTituloCertificado(String tituloCertificado) {
-		this.tituloCertificado = tituloCertificado;
+
+
+	public void setTitulo(String titulo) {
+		this.titulo = titulo;
 	}
 
-	public String getLinkCertificado() {
-		return linkCertificado;
+
+
+	public String getLink() {
+		return link;
 	}
 
-	public void setLinkCertificado(String linkCertificado) {
-		this.linkCertificado = linkCertificado;
+
+
+	public void setLink(String link) {
+		this.link = link;
 	}
 
-	public String getDescricaoCertificado() {
-		return descricaoCertificado;
+
+
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setDescricaoCertificado(String descricaoCertificado) {
-		this.descricaoCertificado = descricaoCertificado;
+
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
-	public String getImagemCertificado() {
-		return imagemCertificado;
+
+
+	public String getImagem() {
+		return imagem;
 	}
 
-	public void setImagemCertificado(String imagemCertificado) {
-		this.imagemCertificado = imagemCertificado;
+
+
+	public void setImagem(String imagem) {
+		this.imagem = imagem;
 	}
 
-	public String getDescricaoImagemCertificado() {
-		return descricaoImagemCertificado;
+
+
+	public String getDescricaoImagem() {
+		return descricaoImagem;
 	}
 
-	public void setDescricaoImagemCertificado(String descricaoImagemCertificado) {
-		this.descricaoImagemCertificado = descricaoImagemCertificado;
+
+
+	public void setDescricaoImagem(String descricaoImagem) {
+		this.descricaoImagem = descricaoImagem;
 	}
+
+
 
 	@Override
 	public String toString() {
-		return "Certificado:\n[id_certificado   ="  +idCertificado    + ",\n"
+		return "Certificado:\n[id_certificado   ="  +id   + ",\n"
 						   +"usuario         ="  +usuario        + ",\n"
 						   +"categoria       ="  +categoria      + ",\n"
-						   +"tp_certificado     ="  +tipoCertificado    + ",\n"
-						   +"tt_certificado     ="  +tituloCertificado    + ",\n"
-						   +"lk_certificado     ="  +linkCertificado    + ",\n"
-						   +"ds_certificado     ="  +descricaoCertificado    + ",\n"
-						   +"im_certificado    	="  +imagemCertificado    + ",\n"
-						   +"di_certificado 	="  +descricaoImagemCertificado	   + ",\n"
+						   +"tp_certificado     ="  +tipo    + ",\n"
+						   +"tt_certificado     ="  +titulo    + ",\n"
+						   +"lk_certificado     ="  +link    + ",\n"
+						   +"ds_certificado     ="  +descricao    + ",\n"
+						   +"im_certificado    	="  +imagem   + ",\n"
+						   +"di_certificado 	="  +descricaoImagem   + ",\n"
 				+"]";
 	}
 }

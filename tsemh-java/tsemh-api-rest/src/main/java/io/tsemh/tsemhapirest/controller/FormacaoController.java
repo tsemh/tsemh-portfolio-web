@@ -35,7 +35,7 @@ public class FormacaoController {
 		
 		@PutMapping("{idFormacao}")
 		public Formacao putFormacao(@RequestBody Formacao formacao, @PathVariable int idFormacao) {
-			formacao.setIdFormacao(idFormacao);
+			formacao.setId(idFormacao);
 			return formacaoRepository.save(formacao);
 		}
 		
