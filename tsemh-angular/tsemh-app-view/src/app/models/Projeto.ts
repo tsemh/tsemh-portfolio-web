@@ -2,26 +2,26 @@ import { Categoria } from "./Categoria";
 import { Usuario } from "./usuariro";
 
 export class Projeto {
-  idProjeto: number;
+  id: number;
   usuario: Usuario;
   categoria: Categoria;
-  tipoProjeto: string;
-  tituloProjeto: string;
-  linkProjeto: string;
-  descricaoProjeto: string;
-  imagemProjeto: string;
-  descricaoimagemProjeto: string;
+  tipo: string;
+  titulo: string;
+  link: string;
+  descricao: string;
+  imagem: string;
+  descricaoImagem: string;
 
-  constructor(idProjeto: number,usuario: Usuario,categoria: Categoria,tipoProjeto: string,tituloProjeto: string,linkProjeto: string,descricaoProjeto: string,imagemProjeto: string,descricaoimagemProjeto: string) {
+  constructor(id: number,usuario: Usuario,categoria: Categoria,tipo: string,titulo: string,link: string,descricao: string,imagem: string,descricaoImagem: string) {
 
-    this.idProjeto = idProjeto;
+    this.id = id;
     this.usuario = usuario;
     this.categoria = categoria;
-    this.tipoProjeto = tipoProjeto;
-    this.tituloProjeto = tituloProjeto;
-    this.linkProjeto = linkProjeto;
-    this.descricaoProjeto = descricaoProjeto;
-    this.imagemProjeto = imagemProjeto;
-    this.descricaoimagemProjeto = descricaoimagemProjeto;
+    this.tipo = tipo;
+    this.titulo = titulo;
+    this.link = link;
+    this.descricao = descricao;
+    this.imagem = imagem;
+    this.descricaoImagem = descricaoImagem;
   }
 }

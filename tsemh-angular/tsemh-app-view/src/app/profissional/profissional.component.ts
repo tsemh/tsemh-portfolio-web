@@ -1,25 +1,22 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Categoria } from '../models/Categoria';
+import { Profissional } from '../models/Profissional';
+import { ProfissionalService } from '../service/profissional.service';
 
 @Component({
   selector: 'app-profissional',
   templateUrl: './profissional.component.html',
   styleUrls: ['./profissional.component.css']
 })
-export class ProfissionalComponent {
+export class ProfissionalComponent implements OnInit {
 
   public tituloMain: string = 'profissional';
 
   public visaoCategoria: boolean = true;
 
-  public categorias: Categoria[] = [];
+  public entidades: Profissional[] = []
 
-  
-  public entidades= [ 
-    {
-     id: 1, tipo: 'profissional', titulo: 'G+D', link: 'link', descricao: 'descrição', imagem: 'caminho da imagem', descricaoImagem: 'descrição da imagem'
-    } 
-  ]
+  constructor(private profissionalService: ProfissionalService) {  }
 
   determinaBoolean() {
     if(this.entidades.length >= 6) {
@@ -27,7 +24,20 @@ export class ProfissionalComponent {
     }
     return this.visaoPaginacao;
    }
-
    public visaoPaginacao: boolean = this.determinaBoolean();
 
+   carregarProfissional() {
+    this.profissionalService.getAll().subscribe(
+      (profissional: Profissional[]) => {
+        this.entidades = profissional;
+      },
+      (e: any) => {
+        console.error(e)
+      }
+    ); 
+   }
+
+   ngOnInit(): void {
+     this.carregarProfissional();
+   }
 }

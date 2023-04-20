@@ -2,26 +2,26 @@ import { Categoria } from "./Categoria";
 import { Usuario } from "./usuariro";
 
 export class Certificado {
-  idCertificado: number;
+  id: number;
   usuario: Usuario;
   categoria: Categoria;
-  tipoCertificado: string;
-  tituloCertificado: string;
-  linkCertificado: string;
-  descricaoCertificado: string;
-  imagemCertificado: string;
-  descricaoImagemCertificado: string;
+  tipo: string;
+  titulo: string;
+  link: string;
+  descricao: string;
+  imagem: string;
+  descricaoImagem: string;
 
-  constructor(idCertificado: number, usuario: Usuario, categoria: Categoria, tipoCertificado: string,tituloCertificado: string, linkCertificado: string, descricaoCertificado: string,imagemCertificado: string, descricaoImagemCertificado: string) {
+  constructor(id: number, usuario: Usuario, categoria: Categoria, tipo: string,titulo: string, link: string, descricao: string,imagem: string, descricaoImagem: string) {
     
-      this.idCertificado = idCertificado;
+      this.id = id;
       this.usuario = usuario;
       this.categoria = categoria;
-      this.tipoCertificado = tipoCertificado;
-      this.tituloCertificado = tituloCertificado;
-      this.linkCertificado = linkCertificado;
-      this.descricaoCertificado = descricaoCertificado;
-      this.imagemCertificado = imagemCertificado;
-      this.descricaoImagemCertificado = descricaoImagemCertificado;
+      this.tipo = tipo;
+      this.titulo = titulo;
+      this.link = link;
+      this.descricao = descricao;
+      this.imagem = imagem;
+      this.descricaoImagem = descricaoImagem;
   }
 }

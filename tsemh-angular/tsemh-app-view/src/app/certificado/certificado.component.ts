@@ -1,5 +1,6 @@
+import { CertificadoService } from './../service/certificado.service';
 import { Component } from '@angular/core';
-import { Categoria } from '../models/Categoria';
+import { Certificado } from '../models/Certificado';
 
 @Component({
   selector: 'tsemh-certificado',
@@ -12,26 +13,30 @@ export class CertificadoComponent {
 
   public visaoCategoria: boolean = true;
 
-  public categorias: Categoria[] = [];
+  public entidades: Certificado[] = []
 
-  public entidades= [ 
-    {
-     id: 1, tipo: 'certificados', titulo: 'alura', link: 'link', descricao: 'descrição', imagem: 'caminho da imagem', descricaoImagem: 'descrição da imagem'
-    } 
-  ]
-  constructor() {  }
+  constructor(private certificadoService: CertificadoService) {  }
 
   determinaBoolean() {
     if(this.entidades.length >= 6) { this.visaoPaginacao = true
     }
     return this.visaoPaginacao;
    }
-
    public visaoPaginacao: boolean = this.determinaBoolean();
 
+   carregarCertificados() {
+    this.certificadoService.getAll().subscribe(
+      (certificados: Certificado[]) => {
+        this.entidades = certificados;
+      },
+      (e: any) => {
+        console.error(e)
+      }
+    ); 
+   }
 
-  ngOnInit() { 
-
+  ngOnInit(): void { 
+    this.carregarCertificados();
    }
 
 }

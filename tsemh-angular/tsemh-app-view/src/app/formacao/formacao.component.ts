@@ -1,25 +1,21 @@
-import { Component } from '@angular/core';
-import { Categoria } from '../models/Categoria';
+import { Component, OnInit } from '@angular/core';
+import { Formacao } from '../models/formacao';
+import { FormacaoService } from '../service/formacao.service';
 
 @Component({
   selector: 'tsemh-formacao', 
   templateUrl: './formacao.component.html',
   styleUrls: ['./formacao.component.css']
 })
-export class FormacaoComponent {
+export class FormacaoComponent implements OnInit{
   
   public tituloMain: string = 'formações';
 
   public visaoCategoria: boolean = true;
 
-  public categorias: Categoria[] = [];
+  public entidades: Formacao[] = []
 
-
-  public entidades= [ 
-    {
-     id: 1,tipo: 'formações', titulo: 'fiap', link: 'link', descricao: 'descrição', imagem: 'caminho da imagem', descricaoImagem: 'descrição da imagem'
-    } 
-  ]
+  constructor(private formacaoService: FormacaoService) {  }
 
   determinaBoolean() {
     if(this.entidades.length >= 6) {
@@ -27,7 +23,20 @@ export class FormacaoComponent {
     }
     return this.visaoPaginacao;
    }
-
    public visaoPaginacao: boolean = this.determinaBoolean();
 
+   carregarFormacoes() {
+    this.formacaoService.getAll().subscribe(
+      (formacoes: Formacao[]) => {
+        this.entidades = formacoes;
+      },
+      (e: any) => {
+        console.error(e)
+      }
+    ); 
+   }
+
+   ngOnInit(): void {
+     this.carregarFormacoes();
+   }
 }

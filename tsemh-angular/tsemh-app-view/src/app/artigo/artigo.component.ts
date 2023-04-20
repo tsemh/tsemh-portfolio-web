@@ -14,12 +14,9 @@ export class ArtigoComponent implements OnInit {
   public tituloMain: string = 'artigos';
 
   public visaoCategoria: boolean = true;
-
-  public categorias: Categoria[] = [];
   public entidades: Artigo[] = [];
 
-  constructor(private artigoService: ArtigoService) {
-  }
+  constructor(private artigoService: ArtigoService) {  }
 
   determinaBoolean() {
     if(this.entidades.length >= 6) {

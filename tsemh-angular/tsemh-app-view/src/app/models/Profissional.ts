@@ -1,27 +1,27 @@
 import { Categoria } from "./Categoria";
 import { Usuario } from "./usuariro";
 
-class Profissional {
-  idProfissional: number;
+export class Profissional {
+  id: number;
   usuario: Usuario;
   categoria: Categoria;
-  tipoProfissional: string;
-  tituloProfissional: string;
-  linkProfissional: string;
-  descricaoProfissional: string;
-  imagemProfissional: string;
-  descricaoImagemProfissional: string;
+  tipo: string;
+  titulo: string;
+  link: string;
+  descricao: string;
+  imagem: string;
+  descricaoImagem: string;
   
-  constructor(idProfissional: number, usuario: Usuario, categoria: Categoria, tipoProfissional: string, tituloProfissional: string, linkProfissional: string, descricaoProfissional: string,imagemProfissional: string, descricaoImagemProfissional: string) {
+  constructor(id: number, usuario: Usuario, categoria: Categoria, tipo: string, titulo: string, link: string, descricao: string,imagem: string, descricaoImagem: string) {
     
-    this.idProfissional = idProfissional;
+    this.id = id;
     this.usuario = usuario;
     this.categoria = categoria;
-    this.tipoProfissional = tipoProfissional;
-    this.tituloProfissional = tituloProfissional;
-    this.linkProfissional = linkProfissional;
-    this.descricaoProfissional = descricaoProfissional;
-    this.imagemProfissional = imagemProfissional;
-    this.descricaoImagemProfissional = descricaoImagemProfissional;
+    this.tipo = tipo;
+    this.titulo = titulo;
+    this.link = link;
+    this.descricao = descricao;
+    this.imagem = imagem;
+    this.descricaoImagem = descricaoImagem;
   }
 }

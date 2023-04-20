@@ -11,7 +11,7 @@ export class CategoriaComponent implements OnInit{
 
   @Input() tituloMain: string = '';
 
-  @Input() public categorias: Categoria[] = [];
+  public categorias: Categoria[] = [];
 
   constructor(private categoriaService: CategoriaService) {
 }

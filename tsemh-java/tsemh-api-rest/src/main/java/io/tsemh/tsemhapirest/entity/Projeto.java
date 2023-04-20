@@ -36,7 +36,7 @@ public class Projeto {
 	private String  iimagem;
     
     @Column(name="di_projeto")
-	private String  descricaoimagem;
+	private String  descricaoImagem;
 	
 	public Projeto() {
 		super();
@@ -44,7 +44,7 @@ public class Projeto {
 	}
 
 	public Projeto(Integer id, Usuario usuario, Categoria categoria, String tipo, String titulo, String link,
-			String descricao, String iimagem, String descricaoimagem) {
+			String descricao, String iimagem, String descricaoImagem) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
@@ -54,7 +54,7 @@ public class Projeto {
 		this.link = link;
 		this.descricao = descricao;
 		this.iimagem = iimagem;
-		this.descricaoimagem = descricaoimagem;
+		this.descricaoImagem = descricaoImagem;
 	}
 
 
@@ -155,14 +155,14 @@ public class Projeto {
 
 
 
-	public String getDescricaoimagem() {
-		return descricaoimagem;
+	public String getDescricaoImagem() {
+		return descricaoImagem;
 	}
 
 
 
-	public void setDescricaoimagem(String descricaoimagem) {
-		this.descricaoimagem = descricaoimagem;
+	public void setDescricaoImagem(String descricaoImagem) {
+		this.descricaoImagem = descricaoImagem;
 	}
 
 
@@ -175,7 +175,7 @@ public class Projeto {
 							+"tp_formacao     =" +tipo      +  ",\n"
 							+"ds_formacao     =" +descricao  +  ",\n"
 							+"im_formacao     =" +iimagem    +  ",\n"
-							+"di_formacao     =" +descricaoimagem    +  ",\n"
+							+"di_formacao     =" +descricaoImagem    +  ",\n"
 				+"]";
 	}
 }
