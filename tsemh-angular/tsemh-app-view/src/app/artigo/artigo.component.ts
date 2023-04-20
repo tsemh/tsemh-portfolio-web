@@ -41,7 +41,7 @@ export class ArtigoComponent implements OnInit {
     ); 
    }
 
-   ngOnInit() {
+   ngOnInit(): void {
     this.carregarArtigos();
   }
 
