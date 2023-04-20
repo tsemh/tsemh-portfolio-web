@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
+import { Categoria } from '../models/Categoria';
 
 @Component({
   selector: 'tsemh-global-lista',
@@ -21,9 +22,8 @@ export class GlobalListaComponent {
     } 
   ]
 
-  @Input() public categorias = [
-    {idCategoria: 0, tipoCategoria: "", tituloCategoria: "", linkCategoria: ""},
-  ] 
+  @Input() public categorias: Categoria[] = [];
+
 
   constructor(private router: Router) {}
 

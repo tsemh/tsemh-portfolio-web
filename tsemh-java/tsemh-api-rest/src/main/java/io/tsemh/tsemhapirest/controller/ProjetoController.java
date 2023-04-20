@@ -28,7 +28,7 @@ public class ProjetoController {
 		}
 		
 		@GetMapping("{idProjeto}")
-		public Projeto getProjetoById(@PathVariable int idProjeto) {
+		public Projeto getProjetoById(@PathVariable int idProjeto) {	
 			return projetoRepository.findById(idProjeto).get();
 		}
 		

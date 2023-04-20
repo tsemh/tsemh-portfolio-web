@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Categoria } from '../models/Categoria';
 
 @Component({
   selector: 'tsemh-projeto',
@@ -11,13 +12,7 @@ export class ProjetoComponent {
 
   public visaoCategoria: boolean = true;
 
-  public categorias = [
-    {idCategoria: 1, tipoCategoria: "projetos", tituloCategoria: "titulo 01", linkCategoria: "Link 01"},
-    {idCategoria: 2, tipoCategoria: "profissional", tituloCategoria: "titulo 02", linkCategoria: "Link 02"},
-    {idCategoria: 3, tipoCategoria: "artigos", tituloCategoria: "titulo 03", linkCategoria: "Link 03"},
-    {idCategoria: 4, tipoCategoria: "certificados", tituloCategoria: "titulo 04", linkCategoria: "Link 04"},
-    {idCategoria: 5, tipoCategoria: "formacões", tituloCategoria: "titulo 05", linkCategoria: "Link 05"},
-  ] 
+  public categorias: Categoria[] = [];
 
   public entidades= [ 
     {

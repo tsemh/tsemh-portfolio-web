@@ -10,8 +10,7 @@ export class CategoriaComponent {
 
   @Input() tituloMain: string = '';
 
-  @Input() public categorias = [
-    {idCategoria: 0, tipoCategoria: "", tituloCategoria: "", linkCategoria: ""},
-  ]  
+  @Input() public categorias: Categoria[] = [];
+
 }
 

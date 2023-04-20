@@ -1,18 +1,18 @@
 import { Usuario } from "./usuariro";
 
 export class Categoria {
-    idCategoria: number;
+    id: number;
     usuario: Usuario;
-    tipoCategoria: string;
-    tituloCategoria: string;
-    linkCategoria: string;
+    tipo: string;
+    titulo: string;
+    link: string;
 
-    constructor(idCategoria: number, usuario: Usuario, tipoCategoria: string, tituloCategoria: string, linkCategoria: string) {
+    constructor(id: number, usuario: Usuario, tipo: string, titulo: string, link: string) {
       
-        this.idCategoria = idCategoria;
+        this.id = id;
         this.usuario = usuario;
-        this.tipoCategoria = tipoCategoria;
-        this.tituloCategoria = tituloCategoria;
-        this.linkCategoria = linkCategoria;
+        this.tipo = tipo;
+        this.titulo = titulo;
+        this.link = link;
     }
 }
