@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Categoria } from '../models/Categoria';
-import { CategoriaService } from '../service/categoria.service';
+import { Categoria } from '../../models/Categoria';
+import { CategoriaService } from '../../service/categoria.service';
 
 @Component({
   selector: 'tsemh-categoria',

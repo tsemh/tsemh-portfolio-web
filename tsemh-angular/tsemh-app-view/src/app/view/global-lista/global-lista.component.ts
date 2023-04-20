@@ -1,6 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, Input } from '@angular/core';
-import { Categoria } from '../models/Categoria';
+import { Categoria } from 'src/app/models/Categoria';
 
 @Component({
   selector: 'tsemh-global-lista',

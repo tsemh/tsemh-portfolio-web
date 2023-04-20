@@ -1,4 +1,4 @@
-import { EntradaComponent } from './entrada/entrada.component';
+import { EntradaComponent } from './view/entrada/entrada.component';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Component, HostListener } from '@angular/core';
 

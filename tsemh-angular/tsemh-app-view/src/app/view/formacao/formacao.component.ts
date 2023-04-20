@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Formacao } from '../models/formacao';
-import { FormacaoService } from '../service/formacao.service';
+import { Formacao } from 'src/app/models/formacao';
+import { FormacaoService } from 'src/app/service/formacao.service';
 
 @Component({
   selector: 'tsemh-formacao', 

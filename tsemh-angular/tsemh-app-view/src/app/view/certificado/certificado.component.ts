@@ -1,6 +1,6 @@
-import { CertificadoService } from './../service/certificado.service';
 import { Component } from '@angular/core';
-import { Certificado } from '../models/Certificado';
+import { Certificado } from 'src/app/models/Certificado';
+import { CertificadoService } from 'src/app/service/certificado.service';
 
 @Component({
   selector: 'tsemh-certificado',

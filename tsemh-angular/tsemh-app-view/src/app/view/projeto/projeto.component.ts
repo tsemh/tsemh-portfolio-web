@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { Categoria } from '../models/Categoria';
-import { Projeto } from '../models/Projeto';
-import { ProjetoService } from '../service/projeto.service';
+import { Projeto } from 'src/app/models/Projeto';
+import { ProjetoService } from 'src/app/service/projeto.service';
 
 @Component({
   selector: 'tsemh-projeto',

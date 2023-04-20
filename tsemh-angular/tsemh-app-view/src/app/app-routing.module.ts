@@ -1,11 +1,11 @@
-import { DetalheComponent } from './detalhe/detalhe.component';
-import { PainelControleComponent } from './painel-controle/painel-controle.component';
-import { HomeComponent } from './home/home.component';
-import { ProfissionalComponent } from './profissional/profissional.component';
-import { ProjetoComponent } from './projeto/projeto.component';
-import { ArtigoComponent } from './artigo/artigo.component';
-import { FormacaoComponent } from './formacao/formacao.component';
-import { CertificadoComponent } from './certificado/certificado.component';
+import { DetalheComponent } from './view/detalhe/detalhe.component';
+import { PainelControleComponent } from './view/painel-controle/painel-controle.component';
+import { HomeComponent } from './view/home/home.component';
+import { ProfissionalComponent } from './view/profissional/profissional.component';
+import { ProjetoComponent } from './view/projeto/projeto.component';
+import { ArtigoComponent } from './view/artigo/artigo.component';
+import { FormacaoComponent } from './view/formacao/formacao.component';
+import { CertificadoComponent } from './view/certificado/certificado.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Categoria } from '../models/Categoria';
-import { Profissional } from '../models/Profissional';
-import { ProfissionalService } from '../service/profissional.service';
+import { Profissional } from 'src/app/models/Profissional';
+import { ProfissionalService } from 'src/app/service/profissional.service';
 
 @Component({
   selector: 'app-profissional',
