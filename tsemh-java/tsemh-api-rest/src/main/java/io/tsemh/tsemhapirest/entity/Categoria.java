@@ -1,6 +1,10 @@
 package io.tsemh.tsemhapirest.entity;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -25,19 +29,23 @@ public class Categoria {
 	
 	@Column(name="lk_categoria",nullable=false)
 	private String  link;
-
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
+	private List<Registro> registros;
+	
 	public Categoria() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Categoria(Integer id, Usuario usuario, String tipo, String titulo, String link) {
+	public Categoria(Integer id, Usuario usuario, String tipo, String titulo, String link, List<Registro> registros) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
 		this.tipo = tipo;
 		this.titulo = titulo;
 		this.link = link;
+		this.registros = registros;
 	}
 
 	public Integer getId() {
@@ -48,6 +56,7 @@ public class Categoria {
 		this.id = id;
 	}
 
+	@JsonBackReference
 	public Usuario getUsuario() {
 		return usuario;
 	}
@@ -78,6 +87,15 @@ public class Categoria {
 
 	public void setLink(String link) {
 		this.link = link;
+	}
+
+	@JsonManagedReference
+	public List<Registro> getRegistros() {
+		return registros;
+	}
+
+	public void setRegistros(List<Registro> registros) {
+		this.registros = registros;
 	}
 
 	@Override

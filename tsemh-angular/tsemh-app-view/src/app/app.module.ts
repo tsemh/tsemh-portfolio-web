@@ -13,7 +13,6 @@ import { CertificadoComponent } from './view/certificado/certificado.component';
 import { DetalheComponent } from './view/detalhe/detalhe.component';
 import { EntradaComponent } from './view/entrada/entrada.component';
 import { FormacaoComponent } from './view/formacao/formacao.component';
-import { GeralComponent } from './view/geral/geral.component';
 import { GlobalListaComponent } from './view/global-lista/global-lista.component';
 import { HomeComponent } from './view/home/home.component';
 import { PainelControleComponent } from './view/painel-controle/painel-controle.component';
@@ -31,7 +30,6 @@ import { RodapeComponent } from './view/rodape/rodape.component';
     DetalheComponent,
     EntradaComponent,
     FormacaoComponent,
-    GeralComponent,
     GlobalListaComponent,
     HomeComponent,
     PainelControleComponent,

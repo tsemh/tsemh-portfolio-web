@@ -1,6 +1,9 @@
 package io.tsemh.tsemhapirest.entity;
 
 import java.util.List;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -14,29 +17,33 @@ public class Usuario {
 	private Integer idUsuario;
 	
 	@Column(name="em_usuario")
-	private String  emailUsuario;	//email
+	private String  emailUsuario;
 	
 	@Column(name="sn_usuario")
-	private String  senhaUsuario;	//senha
+	private String  senhaUsuario;
 	
 	@Column(name="nm_usuario")
-	private String  nomeUsuario;	//nome
+	private String  nomeUsuario;
 	
 	@Column(name="tt_usuario")
-	private String  tituloUsuario;	//titulo
+	private String  tituloUsuario;
 	
 	@Column(name="cv_usuario")
-	private String  curriculumVitaeUsuario;	//Curriculum Vitae
+	private String  curriculumVitaeUsuario;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+	private List<Categoria> categorias;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+	private List<Registro> registros;
 
-	public Usuario() {
+	public Usuario() {	
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public Usuario(Integer idUsuario, String emailUsuario, String senhaUsuario, String nomeUsuario,
-			String tituloUsuario, String contatoUsuario, String curriculumVitaeUsuario, List<Categoria> categorias,
-			List<Certificado> certificados, List<Formacao> formacoes, List<Postagem> postagens,
-			List<Profissional> profissionais, List<Projeto> projetos) {
+			String tituloUsuario, String curriculumVitaeUsuario, List<Categoria> categorias, List<Registro> registros) {
 		super();
 		this.idUsuario = idUsuario;
 		this.emailUsuario = emailUsuario;
@@ -44,6 +51,8 @@ public class Usuario {
 		this.nomeUsuario = nomeUsuario;
 		this.tituloUsuario = tituloUsuario;
 		this.curriculumVitaeUsuario = curriculumVitaeUsuario;
+		this.categorias = categorias;
+		this.registros = registros;
 	}
 
 	public Integer getIdUsuario() {
@@ -92,6 +101,24 @@ public class Usuario {
 
 	public void setCurriculumVitaeUsuario(String curriculumVitaeUsuario) {
 		this.curriculumVitaeUsuario = curriculumVitaeUsuario;
+	}
+
+	@JsonManagedReference
+	public List<Categoria> getCategorias() {
+		return categorias;
+	}
+
+	public void setCategorias(List<Categoria> categorias) {
+		this.categorias = categorias;
+	}
+
+	@JsonManagedReference
+	public List<Registro> getRegistros() {
+		return registros;
+	}
+
+	public void setRegistros(List<Registro> registros) {
+		this.registros = registros;
 	}
 
 	@Override
