@@ -17,6 +17,9 @@ import io.tsemh.tsemhapirest.repository.UsuarioRepository;
 @RestController
 @RequestMapping("/registro")
 public class RegistroController {
+	
+		private static String bancoDeArquivos = "C:\\Users\\tiago\\Documents\\Tiago\\programacao\\"
+				+ "Projetos\\MeuPortfolioWeb\\Codigos\\tsemh-portfolio-web\\Banco-de-arquivos";
 
 		@Autowired
 		private RegistroRepository registroRepository; 
@@ -25,8 +28,6 @@ public class RegistroController {
 		@Autowired
 		private CategoriaRepository categoriaRepository; 
 		
-		
-
 		@PostMapping("/registros")
 		@Transactional
 		public Registro postRegistro(@RequestBody Registro registro, @RequestParam long idUsuario,  @RequestParam long idCategoria ) {
@@ -51,7 +52,7 @@ public class RegistroController {
 		}
 		
 		@GetMapping("{id}")
-		public Registro getRegistroById(@PathVariable int id) {	
+		public Registro getRegistroById(@PathVariable long id) {	
 			return registroRepository.findById(id).get();
 		}
 		
@@ -62,7 +63,7 @@ public class RegistroController {
 		}
 		
 		@DeleteMapping("{id}")
-		public void deleteRegistro(@PathVariable int id) {
+		public void deleteRegistro(@PathVariable long id) {
 			registroRepository.deleteById(id);
 		}
 }

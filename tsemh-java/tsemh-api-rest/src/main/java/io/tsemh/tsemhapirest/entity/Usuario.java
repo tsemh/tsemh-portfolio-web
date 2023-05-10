@@ -16,37 +16,41 @@ public class Usuario {
     private long id;
     
     @Column(name="em_usuario")
-    private String  email;
+    private String email;
     
     @Column(name="sn_usuario")
-    private String  senha;
+    private String senha;
     
     @Column(name="nm_usuario")
-    private String  nome;
+    private String nome;
     
     @Column(name="tt_usuario")
-    private String  titulo;
+    private String titulo;
     
     @Column(name="cv_usuario")
-    private String  curriculumVitae;
+    private String curriculumVitae;
+    
+    @Column(name="im_usuario")
+    private String imagemUsuario;  
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Categoria> categorias = new ArrayList<>();
-    
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Registro> registros = new ArrayList<>();
 
     public Usuario() {    
     }
 
     public Usuario(Integer id, String email, String senha, String nome, String titulo, String curriculumVitae,
-            List<Categoria> categorias, List<Registro> registros) {
+    		String imagemUsuario, List<Categoria> categorias, List<Registro> registros) {
         this.id = id;
         this.email = email;
         this.senha = senha;
         this.nome = nome;
         this.titulo = titulo;
         this.curriculumVitae = curriculumVitae;
+		this.imagemUsuario = imagemUsuario;
         this.categorias = categorias;
         this.registros = registros;
     }
@@ -98,6 +102,14 @@ public class Usuario {
     public void setCurriculumVitae(String curriculumVitae) {
         this.curriculumVitae = curriculumVitae;
     }
+    
+	public String getImagemUsuario() {
+		return imagemUsuario;
+	}
+
+	public void setImagemUsuario(String imagemUsuario) {
+		this.imagemUsuario = imagemUsuario;
+	}
 
     public List<Categoria> getCategorias() {
         return categorias;
