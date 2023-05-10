@@ -1,0 +1,13 @@
+
+CREATE OR REPLACE TRIGGER proibe_usuario_2
+BEFORE INSERT ON tb_usuario
+FOR EACH ROW
+DECLARE
+  v_count INTEGER;
+BEGIN
+  SELECT COUNT(*) INTO v_count FROM tb_usuario;
+  IF v_count > 0 THEN
+    RAISE_APPLICATION_ERROR(-20001, 'Já existe um usuário cadastrado.');
+  END IF;
+END;
+/

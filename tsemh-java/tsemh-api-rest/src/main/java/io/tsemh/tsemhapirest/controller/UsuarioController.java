@@ -19,7 +19,13 @@ public class UsuarioController {
 	@PostMapping
 	@Transactional
 	public Usuario postUsuario(@RequestBody Usuario usuario) {
-		return usuarioRepository.save(usuario);
+	    List<Usuario> usuarios = usuarioRepository.findAll();
+
+	    if (usuarios.isEmpty()) {
+	        return usuarioRepository.save(usuario);
+	    } else {
+	        throw new RuntimeException("Não é possível criar um novo usuário. Já existe um usuário cadastrado.");
+	    }
 	}
 	
 	@GetMapping
