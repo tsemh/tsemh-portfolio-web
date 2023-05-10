@@ -27,20 +27,20 @@ public class UsuarioController {
 		return usuarioRepository.findAll();
 	}
 	
-	@GetMapping("{idUsuario}")
-	public Usuario getUsuarioById(@PathVariable int idUsuario) {
-		return usuarioRepository.findById(idUsuario).get();
+	@GetMapping("{id}")
+	public Usuario getUsuarioById(@PathVariable long id) {
+		return usuarioRepository.findById(id).get();
 	}
 	
-	@PutMapping("{idUsuario}")
-	public Usuario putUsuario(@RequestBody Usuario usuario, @PathVariable int idUsuario) {
-		usuario.setIdUsuario(idUsuario);
+	@PutMapping("{id}")
+	public Usuario putUsuario(@RequestBody Usuario usuario, @PathVariable long id) {
+		usuario.setId(id);
 		return usuarioRepository.save(usuario);
 	}
 	
-	@DeleteMapping("{idUsuario}")
-	public void deleteUsuario(@PathVariable int idUsuario) {
-		usuarioRepository.deleteById(idUsuario);
+	@DeleteMapping("{id}")
+	public void deleteUsuario(@PathVariable long id) {
+		usuarioRepository.deleteById(id);
 	}
 }
 	

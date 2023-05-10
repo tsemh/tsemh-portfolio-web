@@ -15,11 +15,13 @@ public class Registro {
 	private long id;
 	
 	@ManyToOne
-	@JoinColumn(name="usuario")
+	@JoinColumn(name="id_usuario")
+    @JsonBackReference(value="usuario")
 	private Usuario usuario;
 	
 	@ManyToOne
-	@JoinColumn(name="categoria")
+	@JoinColumn(name="id_categoria")
+	@JsonBackReference(value="categoria")
 	private Categoria categoria;
 	
 	@Column(name="tp_registro")
@@ -35,6 +37,7 @@ public class Registro {
 	private String descricao;
 	
 	@Column(name="im_registro")
+	
 	private String imagem;
 	
 	@Column(name="ds_im_registro")
@@ -73,7 +76,8 @@ public class Registro {
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
 	}
-
+	
+	@JsonBackReference
 	public Categoria getCategoria() {
 		return categoria;
 	}

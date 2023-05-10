@@ -1,136 +1,129 @@
 package io.tsemh.tsemhapirest.entity;
 
+import java.util.ArrayList;
 import java.util.List;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="tb_usuario")
 public class Usuario {
-	
-	@Id
-	@Column(name="id_usuario")
-	@SequenceGenerator(name="usuario", sequenceName="sq_tb_usuario", allocationSize=1)
-	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="usuario")
-	private Integer idUsuario;
-	
-	@Column(name="em_usuario")
-	private String  emailUsuario;
-	
-	@Column(name="sn_usuario")
-	private String  senhaUsuario;
-	
-	@Column(name="nm_usuario")
-	private String  nomeUsuario;
-	
-	@Column(name="tt_usuario")
-	private String  tituloUsuario;
-	
-	@Column(name="cv_usuario")
-	private String  curriculumVitaeUsuario;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-	private List<Categoria> categorias;
-	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
-	private List<Registro> registros;
+    
+    @Id
+    @Column(name="id_usuario")
+    @SequenceGenerator(name="usuario", sequenceName="sq_tb_usuario", allocationSize=1)
+    @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="usuario")
+    private long id;
+    
+    @Column(name="em_usuario")
+    private String  email;
+    
+    @Column(name="sn_usuario")
+    private String  senha;
+    
+    @Column(name="nm_usuario")
+    private String  nome;
+    
+    @Column(name="tt_usuario")
+    private String  titulo;
+    
+    @Column(name="cv_usuario")
+    private String  curriculumVitae;
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Categoria> categorias = new ArrayList<>();
+    
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
+    private List<Registro> registros = new ArrayList<>();
 
-	public Usuario() {	
-		super();
-		// TODO Auto-generated constructor stub
-	}
+    public Usuario() {    
+    }
 
-	public Usuario(Integer idUsuario, String emailUsuario, String senhaUsuario, String nomeUsuario,
-			String tituloUsuario, String curriculumVitaeUsuario, List<Categoria> categorias, List<Registro> registros) {
-		super();
-		this.idUsuario = idUsuario;
-		this.emailUsuario = emailUsuario;
-		this.senhaUsuario = senhaUsuario;
-		this.nomeUsuario = nomeUsuario;
-		this.tituloUsuario = tituloUsuario;
-		this.curriculumVitaeUsuario = curriculumVitaeUsuario;
-		this.categorias = categorias;
-		this.registros = registros;
-	}
+    public Usuario(Integer id, String email, String senha, String nome, String titulo, String curriculumVitae,
+            List<Categoria> categorias, List<Registro> registros) {
+        this.id = id;
+        this.email = email;
+        this.senha = senha;
+        this.nome = nome;
+        this.titulo = titulo;
+        this.curriculumVitae = curriculumVitae;
+        this.categorias = categorias;
+        this.registros = registros;
+    }
 
-	public Integer getIdUsuario() {
-		return idUsuario;
-	}
+    public long getId() {
+        return id;
+    }
 
-	public void setIdUsuario(Integer idUsuario) {
-		this.idUsuario = idUsuario;
-	}
+    public void setId(long id) {
+        this.id = id;
+    }
 
-	public String getEmailUsuario() {
-		return emailUsuario;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmailUsuario(String emailUsuario) {
-		this.emailUsuario = emailUsuario;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getSenhaUsuario() {
-		return senhaUsuario;
-	}
+    public String getSenha() {
+        return senha;
+    }
 
-	public void setSenhaUsuario(String senhaUsuario) {
-		this.senhaUsuario = senhaUsuario;
-	}
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
-	public String getNomeUsuario() {
-		return nomeUsuario;
-	}
+    public String getNome() {
+        return nome;
+    }
 
-	public void setNomeUsuario(String nomeUsuario) {
-		this.nomeUsuario = nomeUsuario;
-	}
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
 
-	public String getTituloUsuario() {
-		return tituloUsuario;
-	}
+    public String getTitulo() {
+        return titulo;
+    }
 
-	public void setTituloUsuario(String tituloUsuario) {
-		this.tituloUsuario = tituloUsuario;
-	}
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
 
-	public String getCurriculumVitaeUsuario() {
-		return curriculumVitaeUsuario;
-	}
+    public String getCurriculumVitae() {
+        return curriculumVitae;
+    }
 
-	public void setCurriculumVitaeUsuario(String curriculumVitaeUsuario) {
-		this.curriculumVitaeUsuario = curriculumVitaeUsuario;
-	}
+    public void setCurriculumVitae(String curriculumVitae) {
+        this.curriculumVitae = curriculumVitae;
+    }
 
-	@JsonManagedReference
-	public List<Categoria> getCategorias() {
-		return categorias;
-	}
+    public List<Categoria> getCategorias() {
+        return categorias;
+    }
 
-	public void setCategorias(List<Categoria> categorias) {
-		this.categorias = categorias;
-	}
+    public void setCategorias(List<Categoria> categorias) {
+        this.categorias = categorias;
+    }
 
-	@JsonManagedReference
-	public List<Registro> getRegistros() {
-		return registros;
-	}
+    public List<Registro> getRegistros() {
+        return registros;
+    }
 
-	public void setRegistros(List<Registro> registros) {
-		this.registros = registros;
-	}
+    public void setRegistros(List<Registro> registros) {
+        this.registros = registros;
+    }
 
-	@Override
-	public String toString() {
-		return "Usuário:\n[id_usuario    =" +idUsuario  +  ",\n"
-							+"em_usuario =" +emailUsuario	 +  ",\n"
-							+"sn_usuario =" +senhaUsuario  +  ",\n"
-							+"nm_usuario =" +nomeUsuario  +  ",\n"
-							+"tt_usuario =" +tituloUsuario  +  ",\n"
-							+"cv_usuario =" +curriculumVitaeUsuario  +  ",\n"
+    @Override
+    public String toString() {
+        return "Usuário:\n[id_usuario    =" +id  +  ",\n"
+                            +"em_usuario =" +email     +  ",\n"
+                            +"sn_usuario =" +senha  +  ",\n"
+                            +"nm_usuario =" +nome  +  ",\n"
+                            +"tt_usuario =" +titulo +  ",\n"
+                            +"cv_usuario =" +curriculumVitae +  ",\n"
 
-				+"]";
-	}
-
+                +"]";
+    }
 }

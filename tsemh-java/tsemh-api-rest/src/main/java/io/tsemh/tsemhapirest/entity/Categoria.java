@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -12,13 +11,14 @@ import jakarta.persistence.*;
 public class Categoria {
 
 	@Id
-	@Column(name="id_categoira")
+	@Column(name="id_categoria")
 	@SequenceGenerator(name="categoria", sequenceName="sq_tb_categoria", allocationSize=1)
 	@GeneratedValue(strategy=GenerationType.SEQUENCE,generator="categoria")
-	private Integer id;
+	private long id;
 	
     @ManyToOne
     @JoinColumn(name="id_usuario")
+    @JsonBackReference(value="categorias")
 	private Usuario usuario;
 	
 	@Column(name="tp_categoria",nullable=false, length=50)
@@ -31,6 +31,7 @@ public class Categoria {
 	private String  link;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
+	@JsonManagedReference(value="categoria")
 	private List<Registro> registros;
 	
 	public Categoria() {
@@ -38,9 +39,9 @@ public class Categoria {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Categoria(Integer id, Usuario usuario, String tipo, String titulo, String link, List<Registro> registros) {
+	public Categoria(Usuario usuario, String tipo, String titulo, String link, List<Registro> registros) {
 		super();
-		this.id = id;
+		this.id = 1;
 		this.usuario = usuario;
 		this.tipo = tipo;
 		this.titulo = titulo;
@@ -48,12 +49,12 @@ public class Categoria {
 		this.registros = registros;
 	}
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(long idCategoria) {
+		this.id = idCategoria;
 	}
 
 	@JsonBackReference
@@ -97,14 +98,4 @@ public class Categoria {
 	public void setRegistros(List<Registro> registros) {
 		this.registros = registros;
 	}
-
-	@Override
-	public String toString() {
-		return "Categoria:\n[id_categoria = "+id+",\n"
-						  +" usuario   = "+usuario  +",\n"
-						  +" tp_categoria = "+tipo+",\n"
-					      +" tt_categoria = "+titulo+",\n"
-					      +" lk_categoria = "+link+"  ]";
-	}
-	
 }
