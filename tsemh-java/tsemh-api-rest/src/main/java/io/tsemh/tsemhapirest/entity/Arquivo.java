@@ -26,19 +26,23 @@ public class Arquivo {
 	
 	@Column(name="tp_arquivo")
 	private String tipo;
+	
+	@Column(name="cm_arquivo")
+	private String caminho;
 
 	public Arquivo() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Arquivo(long id, Registro registro, String nome, String descricao, String tipo) {
+	public Arquivo(long id, Registro registro, String nome, String descricao, String tipo, String caminho) {
 		super();
 		this.id = id;
 		this.registro = registro;
 		this.nome = nome;
 		this.descricao = descricao;
 		this.tipo = tipo;
+		this.caminho = caminho;
 	}
 
 	public long getId() {
@@ -80,5 +84,13 @@ public class Arquivo {
 
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
+	}
+
+	public String getCaminho() {
+		return caminho;
+	}
+	
+	public void setCaminho(String caminho) {
+		this.caminho = caminho;
 	}
 }

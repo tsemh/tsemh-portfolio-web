@@ -1,18 +1,28 @@
 package io.tsemh.tsemhapirest.controller;
 
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import io.tsemh.tsemhapirest.entity.Arquivo;
-import io.tsemh.tsemhapirest.entity.Registro;
 import io.tsemh.tsemhapirest.repository.ArquivoRepository;
+import io.tsemh.tsemhapirest.entity.Registro;
 import io.tsemh.tsemhapirest.repository.RegistroRepository;
 
 public class ArquivoController {
+	
+	private static String bancoDeArquivo = "C:\\Users\\tiago\\Documents\\Tiago\\programacao\\"
+			+ "Projetos\\MeuPortfolioWeb\\Codigos\\tsemh-portfolio-web\\Banco-de-arquivos";
 
 	@Autowired
 	private ArquivoRepository arquivoRepository;
@@ -21,16 +31,28 @@ public class ArquivoController {
 
 	@PostMapping("/arquivos")
 	@Transactional
-	public Arquivo postArquivo(@RequestBody Arquivo arquivo, @RequestParam Long idRegistro) {
+	public Arquivo postArquivo(@RequestBody MultipartFile arquivo, @RequestParam Long idRegistro) throws IOException {
 	    Optional<Registro> registroOptional = registroRepository.findById(idRegistro);
 	    if (registroOptional.isPresent()) {
 	        Registro registro = registroOptional.get();
-	        arquivo.setRegistro(registro);
-	        return arquivoRepository.save(arquivo);
+
+	        String nomeArquivo = arquivo.getOriginalFilename();
+	        String caminhoCompletoArquivo = bancoDeArquivo + File.separator + nomeArquivo;
+	        
+	        try (InputStream inputStream = arquivo.getInputStream()) {
+	            Files.copy(inputStream, Paths.get(caminhoCompletoArquivo), StandardCopyOption.REPLACE_EXISTING);
+	        }
+
+	        Arquivo arquivoEntity = new Arquivo();
+	        arquivoEntity.setNome(nomeArquivo);
+	        arquivoEntity.setCaminho(caminhoCompletoArquivo);
+	        arquivoEntity.setRegistro(registro);
+	        return arquivoRepository.save(arquivoEntity);
 	    } else {
 	        throw new RuntimeException("Registro não encontrado com ID " + idRegistro);
 	    }
 	}
+
 		
 	@GetMapping
 	public List<Arquivo> getAllArquivo() {

@@ -18,9 +18,6 @@ import io.tsemh.tsemhapirest.repository.UsuarioRepository;
 @RequestMapping("/registro")
 public class RegistroController {
 	
-		private static String bancoDeArquivos = "C:\\Users\\tiago\\Documents\\Tiago\\programacao\\"
-				+ "Projetos\\MeuPortfolioWeb\\Codigos\\tsemh-portfolio-web\\Banco-de-arquivos";
-
 		@Autowired
 		private RegistroRepository registroRepository; 
 		@Autowired
@@ -54,6 +51,15 @@ public class RegistroController {
 		@GetMapping("{id}")
 		public Registro getRegistroById(@PathVariable long id) {	
 			return registroRepository.findById(id).get();
+		}
+		
+		@GetMapping("categoria")
+		public List<Registro> getByCategoria(@RequestParam Long categoriaId){
+		    Categoria categoria = categoriaRepository.findById(categoriaId).orElse(null);
+		    if(categoria == null) {
+		    	throw new RuntimeException("Categoria não encontrada com ID " + categoriaId);
+		    }
+		    return registroRepository.findByCategoria(categoria);
 		}
 		
 		@PutMapping("{id}")
