@@ -1,6 +1,9 @@
 package io.tsemh.tsemhapirest.entity;
 
+import java.util.Date;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -39,6 +42,11 @@ public class Registro {
 	@Column(name="ds_registro")
 	private String descricao;
 	
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name="dt_criacao")
+    private Date dataCriacao;
+	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "registro", fetch = FetchType.LAZY)
 	@JsonManagedReference(value="registro")
 	private List<Arquivo> arquivos;
@@ -47,7 +55,7 @@ public class Registro {
 	}
 
 	public Registro(long id, Usuario usuario, Categoria categoria, String tipo, String nome, String link,
-			String descricao, List<Arquivo> arquivos) {
+			String descricao, Date dataCriacao, List<Arquivo> arquivos) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
@@ -56,8 +64,10 @@ public class Registro {
 		this.nome = nome;
 		this.link = link;
 		this.descricao = descricao;
+		this.dataCriacao = dataCriacao;
 		this.arquivos = arquivos;
 	}
+
 
 	public long getId() {
 		return id;
@@ -124,6 +134,14 @@ public class Registro {
 
 	public void setArquivos(List<Arquivo> arquivos) {
 		this.arquivos = arquivos;
+	}
+
+	public Date getDataCriacao() {
+		return dataCriacao;
+	}
+
+	public void setDataCriacao(Date dataCriacao) {
+		this.dataCriacao = dataCriacao;
 	}
 
 }

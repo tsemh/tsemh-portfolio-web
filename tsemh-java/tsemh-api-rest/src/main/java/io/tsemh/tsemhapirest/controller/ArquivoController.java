@@ -52,7 +52,6 @@ public class ArquivoController {
 	        throw new RuntimeException("Registro não encontrado com ID " + idRegistro);
 	    }
 	}
-
 		
 	@GetMapping
 	public List<Arquivo> getAllArquivo() {
@@ -62,6 +61,14 @@ public class ArquivoController {
 	@GetMapping("{id}")
 	public Arquivo getArquivoById(@PathVariable long id) {
 		return arquivoRepository.findById(id).get();
+	}
+	
+	@GetMapping("tipo")
+	public List<Arquivo> getArquivoByTipo(@RequestParam String tipo) {
+	    if(tipo == null) {
+	        throw new RuntimeException("Tipo não encontrado");
+	    }
+	    return arquivoRepository.findByTipo(tipo);
 	}
 	
 	@PutMapping("{id}")

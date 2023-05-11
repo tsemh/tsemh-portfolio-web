@@ -9,5 +9,6 @@ import io.tsemh.tsemhapirest.entity.Registro;
 public interface RegistroRepository extends JpaRepository<Registro, Long> {
 	
 	List<Registro> findByCategoria(Categoria categoria);
+	List<Registro> findByTipo(String tipo);
 
 }

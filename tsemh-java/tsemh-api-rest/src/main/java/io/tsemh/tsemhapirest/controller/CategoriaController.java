@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import io.tsemh.tsemhapirest.entity.Categoria;
+import io.tsemh.tsemhapirest.entity.Registro;
 import io.tsemh.tsemhapirest.entity.Usuario;
 import io.tsemh.tsemhapirest.repository.CategoriaRepository;
 import io.tsemh.tsemhapirest.repository.UsuarioRepository;
@@ -34,7 +35,6 @@ public class CategoriaController {
 	    }
 	}
 	
-	
 	@GetMapping
 	public List<Categoria> getAllCategoria() {
 		return categoriaRepository.findAll();
@@ -43,6 +43,14 @@ public class CategoriaController {
 	@GetMapping("{idCategoria}")
 	public Categoria getCategoriaById(@PathVariable long idCategoria) {
 		return categoriaRepository.findById(idCategoria).get();
+	}
+	
+	@GetMapping("tipo")
+	public List<Categoria> getCategoriaByTipo(@RequestParam String tipo) {
+	    if(tipo == null) {
+	        throw new RuntimeException("Tipo não encontrado");
+	    }
+	    return categoriaRepository.findByTipo(tipo);
 	}
 	
 	@PutMapping("{idCategoria}")

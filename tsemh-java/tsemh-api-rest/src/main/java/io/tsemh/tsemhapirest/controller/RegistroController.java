@@ -54,12 +54,20 @@ public class RegistroController {
 		}
 		
 		@GetMapping("categoria")
-		public List<Registro> getByCategoria(@RequestParam Long categoriaId){
+		public List<Registro> getRegistroByCategoria(@RequestParam Long categoriaId){
 		    Categoria categoria = categoriaRepository.findById(categoriaId).orElse(null);
 		    if(categoria == null) {
 		    	throw new RuntimeException("Categoria não encontrada com ID " + categoriaId);
 		    }
 		    return registroRepository.findByCategoria(categoria);
+		}
+		
+		@GetMapping("tipo")
+		public List<Registro> getRegistroByTipo(@RequestParam String tipo) {
+		    if(tipo == null) {
+		        throw new RuntimeException("Tipo não encontrado");
+		    }
+		    return registroRepository.findByTipo(tipo);
 		}
 		
 		@PutMapping("{id}")
