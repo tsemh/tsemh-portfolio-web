@@ -9,26 +9,26 @@ import { CategoriaService } from '../../service/categoria.service';
 })
 export class CategoriaComponent implements OnInit{
 
-  @Input() tituloMain: string = '';
-
-  public categorias: Categoria[] = [];
+  @Input() tituloMain: string = "";
+  @Input() tipo: string = "";
+  @Input() categorias: Categoria[] = [];
 
   constructor(private categoriaService: CategoriaService) {
 }
 
-  carregarCategorias() {
-    this.categoriaService.getAll().subscribe(
-      (categorias: Categoria[]) => {
-        this.categorias = categorias;
-      },
-      (e: any) => {
-        console.error(e)
-      }
-    ); 
-   }
+ carregaCategoria() {
+  this.categoriaService.getByTipo(this.tipo).subscribe(
+    (categoria: Categoria[]) => {
+      this.categorias = categoria;
+    },
+    (e: any) => {
+      console.error(e)
+    }
+  ); 
+ }
 
    ngOnInit(): void {
-    this.carregarCategorias();
+    this.carregaCategoria();
    }
 }
 

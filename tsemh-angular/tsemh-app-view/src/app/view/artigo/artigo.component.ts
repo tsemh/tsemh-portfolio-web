@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Artigo } from '../../models/Artigo';
-import { ArtigoService } from '../../service/artigo.service'; 
+import { Categoria } from 'src/app/models/Categoria';
+import { Registro } from 'src/app/models/Registro';
 
 
 @Component({
@@ -10,35 +10,14 @@ import { ArtigoService } from '../../service/artigo.service';
 })
 export class ArtigoComponent implements OnInit {
 
-  public tituloMain: string = 'artigos';
-
-  public visaoCategoria: boolean = true;
-  public entidades: Artigo[] = [];
-
-  constructor(private artigoService: ArtigoService) {  }
-
-  determinaBoolean() {
-    if(this.entidades.length >= 6) {
-      this.visaoPaginacao = true
-    }
-    return this.visaoPaginacao;
-   }
-   public visaoPaginacao: boolean = this.determinaBoolean();
+  public tituloMain: string = "artigos";
+  public tipo: string = "artigo";
 
 
-   carregarArtigos() {
-    this.artigoService.getAll().subscribe(
-      (artigos: Artigo[]) => {
-        this.entidades = artigos;
-      },
-      (e: any) => {
-        console.error(e)
-      }
-    ); 
-   }
+  public registro: Registro[] = []
+  public categorias: Categoria[] = [];
 
-   ngOnInit(): void {
-    this.carregarArtigos();
-  }
+  constructor() {  }
 
+   ngOnInit(): void { }
 }

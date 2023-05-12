@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Projeto } from 'src/app/models/Projeto';
-import { ProjetoService } from 'src/app/service/projeto.service';
+import { Registro} from 'src/app/models/Registro';
+import { RegistroService } from 'src/app/service/registro.service';
 
 @Component({
   selector: 'tsemh-projeto',
@@ -9,34 +9,9 @@ import { ProjetoService } from 'src/app/service/projeto.service';
 })
 export class ProjetoComponent {
 
-  public tituloMain: string = 'projetos';
+  public tituloMain: string = "projetos";
+  public tipo: string = "projeto";
+  public registro: Registro[] = []
 
-  public visaoCategoria: boolean = true;
-
-  public entidades: Projeto[] = []
-
-  constructor(private projetoService: ProjetoService) {  }
-
-  determinaBoolean() {
-    if(this.entidades.length >= 6) {
-      this.visaoPaginacao = true
-    }
-    return this.visaoPaginacao;
-   }
-   public visaoPaginacao: boolean = this.determinaBoolean();
-
-   carregarProjeto() {
-    this.projetoService.getAll().subscribe(
-      (projeto: Projeto[]) => {
-        this.entidades = projeto;
-      },
-      (e: any) => {
-        console.error(e)
-      }
-    ); 
-   }
-
-   ngOnInit(): void {
-     this.carregarProjeto();
-   }
+   ngOnInit(): void { }
 }

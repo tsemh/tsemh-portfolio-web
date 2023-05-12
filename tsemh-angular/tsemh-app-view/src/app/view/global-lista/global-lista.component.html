@@ -3,18 +3,18 @@
 </div>
 
 <div class="categorias-itens">
-  <div class="categorias" *ngIf="visaoCategoria == true">
-    <tsemh-categoria [tituloMain]="tituloMain"></tsemh-categoria>
+  <div class="categorias">
+    <tsemh-categoria [tituloMain]="tituloMain" [tipo]="tipo"></tsemh-categoria>
   </div>
 
   <div class="tudo-lista">
     <div class="recipiente-listas">
       <div class="recipiente-lista" *ngFor="
-    let entidade of entidades | paginate: { itemsPerPage: 4, currentPage: pages }
+    let registro of registro | paginate: { itemsPerPage: 6, currentPage: pages }
   ">
         <a (click)="redirectTo('detalhes')" class="item-link">
-          <h5>{{ entidade.titulo }}</h5>
-          <img src=" {{ entidade.imagem }} " alt=" {{ entidade.descricaoImagem }} " class="img item-img">
+          <h5>{{ registro.nome }}</h5>
+          <img src=" " alt=" " class="img item-img">
         </a>
         
         <div class="tag-lista">
@@ -25,7 +25,7 @@
       </div>
     </div>
 
-    <div class="paginacao" *ngIf="visaoPaginacao == true">
+    <div class="paginacao">
       <pagination-controls (pageChange)="pages = $event"></pagination-controls>
     </div>
 

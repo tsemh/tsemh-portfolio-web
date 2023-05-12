@@ -20,4 +20,9 @@ export class CategoriaService {
   getById(id: number): Observable<Categoria> {
     return this.http.get<Categoria>(`${this.baseUrl}/${id}`);
   }
+
+  getByTipo(tipo: string): Observable<Categoria[]> {
+    const url = `${this.baseUrl}/tipo?tipo=${tipo}`;
+    return this.http.get<Categoria[]>(url);
+  }
 }

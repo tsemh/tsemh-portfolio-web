@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Profissional } from 'src/app/models/Profissional';
-import { ProfissionalService } from 'src/app/service/profissional.service';
+import { Registro } from 'src/app/models/Registro';
 
 @Component({
   selector: 'app-profissional',
@@ -9,34 +8,11 @@ import { ProfissionalService } from 'src/app/service/profissional.service';
 })
 export class ProfissionalComponent implements OnInit {
 
-  public tituloMain: string = 'profissional';
+  public tituloMain: string = "profissional";
+  public tipo: string = "profissional";
+  public registro: Registro[] = [];
 
-  public visaoCategoria: boolean = true;
+  constructor() {  }
 
-  public entidades: Profissional[] = []
-
-  constructor(private profissionalService: ProfissionalService) {  }
-
-  determinaBoolean() {
-    if(this.entidades.length >= 6) {
-      this.visaoPaginacao = true
-    }
-    return this.visaoPaginacao;
-   }
-   public visaoPaginacao: boolean = this.determinaBoolean();
-
-   carregarProfissional() {
-    this.profissionalService.getAll().subscribe(
-      (profissional: Profissional[]) => {
-        this.entidades = profissional;
-      },
-      (e: any) => {
-        console.error(e)
-      }
-    ); 
-   }
-
-   ngOnInit(): void {
-     this.carregarProfissional();
-   }
+  ngOnInit(): void { }
 }
