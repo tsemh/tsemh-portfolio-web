@@ -22,7 +22,7 @@ public class CategoriaController {
 	@Autowired
 	private UsuarioRepository usuarioRepository;
 
-	@PostMapping("/categorias")
+	@PostMapping("/cadastrar")
 	@Transactional
 	public Categoria postCategoria(@RequestBody Categoria categoria, @RequestParam long idUsuario) {
 	    Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
@@ -53,13 +53,13 @@ public class CategoriaController {
 	    return categoriaRepository.findByTipo(tipo);
 	}
 	
-	@PutMapping("{idCategoria}")
+	@PutMapping("/editar/{idCategoria}")
 	public Categoria putCategoria(@RequestBody Categoria categoria, @PathVariable long idCategoria) {
 		categoria.setId(idCategoria);
 		return categoriaRepository.save(categoria);
 	}
 	
-	@DeleteMapping("{idCategoria}")
+	@DeleteMapping("/deletar/{idCategoria}")
 	public void deleteCategoria(@PathVariable long idCategoria) {
 		categoriaRepository.deleteById(idCategoria);
 	}

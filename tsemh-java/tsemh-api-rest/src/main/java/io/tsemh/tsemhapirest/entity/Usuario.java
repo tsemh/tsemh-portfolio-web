@@ -1,15 +1,23 @@
 package io.tsemh.tsemhapirest.entity;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.*;
 
 @Entity
 @Table(name="tb_usuario")
-public class Usuario {
+public class Usuario implements UserDetails{
     
-    @Id
+	private static final long serialVersionUID = 1L;
+
+	@Id
     @Column(name="id_usuario")
     @SequenceGenerator(name="usuario", sequenceName="sq_tb_usuario", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE,generator="usuario")
@@ -18,7 +26,7 @@ public class Usuario {
     @Column(name="em_usuario")
     private String email;
     
-    @Column(name="sn_usuario")
+    @Column(name = "sn_usuario", length = 100)
     private String senha;
     
     @Column(name="nm_usuario")
@@ -126,6 +134,42 @@ public class Usuario {
     public void setRegistros(List<Registro> registros) {
         this.registros = registros;
     }
+    
+	@Override
+	public String getPassword() {
+		return senha;
+	}
+
+	@Override
+	public String getUsername() {
+		return email;
+	}
+
+	@Override
+	public boolean isAccountNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isCredentialsNonExpired() {
+		return true;
+	}
+
+	@Override
+	public boolean isEnabled() {
+		return true;
+	}
+	
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_DONO"));
+    }
+
+	@Override
+	public boolean isAccountNonLocked() {
+		// TODO Auto-generated method stub
+		return true;
+	}
 
     @Override
     public String toString() {

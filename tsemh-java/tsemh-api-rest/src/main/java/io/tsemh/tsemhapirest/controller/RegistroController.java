@@ -25,7 +25,7 @@ public class RegistroController {
 		@Autowired
 		private CategoriaRepository categoriaRepository; 
 		
-		@PostMapping("/registros")
+		@PostMapping("/cadastrar")
 		@Transactional
 		public Registro postRegistro(@RequestBody Registro registro, @RequestParam long idUsuario,  @RequestParam long idCategoria ) {
 		    Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
@@ -70,13 +70,13 @@ public class RegistroController {
 		    return registroRepository.findByTipo(tipo);
 		}
 		
-		@PutMapping("{id}")
+		@PutMapping("/editar/{id}")
 		public Registro putRegistro(@RequestBody Registro registro, @PathVariable int id) {
 			registro.setId(id);
 			return registroRepository.save(registro);
 		}
 		
-		@DeleteMapping("{id}")
+		@DeleteMapping("/deletar/{id}")
 		public void deleteRegistro(@PathVariable long id) {
 			registroRepository.deleteById(id);
 		}
