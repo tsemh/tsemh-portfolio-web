@@ -11,34 +11,51 @@ import { RegistroService } from 'src/app/service/registro.service';
   styleUrls: ['./global-lista.component.css']
 })
 export class GlobalListaComponent {
-
   @Input() tituloMain: string = "";
   @Input() tipo: string = "";
   @Input() pages: number = 1;
   @Input() registro: Registro[] = [];
   @Input() categorias: Categoria[] = [];
 
+  categoriaSelecionada: number = 0;
+
   constructor(private router: Router, 
-              private registroService: RegistroService) {  }
+              private registroService: RegistroService) { }
 
-  redirectTo(url:string){
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(()=>
-    this.router.navigate([url]));
- }
+  atualizarCategoria(idCategoria: number) {
+    this.categoriaSelecionada = idCategoria;
+    this.carregaRegistroPelaCategoria();
+  }
 
- carregaRegistro() {
-  this.registroService.getByTipo(this.tipo).subscribe(
-    (projeto: Registro[]) => {
-      this.registro = projeto;
-    },
-    (e: any) => {
-      console.error(e)
-    }
-  ); 
- }
+  redirectTo(url: string) {
+    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
+      this.router.navigate([url])
+    );
+  }
 
- ngOnInit(): void {
-   this.carregaRegistro();
- }
+  carregaRegistro() {
+    this.registroService.getByTipo(this.tipo).subscribe(
+      (projeto: Registro[]) => {
+        this.registro = projeto;
+      },
+      (e: any) => {
+        console.error(e);
+      }
+    );
+  }
 
+  carregaRegistroPelaCategoria() {
+    this.registroService.getRegistroByCategoria(this.categoriaSelecionada).subscribe(
+      (registro: Registro[]) => {
+        this.registro = registro;
+      },
+      (e: any) => {
+        console.error(e);
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.carregaRegistro();
+  }
 }

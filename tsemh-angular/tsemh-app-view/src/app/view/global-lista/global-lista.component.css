@@ -37,9 +37,10 @@ h2 {
   margin-bottom: 20px;
   border-radius: 10px;
   background-color: #484b5f;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
 }
 .recipiente-lista:hover {
-  cursor: pointer;
   background-color: #282a36;
 }
 h5 {

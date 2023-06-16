@@ -18,3 +18,4 @@ export class Categoria {
     this.registros = registros;
   }
 }
+

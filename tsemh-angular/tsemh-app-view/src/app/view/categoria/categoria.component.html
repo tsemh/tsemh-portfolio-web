@@ -2,9 +2,9 @@
   <h4>Categorias</h4>
   <div class="lista-categorias">
 
-      <div *ngFor="let categoria of categorias" onclick="">
-        <a> {{ categoria.titulo }} </a>
+      <div>
+        <button (click)="atualizarPagina()">Ver tudo</button>
+        <button *ngFor="let categoria of categorias" (click)="selecionarCategoria(categoria.id)"> {{ categoria.titulo }} </button>
       </div>
-
   </div>  
-</div>
+</div>  

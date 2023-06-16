@@ -16,15 +16,19 @@
   padding: 0;
 
 }
-.lista-categorias a {
+.lista-categorias button {
   text-transform: capitalize;
   display: flex;
   color: #f8f8f2;
   transition: 0.3s ease-in-out all;
   cursor: pointer;
   margin: 0;
+
+  background: none;
+  border: none;
+  outline: none;
 }
-.lista-categorias a:hover {
+.lista-categorias button:hover {
   color: #bd93f9;
 }
 
