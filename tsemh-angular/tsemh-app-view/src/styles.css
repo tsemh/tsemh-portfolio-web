@@ -6,6 +6,15 @@ h1, h2, h3, h4, h5 {
   letter-spacing: 1px;
   text-transform: capitalize;
 }
+h2 {
+  width: auto;
+  color: #ff79c6;
+  text-transform: uppercase;
+}
+.h2 {
+  width: 100%;
+  text-align: center;
+}
 a {
   text-decoration: none;
 }

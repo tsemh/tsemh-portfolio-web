@@ -1,47 +1,38 @@
 <main class="page">
-  <div class="project-page">
-    <section class="project-hero">
-      <img src="../../assets/projects/addPerson.png" alt="" class="img project-hero-img">
 
-      <article>
-        <h2>Add Persons</h2>
-        <p>
-          This test have base in one "WebAPI" that i built using the framework "ASP.NET" and "Entityframework". To
-          front-end i have used the angular framework and the "NGX-Bootstrap" for the stylizing.
-        </p>
-        <p>
-          This is an application was integrated, allowing the creation, read, update and the delete of datas. Also was
-          use the "webforms" for checking of datas that were sent and, if have missing data or incorrect data, the form
-          is blocked, preventing shipping.
-        </p>
-        <div class="project-tags">
-          <a>Angular</a>
-          <a>.NET</a>
-          <a>NGX-Bootstrap</a>
-        </div>
+    <header>
+      <section class="titulo-data">
+        <h2>{{ registro.nome }}</h2>
+        <h5>{{ dataCriacaoFormatada }}</h5>
+      </section>
 
-      </article>
-    </section>
-
-    <section class="project-content">
-      <article>
-        <a href="https://github.com/tsemh/TestCompugraf" target='_blank'>
-          <h4 id="code-style" class="btn">Code</h4>
-        </a>
-        <div class="single-code">
-          <header>
-          </header>
-          <p>This project was construct by me for a test of the company "Compugraf".</p>
-        </div>
-      </article>
-      <article class="secod-column">
-        <div>
-          <h4>Technologies</h4>
+      <section class="secao-cabecalho">
+        <article class="cabecalho">
           <div>
-            <p class="ferramentas">Ferramenta 1</p>
+            <h4>Introdução</h4>
+            <div>
+              <p class="introducao">{{registro.introducao}}</p>
+            </div>
           </div>
+
+        <section class="image-ShowMeTheCode">
+          <img src="" alt="" class="img project-hero-img">
+          
+          <a *ngIf="registro.tipo != 'profissional' && registro.tipo != 'artigo'" href={{ registro.link }} target="_blank">
+            <h4 id="code-style" class="btn">Show me the Code</h4>
+          </a>
+          
+        </section>
+
+        </article>
+      </section>
+    </header>
+
+    <section class="secao-artigo">
+      <article class="artigo">
+        <div class="paragrafos">
+          <p *ngFor="let paragrafo of paragrafos">{{ paragrafo }}</p>
         </div>
       </article>
     </section>
-  </div>
 </main>

@@ -8,7 +8,7 @@ import { Component, OnInit, Input} from '@angular/core';
 export class PainelControleComponent implements OnInit{
 
   @Input() pages: number = 1;
-  @Input() visaoPaginacao: boolean = true;
+  @Input() visaoPaginacao: boolean = false;
 
 
 constructor() {}

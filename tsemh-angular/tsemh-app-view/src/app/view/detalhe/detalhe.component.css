@@ -1,0 +1,52 @@
+header {
+  margin-top: 100px;
+}
+.cabecalho{
+  display: flex;
+  justify-content: space-evenly;
+}
+.introducao {
+  height: 400px;
+  width: 500px;
+}
+img {
+  height: 400px;
+  width: 400px;
+}
+.image-ShowMeTheCode{
+  display: flex;
+  flex-direction: column;
+}
+
+h4 {
+  font-size: 24px;
+}
+
+h2, h3, h4{
+  width: auto;
+  color: #ff79c6;
+}
+
+h5 {
+  color: #bd93f9;
+  text-transform: lowercase;
+}
+.image-ShowMeTheCode, h2, h5, h4 {
+  text-align: center;
+}
+.secao-artigo{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 100px 0 100px 0;
+}
+.artigo {
+  width: 70%;
+}
+
+p {
+  color: #fff;
+  font-size: 18px;
+  letter-spacing: -.03px;
+  line-height: 1.58;
+}

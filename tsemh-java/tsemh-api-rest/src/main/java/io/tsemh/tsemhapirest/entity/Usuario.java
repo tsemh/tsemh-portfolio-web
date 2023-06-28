@@ -38,9 +38,6 @@ public class Usuario implements UserDetails{
     @Column(name="cv_usuario")
     private String curriculumVitae;
     
-    @Column(name="im_usuario")
-    private String imagemUsuario;  
-    
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Categoria> categorias = new ArrayList<>();
 
@@ -58,7 +55,6 @@ public class Usuario implements UserDetails{
         this.nome = nome;
         this.titulo = titulo;
         this.curriculumVitae = curriculumVitae;
-		this.imagemUsuario = imagemUsuario;
         this.categorias = categorias;
         this.registros = registros;
     }
@@ -110,14 +106,6 @@ public class Usuario implements UserDetails{
     public void setCurriculumVitae(String curriculumVitae) {
         this.curriculumVitae = curriculumVitae;
     }
-    
-	public String getImagemUsuario() {
-		return imagemUsuario;
-	}
-
-	public void setImagemUsuario(String imagemUsuario) {
-		this.imagemUsuario = imagemUsuario;
-	}
 
     public List<Categoria> getCategorias() {
         return categorias;

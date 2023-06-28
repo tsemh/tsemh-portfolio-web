@@ -2,7 +2,6 @@ import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Categoria } from '../../models/Categoria';
 import { CategoriaService } from '../../service/categoria.service';
-import { RegistroService } from '../../service/registro.service';
 import { Registro } from 'src/app/models/Registro';
 
 @Component({
@@ -20,8 +19,8 @@ export class CategoriaComponent implements OnInit {
   @Output() categoriaSelecionada = new EventEmitter<number>();
 
   constructor(private router: Router, 
-              private categoriaService: CategoriaService,
-              private registroService: RegistroService) { }
+              private categoriaService: CategoriaService
+              ) { }
 
   selecionarCategoria(idCategoria: number) {
     this.categoriaSelecionada.emit(idCategoria);

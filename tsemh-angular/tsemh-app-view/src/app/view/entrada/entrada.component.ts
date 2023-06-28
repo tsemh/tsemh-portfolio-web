@@ -2,7 +2,6 @@ import { LoginService } from './../../service/login.service';
 import { Component, OnInit, HostListener} from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
-import { Usuario } from 'src/app/models/usuariro';
 
 @Component({
   selector: 'tsemh-entrada',
@@ -10,10 +9,10 @@ import { Usuario } from 'src/app/models/usuariro';
   styleUrls: ['./entrada.component.css']
 })
 export class EntradaComponent implements OnInit{
+
   
   public modalRef?: BsModalRef;
   public formEntrada!: FormGroup;
-  private usuario: Usuario[] = [];
  
   constructor(private modalService: BsModalService,
               private fb: FormBuilder,

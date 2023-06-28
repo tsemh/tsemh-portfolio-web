@@ -3,11 +3,31 @@
   <header class="header">
     <div class="recipiente-header">
       <div class="header-texto">
-        <h1> {{ usuario[0].nomeUsuario }} </h1>
-        <h4> {{ usuario[0].tituloUsuario }} </h4>
-        <a class="curriculo" href=" {{ usuario[0].curriculumVitaeUsuario }} " download>Baixar curriculo </a>
+        <h1> {{ usuario.nome }} </h1>
+        <h4> {{ usuario.titulo }} </h4>
+        <a class="curriculo" href=" {{ usuario.curriculumVitae }} " download>Baixar curriculo </a>
       </div>
     </div>
   </header>
+
+  <section class="destaques">
+    <div class="h2">
+      <h2> {{ tituloMain }} </h2>
+    </div>
+    <div class="recipiente-listas">
+      <div class="recipiente-lista" *ngFor="
+      let registro of registro" (click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
+
+        <h5>{{ registro.nome }}</h5>
+        <img src=" " alt=" " class="img item-img">
+
+        <div class="tag-lista">
+          <a *ngFor="let categoria of categorias" class="tag"> {{ categoria.titulo }}
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 </main>

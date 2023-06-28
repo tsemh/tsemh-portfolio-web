@@ -9,11 +9,12 @@ export class Registro {
   nome: string;
   link: string;
   descricao: string;
+  introducao: string;
   dataCriacao: Date;
   //arquivos: Arquivo[];
 
   constructor(
-    id: number, usuario: Usuario, categoria: Categoria, tipo: string, nome: string, link: string, descricao: string, dataCriacao: Date, /*arquivos: Arquivo[]*/ ) {
+    id: number, usuario: Usuario, categoria: Categoria, tipo: string, nome: string, link: string, descricao: string, introducao: string, dataCriacao: Date, /*arquivos: Arquivo[]*/ ) {
     this.id = id;
     this.usuario = usuario;
     this.categoria = categoria;
@@ -21,6 +22,7 @@ export class Registro {
     this.nome = nome;
     this.link = link;
     this.descricao = descricao;
+    this.introducao = introducao;
     this.dataCriacao = dataCriacao;
     //this.arquivos = arquivos;
   }

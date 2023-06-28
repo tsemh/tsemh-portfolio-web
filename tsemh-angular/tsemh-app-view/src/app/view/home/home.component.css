@@ -1,3 +1,6 @@
+main {
+  padding: 150px;
+}
 /*
 =============== 
 COMEÇO DO HERO
@@ -8,10 +11,8 @@ COMEÇO DO HERO
   background: url('../../../../../../banco-arquivos/computadores.png') center/cover no-repeat;
   margin-bottom: 2rem;
   border-radius: 0.25rem;
-  position: relative;
 }
 .recipiente-header {
-  position: absolute;
   width: 100%;
   height: 100%;
   top: 0;
@@ -77,3 +78,66 @@ COMEÇO DO HERO
   }
 }
 /*FIM DO HEADER*/
+
+/*DESTAQUES*/
+.recipiente-listas{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
+.recipiente-lista {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-basis: calc(25% - 20px);
+  max-height: 335px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  background-color: #484b5f;
+  transition: 0.3s ease-in-out all;
+  cursor: pointer;
+}
+.recipiente-lista:hover {
+  background-color: #282a36;
+}
+h5 {
+  font-size: 1.30rem;
+  line-height: 1;
+  color: #f8f8f2;
+  text-transform: uppercase;
+  text-align: center;
+}
+.tag {
+  margin: 0.5rem;
+  background: #bd93f9;
+  color: #282a36;
+  border-radius: 0.25rem;
+  padding: 0.05rem 0.5rem;
+  margin: 0 0.25rem;
+  text-transform: capitalize;
+  line-height: 1.75;
+}
+.tag:hover {
+  color: #282a36;
+  cursor: pointer;
+}
+
+
+@media screen and (min-width: 576px) {
+  .recipiente-listas {
+    grid-template-columns: 1fr 1fr;
+  }
+
+}
+@media screen and (min-width: 992px) {
+  .recipiente-listas  {
+    grid-template-columns: 1fr 1fr 1fr;
+    min-height: 55vh;
+  }
+}
+@media screen and (min-width: 1400px) {
+  .recipiente-listas  {
+    min-height: 70vh;
+  }
+}

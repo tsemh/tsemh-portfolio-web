@@ -1,5 +1,6 @@
-.page-footer {
-  height: 4rem;
+
+footer {
+  height: 8rem;
   text-align: center;
   background-color: #282a36;
   color: #fff;
@@ -7,10 +8,7 @@
   align-items: center;
   justify-content: center;
 }
-.page-footer p {
+p {
   margin-bottom: 0;
-}
-.footer-logo {
-  color: #bd93f9;
-  font-family: 'Domine', serif;
+  font-size: 22px;
 }

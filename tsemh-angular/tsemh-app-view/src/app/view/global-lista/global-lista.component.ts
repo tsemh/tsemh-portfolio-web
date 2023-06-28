@@ -1,6 +1,6 @@
 import { CategoriaService } from './../../service/categoria.service';
 import { Router } from '@angular/router';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Categoria } from 'src/app/models/Categoria';
 import { Registro } from 'src/app/models/Registro';
 import { RegistroService } from 'src/app/service/registro.service';
@@ -16,15 +16,21 @@ export class GlobalListaComponent {
   @Input() pages: number = 1;
   @Input() registro: Registro[] = [];
   @Input() categorias: Categoria[] = [];
+  @Output() registroSelecionado = new EventEmitter<number>();
 
-  categoriaSelecionada: number = 0;
+  categoriaSelecionada: number = 62;
 
   constructor(private router: Router, 
               private registroService: RegistroService) { }
 
+              
   atualizarCategoria(idCategoria: number) {
     this.categoriaSelecionada = idCategoria;
     this.carregaRegistroPelaCategoria();
+  }
+
+  selecionarRegistro(idRegistro: number) {
+    this.registroSelecionado.emit(idRegistro);
   }
 
   redirectTo(url: string) {

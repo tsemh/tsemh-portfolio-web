@@ -25,10 +25,7 @@ public class Categoria {
 	private String  tipo;
 	
 	@Column(name="tt_categoria",nullable=false, length=50)
-	private String  titulo;
-	
-	@Column(name="lk_categoria",nullable=false)
-	private String  link;
+	private String  titulo;	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "categoria", fetch = FetchType.LAZY)
 	@JsonManagedReference(value="categoria")
@@ -45,7 +42,6 @@ public class Categoria {
 		this.usuario = usuario;
 		this.tipo = tipo;
 		this.titulo = titulo;
-		this.link = link;
 		this.registros = registros;
 	}
 
@@ -80,14 +76,6 @@ public class Categoria {
 
 	public void setTitulo(String titulo) {
 		this.titulo = titulo;
-	}
-
-	public String getLink() {
-		return link;
-	}
-
-	public void setLink(String link) {
-		this.link = link;
 	}
 
 	@JsonManagedReference

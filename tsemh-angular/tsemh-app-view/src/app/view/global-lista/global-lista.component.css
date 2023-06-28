@@ -1,3 +1,6 @@
+main {
+  padding: 150px;
+}
 .categorias-itens,
 .tudo-lista {
   width: 100%;
@@ -11,15 +14,6 @@
 .global-lista {
   display: flex;
   flex-direction: column;
-}
-.h2 {
-  width: 100%;
-  text-align: center;
-}
-h2 {
-  width: auto;
-  color: #ff79c6;
-  text-transform: uppercase;
 }
 
 .recipiente-listas{
@@ -48,6 +42,7 @@ h5 {
   line-height: 1;
   color: #f8f8f2;
   text-transform: uppercase;
+  text-align: center;
 }
 .tag {
   margin: 0.5rem;

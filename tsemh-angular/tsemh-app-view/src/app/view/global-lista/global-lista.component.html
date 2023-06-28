@@ -1,7 +1,4 @@
 <main class="page">
-<div class="h2">
-  <h2> {{ tituloMain }} </h2>
-</div>
 
 <div class="categorias-itens">
   <div class="categorias">
@@ -10,10 +7,14 @@
   </div>
 
   <div class="tudo-lista">
+    <div class="h2">
+      <h2> {{ tituloMain }} </h2>
+    </div>
+
     <div class="recipiente-listas">
       <div class="recipiente-lista" *ngFor="
     let registro of registro | paginate: { itemsPerPage: 6, currentPage: pages }
-  " (click)="redirectTo('detalhes')">
+  " (click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
   
           <h5>{{ registro.nome }}</h5>
           <img src=" " alt=" " class="img item-img">

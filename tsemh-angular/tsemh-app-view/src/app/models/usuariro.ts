@@ -1,23 +1,19 @@
 export class Usuario {
-  idUsuario: number;
-  emailUsuario: string;
-  senhaUsuario: string;
-  nomeUsuario: string;
-  tituloUsuario: string;
-  curriculumVitaeUsuario: string;
+  id: number;
+  email: string;
+  senha: string;
+  nome: string;
+  titulo: string;
+  curriculumVitae: string;
 
   constructor(
-    idUsuario: number,emailUsuario: string,senhaUsuario: string,nomeUsuario: string,tituloUsuario: string,curriculumVitaeUsuario: string
+    id: number,email: string,senha: string,nome: string,titulo: string,curriculumVitae: string
   ) {
-    this.idUsuario = idUsuario;
-    this.emailUsuario = emailUsuario;
-    this.senhaUsuario = senhaUsuario;
-    this.nomeUsuario = nomeUsuario;
-    this.tituloUsuario = tituloUsuario;
-    this.curriculumVitaeUsuario = curriculumVitaeUsuario;
-  }
-
-  toString(): string {
-    return `Usuário:\n[id_usuario=${this.idUsuario},\nem_usuario=${this.emailUsuario},\nsn_usuario=${this.senhaUsuario},\nnm_usuario=${this.nomeUsuario},\ntt_usuario=${this.tituloUsuario},\ncv_usuario=${this.curriculumVitaeUsuario}\n]`;
+    this.id = id;
+    this.email = email;
+    this.senha = senha;
+    this.nome = nome;
+    this.titulo = titulo;
+    this.curriculumVitae = curriculumVitae;
   }
 }

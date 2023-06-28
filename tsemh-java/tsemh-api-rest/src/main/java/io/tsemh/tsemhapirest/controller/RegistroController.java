@@ -70,6 +70,17 @@ public class RegistroController {
 		    return registroRepository.findByTipo(tipo);
 		}
 		
+		@GetMapping("destaque")
+		public List<Registro> getRegistroByDestaque(@RequestParam Boolean destaque) {
+		    long count = registroRepository.countByDestaque(true);
+
+		    if (count > 4) {
+		        throw new RuntimeException("Excedeu o limite de registros com destaque");
+		    }
+
+		    return registroRepository.findByDestaque(destaque);
+		}
+		
 		@PutMapping("/editar/{id}")
 		public Registro putRegistro(@RequestBody Registro registro, @PathVariable int id) {
 			registro.setId(id);

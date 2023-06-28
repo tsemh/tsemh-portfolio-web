@@ -30,4 +30,8 @@ export class RegistroService {
     return this.http.get<Registro[]>(url);
   }
   
+  getByDestaque(destaque: boolean): Observable<Registro[]> {
+    const url = `${this.baseUrl}/destaque?destaque=${destaque}`;
+    return this.http.get<Registro[]>(url);
+  }
 }
