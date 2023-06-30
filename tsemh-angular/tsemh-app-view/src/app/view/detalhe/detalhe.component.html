@@ -18,7 +18,7 @@
         <section class="image-ShowMeTheCode">
           <img src="" alt="" class="img project-hero-img">
           
-          <a *ngIf="registro.tipo != 'profissional' && registro.tipo != 'artigo'" href={{ registro.link }} target="_blank">
+          <a *ngIf="registro.tipo == 'certificado'" href={{ registro.link }} target="_blank">
             <h4 id="code-style" class="btn">Show me the Code</h4>
           </a>
           

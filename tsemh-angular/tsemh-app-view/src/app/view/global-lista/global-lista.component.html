@@ -14,7 +14,7 @@
     <div class="recipiente-listas">
       <div class="recipiente-lista" *ngFor="
     let registro of registro | paginate: { itemsPerPage: 6, currentPage: pages }
-  " (click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
+  "(click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
   
           <h5>{{ registro.nome }}</h5>
           <img src=" " alt=" " class="img item-img">

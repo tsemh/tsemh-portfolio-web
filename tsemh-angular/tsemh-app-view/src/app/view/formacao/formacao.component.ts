@@ -9,7 +9,7 @@ import { Registro } from 'src/app/models/Registro';
 export class FormacaoComponent implements OnInit{
   
   public tituloMain: string = "formações";
-  public tipo: string = "";
+  public tipo: string = "formacao";
   public registro: Registro[] = []
 
   constructor() {  }

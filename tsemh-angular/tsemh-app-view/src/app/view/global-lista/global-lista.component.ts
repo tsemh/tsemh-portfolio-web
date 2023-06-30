@@ -1,3 +1,4 @@
+import { CompartilhadoService } from './../../service/compartilhado.service';
 import { CategoriaService } from './../../service/categoria.service';
 import { Router } from '@angular/router';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
@@ -16,12 +17,11 @@ export class GlobalListaComponent {
   @Input() pages: number = 1;
   @Input() registro: Registro[] = [];
   @Input() categorias: Categoria[] = [];
-  @Output() registroSelecionado = new EventEmitter<number>();
-
-  categoriaSelecionada: number = 62;
+  categoriaSelecionada: number = 0;
 
   constructor(private router: Router, 
-              private registroService: RegistroService) { }
+              private registroService: RegistroService,
+              private compartilhadoService: CompartilhadoService) { }
 
               
   atualizarCategoria(idCategoria: number) {
@@ -30,7 +30,7 @@ export class GlobalListaComponent {
   }
 
   selecionarRegistro(idRegistro: number) {
-    this.registroSelecionado.emit(idRegistro);
+    this.compartilhadoService.setRegistroId(idRegistro)
   }
 
   redirectTo(url: string) {

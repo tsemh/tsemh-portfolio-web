@@ -3,9 +3,8 @@
   <header class="header">
     <div class="recipiente-header">
       <div class="header-texto">
-        <h1> {{ usuario.nome }} </h1>
         <h4> {{ usuario.titulo }} </h4>
-        <a class="curriculo" href=" {{ usuario.curriculumVitae }} " download>Baixar curriculo </a>
+        <a class="curriculo" href="../../../../../../banco-arquivos/" download>Baixar curriculo </a>
       </div>
     </div>
   </header>
@@ -15,8 +14,7 @@
       <h2> {{ tituloMain }} </h2>
     </div>
     <div class="recipiente-listas">
-      <div class="recipiente-lista" *ngFor="
-      let registro of registro" (click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
+      <div class="recipiente-lista" *ngFor="let registro of registro" (click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
 
         <h5>{{ registro.nome }}</h5>
         <img src=" " alt=" " class="img item-img">
@@ -35,11 +33,7 @@
     <article class="texto-sobre">
       <h6>O Desenvolvedor</h6>
       <h4> {{ usuario.nome }}</h4>
-      <p class="paragrafo-sobre">Me dedico ao desenvolvimento de softwarer desde 2018,
-        sendo minha maior especialidade o Desenvolvimento Web.</p>
-      <p class="paragrafo-sobre">Durante está jornada pude trabalhar com desenvolvimento desktop,
-        atender remotamente clientes internos e externos do Brasil, Argentina,
-        México e Estados Unidos e realizar freelancers para pequenas empresas.</p>
+      <p class="paragrafo-sobre"*ngFor="let paragrafo of paragrafos">{{ paragrafo }}</p>
     </article>
     </div>
   </section>

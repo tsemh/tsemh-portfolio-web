@@ -35,8 +35,8 @@ public class Usuario implements UserDetails{
     @Column(name="tt_usuario")
     private String titulo;
     
-    @Column(name="cv_usuario")
-    private String curriculumVitae;
+    @Column(name="ds_usuario")
+    private String descricao;
     
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuario", fetch = FetchType.LAZY)
     private List<Categoria> categorias = new ArrayList<>();
@@ -47,19 +47,28 @@ public class Usuario implements UserDetails{
     public Usuario() {    
     }
 
-    public Usuario(Integer id, String email, String senha, String nome, String titulo, String curriculumVitae,
-    		String imagemUsuario, List<Categoria> categorias, List<Registro> registros) {
+    public Usuario(Integer id, String email, String senha, String nome, String titulo, String descricao,
+    		 		List<Categoria> categorias, List<Registro> registros) {
         this.id = id;
         this.email = email;
         this.senha = senha;
         this.nome = nome;
         this.titulo = titulo;
-        this.curriculumVitae = curriculumVitae;
+        this.descricao = descricao;
         this.categorias = categorias;
         this.registros = registros;
     }
+    
 
-    public long getId() {
+    public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public long getId() {
         return id;
     }
 
@@ -97,14 +106,6 @@ public class Usuario implements UserDetails{
 
     public void setTitulo(String titulo) {
         this.titulo = titulo;
-    }
-
-    public String getCurriculumVitae() {
-        return curriculumVitae;
-    }
-
-    public void setCurriculumVitae(String curriculumVitae) {
-        this.curriculumVitae = curriculumVitae;
     }
 
     public List<Categoria> getCategorias() {
@@ -166,7 +167,6 @@ public class Usuario implements UserDetails{
                             +"sn_usuario =" +senha  +  ",\n"
                             +"nm_usuario =" +nome  +  ",\n"
                             +"tt_usuario =" +titulo +  ",\n"
-                            +"cv_usuario =" +curriculumVitae +  ",\n"
 
                 +"]";
     }

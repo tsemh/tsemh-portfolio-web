@@ -4,16 +4,16 @@ export class Usuario {
   senha: string;
   nome: string;
   titulo: string;
-  curriculumVitae: string;
+  descricao: string;
 
   constructor(
-    id: number,email: string,senha: string,nome: string,titulo: string,curriculumVitae: string
+    id: number,email: string, senha: string, nome: string, titulo: string, descricao: string
   ) {
     this.id = id;
     this.email = email;
     this.senha = senha;
     this.nome = nome;
     this.titulo = titulo;
-    this.curriculumVitae = curriculumVitae;
+    this.descricao = descricao;
   }
 }
