@@ -7,8 +7,16 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 p {
   margin-bottom: 0;
   font-size: 22px;
+}
+a {
+  color:#bd93f9;
+}
+a:hover {
+  color: #ff79c6;
+  cursor: pointer;
 }

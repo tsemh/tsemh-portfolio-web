@@ -138,6 +138,27 @@ h5 {
 }
 @media screen and (min-width: 1400px) {
   .recipiente-listas  {
-    min-height: 70vh;
+    min-height: 40vh;
   }
+}
+.container-sobre {
+  display: flex;
+  justify-content: center;
+}
+.sobre {
+  width: 65%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.foto-sobre {
+  background: url('../../../../../../banco-arquivos/foto-sobre.jpg') center/cover no-repeat;
+  height: 450px;
+  width: 280px;
+}
+h6, .paragrafo-sobre {
+  color: #ffffffb3;
+}
+.texto-sobre {
+  width: 350px;
+  color: #fff;
 }
