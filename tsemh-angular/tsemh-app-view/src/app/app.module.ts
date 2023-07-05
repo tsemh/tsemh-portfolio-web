@@ -20,6 +20,7 @@ import { ArtigoComponent } from './view/artigo/artigo.component';
 import { ProfissionalComponent } from './view/profissional/profissional.component';
 import { ProjetoComponent } from './view/projeto/projeto.component';
 import { RodapeComponent } from './view/rodape/rodape.component';
+import { Error404Component } from './view/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { RodapeComponent } from './view/rodape/rodape.component';
     ArtigoComponent,
     ProfissionalComponent,
     ProjetoComponent,
-    RodapeComponent
+    RodapeComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

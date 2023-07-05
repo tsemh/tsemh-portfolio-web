@@ -8,6 +8,7 @@ import { FormacaoComponent } from './view/formacao/formacao.component';
 import { CertificadoComponent } from './view/certificado/certificado.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { Error404Component } from './view/error404/error404.component';
 
 
 const routes: Routes = [
@@ -19,6 +20,8 @@ const routes: Routes = [
   { path: 'projetos', component: ProjetoComponent },
   { path: 'profissional', component: ProfissionalComponent },
   { path: 'detalhes', component: DetalheComponent },
+  { path: 'error404', component: Error404Component },
+
 ];
 
 @NgModule({

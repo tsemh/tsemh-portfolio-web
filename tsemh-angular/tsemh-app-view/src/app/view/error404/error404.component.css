@@ -1,0 +1,7 @@
+main {
+  display: flex;
+  align-items: center;
+}
+h1 {
+    color: #ff79c6;
+}

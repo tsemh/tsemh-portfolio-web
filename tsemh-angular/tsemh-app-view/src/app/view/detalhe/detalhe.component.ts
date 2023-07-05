@@ -4,6 +4,7 @@ import { RegistroService } from 'src/app/service/registro.service';
 import { formatDate, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
 import { CompartilhadoService } from 'src/app/service/compartilhado.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'tsemh-detalhe',
@@ -18,8 +19,9 @@ export class DetalheComponent implements OnInit {
   dataCriacaoFormatada: string = '';
   private idSelecionado: number = 0;
 
-  constructor(private registroService: RegistroService,
-              private compartilhadoService: CompartilhadoService
+  constructor(private router: Router,
+              private registroService: RegistroService,
+              private compartilhadoService: CompartilhadoService,
               ) { }
 
   defineRegistroSelecionado(){
@@ -36,12 +38,18 @@ export class DetalheComponent implements OnInit {
       },
       (error: any) => {
         console.error(error);
+        this.ErroNaoSelecionado()
       }
     );
   }
 
   separaParagrafos() {
     this.paragrafos = this.registro.descricao.split('\n\n');
+  }
+  ErroNaoSelecionado(){
+    if(this.idSelecionado == 0){
+      this.router.navigateByUrl("error404")
+    }
   }
   
   ngOnInit(): void {

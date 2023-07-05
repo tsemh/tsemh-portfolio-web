@@ -18,12 +18,17 @@ img {
   flex-direction: column;
 }
 
-h4 {
+a{
   font-size: 24px;
+  color: #bd93f9;
+  transition: 0.3s ease-in-out all;
+}
+a:hover {
+  color: #ff79c6;
+  cursor: pointer;
 }
 
-h2, h3, h4{
-  width: auto;
+h2, h3{
   color: #ff79c6;
 }
 

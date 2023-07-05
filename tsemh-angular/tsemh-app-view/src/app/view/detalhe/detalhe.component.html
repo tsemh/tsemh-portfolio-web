@@ -9,7 +9,7 @@
       <section class="secao-cabecalho">
         <article class="cabecalho">
           <div>
-            <h4>Introdução</h4>
+            <h3>Introdução</h3>
             <div>
               <p class="introducao">{{registro.introducao}}</p>
             </div>
@@ -18,8 +18,8 @@
         <section class="image-ShowMeTheCode">
           <img src="" alt="" class="img project-hero-img">
           
-          <a *ngIf="registro.tipo == 'certificado'" href={{ registro.link }} target="_blank">
-            <h4 id="code-style" class="btn">Show me the Code</h4>
+          <a *ngIf="registro.tipo != 'artigo' && registro.tipo != 'profissional'" href={{registro.link}} target="_blank">
+            Show me the Code
           </a>
           
         </section>
