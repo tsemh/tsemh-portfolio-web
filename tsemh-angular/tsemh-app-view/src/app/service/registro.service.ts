@@ -34,4 +34,9 @@ export class RegistroService {
     const url = `${this.baseUrl}/destaque?destaque=${destaque}`;
     return this.http.get<Registro[]>(url);
   }
+
+  getTiposDeRegistro(): Observable<string[]> {
+    const url = `${this.baseUrl}/tipos`;
+    return this.http.get<string[]>(url);
+  }
 }

@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Categoria } from '../../models/Categoria';
 import { CategoriaService } from '../../service/categoria.service';
 import { Registro } from 'src/app/models/Registro';
+import { UtilService } from 'src/app/service/util.service';
 
 @Component({
   selector: 'tsemh-categoria',
@@ -19,7 +20,8 @@ export class CategoriaComponent implements OnInit {
   @Output() categoriaSelecionada = new EventEmitter<number>();
 
   constructor(private router: Router, 
-              private categoriaService: CategoriaService
+              private categoriaService: CategoriaService,
+              private utilService: UtilService
               ) { }
 
   selecionarCategoria(idCategoria: number) {
@@ -28,7 +30,7 @@ export class CategoriaComponent implements OnInit {
 
   carregaCategoria() {
     this.categorias = [];
-    this.categoriaService.getByTipo(this.tipo).subscribe(
+    this.categoriaService.getByTipo(this.utilService.getRegistroTipo()).subscribe(
       (categoria: Categoria[]) => {
         this.categorias = categoria;
       },
@@ -38,11 +40,9 @@ export class CategoriaComponent implements OnInit {
     );
   }
 
-  atualizarPagina(): void {
-    const currentUrl = this.router.url;
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() => {
-      this.router.navigateByUrl(currentUrl);
-    });
+  atualizaPagina(): void {
+    const urlAtual = this.router.url;
+    this.utilService.redirecionaPara(urlAtual);
   }
 
   ngOnInit(): void {

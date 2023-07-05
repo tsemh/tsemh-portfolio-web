@@ -3,8 +3,7 @@ import { Registro } from 'src/app/models/Registro';
 import { RegistroService } from 'src/app/service/registro.service';
 import { formatDate, registerLocaleData } from '@angular/common';
 import localePt from '@angular/common/locales/pt';
-import { CompartilhadoService } from 'src/app/service/compartilhado.service';
-import { Router } from '@angular/router';
+import { UtilService } from 'src/app/service/util.service';
 
 @Component({
   selector: 'tsemh-detalhe',
@@ -19,42 +18,52 @@ export class DetalheComponent implements OnInit {
   dataCriacaoFormatada: string = '';
   private idSelecionado: number = 0;
 
-  constructor(private router: Router,
-              private registroService: RegistroService,
-              private compartilhadoService: CompartilhadoService,
-              ) { }
-
-  defineRegistroSelecionado(){
-    this.idSelecionado = this.compartilhadoService.getRegistroId();
-  }
+  constructor(
+    private registroService: RegistroService,
+    private utilService: UtilService
+  ) {}
   
-  carregaRegistro() {
+  ngOnInit(): void {
+    registerLocaleData(localePt);
+    this.recuperaIdSelecionado();
+    this.defineId();
+    this.carregaRegistro();
+  }
+
+  private recuperaIdSelecionado(): void {
+    const idArmazenado = localStorage.getItem('idArmazenado');
+    if (this.idSelecionado === null && idArmazenado || this.idSelecionado === 0 && idArmazenado) {
+      const idParseado = parseInt(idArmazenado);
+      this.utilService.setRegistroId(idParseado);
+    }
+  } 
+
+  defineId(){
+    this.idSelecionado = this.utilService.getRegistroId();
+  }
+
+  carregaRegistro(): void {
     this.registroService.getById(this.idSelecionado).subscribe(
       (registro: Registro) => {
         this.registro = registro;
-        this.dataCriacao = new Date(this.registro.dataCriacao);
-        this.dataCriacaoFormatada = formatDate(this.dataCriacao, 'yyyy MMMM dd, HH:mm \'h\'', 'en-US');
+        this.formataData();
         this.separaParagrafos();
       },
       (error: any) => {
         console.error(error);
-        this.ErroNaoSelecionado()
+        if (this.idSelecionado === 0) {
+          this.utilService.erroNaoEncontrado();
+        }
       }
     );
   }
 
-  separaParagrafos() {
-    this.paragrafos = this.registro.descricao.split('\n\n');
+  formataData(): void {
+    this.dataCriacao = new Date(this.registro.dataCriacao);
+    this.dataCriacaoFormatada = formatDate(this.dataCriacao, 'yyyy MMMM dd, HH:mm \'h\'', 'en-US');
   }
-  ErroNaoSelecionado(){
-    if(this.idSelecionado == 0){
-      this.router.navigateByUrl("error404")
-    }
-  }
-  
-  ngOnInit(): void {
-    this.defineRegistroSelecionado();
-    registerLocaleData(localePt);
-    this.carregaRegistro();
+
+  separaParagrafos(): void {
+    this.paragrafos = this.utilService.separaParagrafos(this.registro.descricao);
   }
 }

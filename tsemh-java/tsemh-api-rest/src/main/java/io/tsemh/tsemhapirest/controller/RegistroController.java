@@ -81,6 +81,11 @@ public class RegistroController {
 		    return registroRepository.findByDestaque(destaque);
 		}
 		
+		@GetMapping("tipos")
+		public List<String> getTiposDeRegistro() {
+		    return registroRepository.findDistinctTipo();
+		}
+		
 		@PutMapping("/editar/{id}")
 		public Registro putRegistro(@RequestBody Registro registro, @PathVariable int id) {
 			registro.setId(id);

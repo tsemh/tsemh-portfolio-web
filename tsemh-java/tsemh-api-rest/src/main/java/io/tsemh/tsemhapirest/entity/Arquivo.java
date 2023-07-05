@@ -21,7 +21,7 @@ public class Arquivo {
 	@Column(name="nm_arquivo")
 	private String nome;
 	
-	@Column(name="ds_imagem")
+	@Column(name="ds_arquivo")
 	private String descricao;
 	
 	@Column(name="tp_arquivo")

@@ -13,11 +13,7 @@
     <!-- Links -->
     <div class="nav-links">
       <a routerLink="" class="nav-link">Home</a>
-      <a routerLink="formacoes" class="nav-link">Formações</a>
-      <a routerLink="certificados" class="nav-link">Certificações</a>
-      <a routerLink="projetos" class="nav-link">Projetos</a>
-      <a routerLink="profissional" class="nav-link">Profissional</a>
-      <a routerLink="artigos" class="nav-link">Artigos</a>
+      <a *ngFor="let tipo of tiposDeRegistro" (click)="pegaTipo(tipo)" routerLink="registros/{{tipo}}s" class="nav-link">{{ tipo }}s</a>
 
       <ul class="socials">
         <li><a class="nav-link networks">Sociais &dtrif;</a>

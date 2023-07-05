@@ -16,4 +16,7 @@ public interface RegistroRepository extends JpaRepository<Registro, Long> {
 	
     @Query("SELECT COUNT(r) FROM Registro r WHERE r.destaque = true")
     long countByDestaque(Boolean destaque);
+    
+    @Query("SELECT DISTINCT r.tipo FROM Registro r")
+    List<String> findDistinctTipo();
 }

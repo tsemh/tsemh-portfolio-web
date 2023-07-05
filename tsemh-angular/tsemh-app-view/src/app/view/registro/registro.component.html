@@ -2,7 +2,7 @@
 
 <div class="categorias-itens">
   <div class="categorias">
-    <tsemh-categoria [tituloMain]="tituloMain" [tipo]="tipo" (categoriaSelecionada)="atualizarCategoria($event)">
+    <tsemh-categoria  (categoriaSelecionada)="atualizarCategoria($event)">
     </tsemh-categoria>
   </div>
 
@@ -14,13 +14,13 @@
     <div class="recipiente-listas">
       <div class="recipiente-lista" *ngFor="
     let registro of registro | paginate: { itemsPerPage: 6, currentPage: pages }
-  "(click)="selecionarRegistro(registro.id)" (click)="redirectTo('detalhes')">
+  "(click)="selecionarRegistro(registro.id)" (click)="redirecionaPara('detalhes')">
   
           <h5>{{ registro.nome }}</h5>
           <img src=" " alt=" " class="img item-img">
         
         <div class="tag-lista">
-          <a *ngFor="let categoria of categorias" (click)="redirectTo(categoria.link)" class="tag"> {{ categoria.titulo }}
+          <a *ngFor="let categoria of categorias" (click)="redirecionaPara(categoria.link)" class="tag"> {{ categoria.titulo }}
           </a>
         </div>
 

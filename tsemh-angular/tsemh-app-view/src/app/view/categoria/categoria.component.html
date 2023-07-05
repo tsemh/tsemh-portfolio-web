@@ -3,7 +3,7 @@
   <div class="lista-categorias">
 
       <div>
-        <button (click)="atualizarPagina()">Ver tudo</button>
+        <button (click)="atualizaPagina()">Ver tudo</button>
         <button *ngFor="let categoria of categorias" (click)="selecionarCategoria(categoria.id)"> {{ categoria.titulo }} </button>
       </div>
   </div>  

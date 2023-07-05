@@ -9,36 +9,26 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BarraNavComponent } from './view/barra-nav/barra-nav.component';
 import { CategoriaComponent } from './view/categoria/categoria.component';
-import { CertificadoComponent } from './view/certificado/certificado.component';
 import { DetalheComponent } from './view/detalhe/detalhe.component';
 import { EntradaComponent } from './view/entrada/entrada.component';
-import { FormacaoComponent } from './view/formacao/formacao.component';
-import { GlobalListaComponent } from './view/global-lista/global-lista.component';
 import { HomeComponent } from './view/home/home.component';
 import { PainelControleComponent } from './view/painel-controle/painel-controle.component';
-import { ArtigoComponent } from './view/artigo/artigo.component';
-import { ProfissionalComponent } from './view/profissional/profissional.component';
-import { ProjetoComponent } from './view/projeto/projeto.component';
 import { RodapeComponent } from './view/rodape/rodape.component';
 import { Error404Component } from './view/error404/error404.component';
+import { RegistroComponent } from './view/registro/registro.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarraNavComponent,
     CategoriaComponent,
-    CertificadoComponent,
     DetalheComponent,
     EntradaComponent,
-    FormacaoComponent,
-    GlobalListaComponent,
     HomeComponent,
     PainelControleComponent,
-    ArtigoComponent,
-    ProfissionalComponent,
-    ProjetoComponent,
     RodapeComponent,
-    Error404Component
+    Error404Component,
+    RegistroComponent
   ],
   imports: [
     BrowserModule,

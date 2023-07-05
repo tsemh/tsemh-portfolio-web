@@ -1,11 +1,10 @@
-import { Router } from '@angular/router';
+import { UtilService } from './../../service/util.service';
 import { UsuarioService } from './../../service/usuario.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Categoria } from 'src/app/models/Categoria';
 import { Registro } from 'src/app/models/Registro';
 import { Usuario } from 'src/app/models/usuariro';
 import { RegistroService } from 'src/app/service/registro.service';
-import { CompartilhadoService } from 'src/app/service/compartilhado.service';
 
 @Component({
   selector: 'app-home',
@@ -22,12 +21,11 @@ export class HomeComponent implements OnInit {
   @Input() categorias: Categoria[] = [];
   @Output() registroSelecionado = new EventEmitter<number>();
 
-  constructor(private router: Router,
-              private usuarioService: UsuarioService,
+  constructor(private usuarioService: UsuarioService,
               private registroService: RegistroService,
-              private compartilhadoService: CompartilhadoService) { }
+              private utilService: UtilService) { }
 
-  carregaUsuario() {
+  carregaUsuario(): void {
     this.usuarioService.getAll().subscribe(
       (tiago: Usuario[]) => {
         this.usuario = tiago[0];
@@ -39,7 +37,7 @@ export class HomeComponent implements OnInit {
     );
   } 
 
-  carregaRegistro() {
+  carregaRegistro(): void {
     this.registroService.getByDestaque(this.destaque).subscribe(
       (projeto: Registro[]) => {
         this.registro = projeto;
@@ -49,18 +47,17 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-  redirectTo(url: string) {
-    this.router.navigateByUrl('/', { skipLocationChange: true }).then(() =>
-      this.router.navigate([url])
-    );
+  
+  selecionarRegistro(idRegistro: number): void {
+    this.utilService.setRegistroId(idRegistro)
   }
   
-  selecionarRegistro(idRegistro: number) {
-    this.compartilhadoService.setRegistroId(idRegistro)
+  separaParagrafos(): void {
+    this.paragrafos = this.utilService.separaParagrafos(this.usuario.descricao);
   }
   
-  separaParagrafos() {
-    this.paragrafos = this.usuario.descricao.split('\n\n');
+  redirecionaPara(url: string): void {
+    this.utilService.redirecionaPara(url);
   }
 
   ngOnInit(): void {

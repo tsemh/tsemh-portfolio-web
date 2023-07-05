@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GlobalListaComponent } from './global-lista.component';
+import { RegistroComponent } from './registro.component';
 
-describe('GlobalListaComponent', () => {
-  let component: GlobalListaComponent;
-  let fixture: ComponentFixture<GlobalListaComponent>;
+describe('RegistroComponent', () => {
+  let component: RegistroComponent;
+  let fixture: ComponentFixture<RegistroComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ GlobalListaComponent ]
+      declarations: [ RegistroComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(GlobalListaComponent);
+    fixture = TestBed.createComponent(RegistroComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
