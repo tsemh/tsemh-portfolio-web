@@ -1,5 +1,7 @@
-main {
-  padding: 150px;
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 /*
 =============== 
@@ -8,6 +10,7 @@ COMEÇO DO HERO
 */
 .header {
   height: 40vh;
+  width: 80vw;
   background: url('../../../../../../banco-arquivos/computadores.png') center/cover no-repeat;
   margin-bottom: 2rem;
   border-radius: 0.25rem;
@@ -30,52 +33,6 @@ COMEÇO DO HERO
 }
 .header-texto h4 {
   font-size: 1.2rem;
-}
-@media screen and (min-width: 376px) {
-  .header-texto h1 {
-    font-size: 2rem;
-    margin-bottom: 0;
-  }
-  .header-texto h4 {
-    font-size: 1.3rem;
-  }
-  }
-
-@media screen and (min-width: 476px) {
-  .header-texto h1 {
-    font-size: 2.5rem;
-    margin-bottom: 0;
-  }
-  .header-texto h4 {
-    font-size: 1.4rem;
-  }
-}
-@media screen and (min-width: 768px) {
-  .header-texto h1 {
-    font-size: 3rem;
-    margin-bottom: 0;
-  }
-  .header-texto h4 {
-    font-size: 1.5rem;
-  }
-}
-@media screen and (min-width: 900px) {
-  .header-texto h1 {
-    font-size: 3.5rem;
-    margin-bottom: 0;
-  }
-  .header-texto h4 {
-    font-size: 1.6rem;
-  }
-}
-@media screen and (min-width: 1200px) {
-  .header-texto h1 {
-    font-size: 4rem;
-    margin-bottom: 0;
-  }
-  .header-texto h4 {
-    font-size: 1.7rem;
-  }
 }
 /*FIM DO HEADER*/
 
@@ -104,7 +61,6 @@ COMEÇO DO HERO
 h5 {
   font-size: 1.30rem;
   line-height: 1;
-  color: #f8f8f2;
   text-transform: uppercase;
   text-align: center;
 }
@@ -122,43 +78,136 @@ h5 {
   color: #282a36;
   cursor: pointer;
 }
+.container-sobre {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.sobre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.foto-sobre {
+  background: url('../../../../../../banco-arquivos/foto-sobre.jpg') center/cover no-repeat;
+}
+h6, .paragrafo-sobre {
+  color: #ffffffb3;
+}
 
+@media screen and (max-width: 304px) {
+  .foto-sobre {
+    height: 350px;
+    width: 180px;
+  }
+}
+@media screen and (min-width: 305px) {
+  .foto-sobre {
+    height: 450px;
+    width: 280px;
+  }
+  .texto-sobre {
+    width: 280px;
+  }
+}
 
-@media screen and (min-width: 576px) {
+@media screen and  (min-width: 306px) and (max-width: 475px){
+  .header-texto h1 {
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.3rem;
+  }
+}
+
+@media screen and (min-width: 476px) and (max-width: 768px) {
+  .header-texto h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.4rem;
+  }
+}
+@media screen and (max-width: 768px) {
+  .sobre {
+    width: 100%;
+    flex-direction: column;
+    text-align: center;
+  }
+  .texto-sobre {
+    order: 1;
+  }
+  .foto-sobre {
+    order: 2;
+  }
+}
+
+@media screen and (min-width: 769px){ 
+  .foto-sobre {
+    margin-right: 15px;
+  }
+  .texto-sobre {
+    margin-left: 15px;
+  }
+ }
+
+@media screen and (min-width: 769px) and (max-width: 991px) {
+  .header-texto h1 {
+    font-size: 3rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 991px) {
   .recipiente-listas {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 @media screen and (min-width: 992px) {
+  .header-texto h1 {
+    font-size: 3.5rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.6rem;
+  }
   .recipiente-listas  {
     grid-template-columns: 1fr 1fr 1fr;
     min-height: 55vh;
   }
 }
-@media screen and (min-width: 1400px) {
-  .recipiente-listas  {
-    min-height: 55vh;
+@media screen and (max-width: 1199px) {
+  .sobre {
+    width: 100%;
   }
 }
-.container-sobre {
-  display: flex;
-  justify-content: center;
+@media screen and (min-width: 1200px) {
+  .header-texto h1 {
+    font-size: 4rem;
+    margin-bottom: 0;
+  }
+  .header-texto h4 {
+    font-size: 1.7rem;
+  }
+  .sobre {
+    width: 75%;
+  }
 }
-.sobre {
-  width: 65%;
-  display: flex;
-  justify-content: space-evenly;
+@media screen and (min-width: 1400px) {
+  .sobre {
+    width: 65%;
+  }
 }
-.foto-sobre {
-  background: url('../../../../../../banco-arquivos/foto-sobre.jpg') center/cover no-repeat;
-  height: 450px;
-  width: 280px;
-}
-h6, .paragrafo-sobre {
-  color: #ffffffb3;
-}
-.texto-sobre {
-  width: 350px;
-  color: #fff;
+@media screen and (min-width: 1600px) {
+  .header {
+    width: 90%;
+  }
+  .sobre {
+    width: 65%;
+  }
+  
 }

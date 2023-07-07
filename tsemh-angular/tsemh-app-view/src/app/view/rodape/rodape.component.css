@@ -1,6 +1,7 @@
 
 footer {
   height: 8rem;
+  width: 100vw;
   text-align: center;
   background-color: #282a36;
   color: #fff;
@@ -13,10 +14,9 @@ p {
   margin-bottom: 0;
   font-size: 22px;
 }
-a {
-  color:#bd93f9;
-}
-a:hover {
-  color: #ff79c6;
-  cursor: pointer;
+
+@media screen and (max-width: 305px) {
+  footer {
+    height: 16rem;
+  }
 }

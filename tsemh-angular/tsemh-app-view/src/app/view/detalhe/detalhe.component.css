@@ -1,17 +1,14 @@
 header {
-  margin-top: 100px;
+  margin-bottom: 20px;
 }
 .cabecalho{
+  height: auto;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
 }
-.introducao {
-  height: 400px;
-  width: 500px;
-}
-img {
-  height: 400px;
-  width: 400px;
+.div-introducao {
+  height: auto;
+  width: auto;
 }
 .image-ShowMeTheCode{
   display: flex;
@@ -20,38 +17,105 @@ img {
 
 a{
   font-size: 24px;
-  color: #bd93f9;
   transition: 0.3s ease-in-out all;
 }
-a:hover {
-  color: #ff79c6;
-  cursor: pointer;
-}
-
-h2, h3{
-  color: #ff79c6;
-}
-
 h5 {
-  color: #ffffffb3;
   text-transform: lowercase;
 }
+
 .image-ShowMeTheCode, h2, h5, h4 {
   text-align: center;
 }
 .secao-artigo{
   width: 100%;
-  display: flex;
-  justify-content: center;
-  margin: 100px 0 100px 0;
+  margin: 0px 0 100px 0;
 }
 .artigo {
-  width: 70%;
+  width: 100%;
 }
-
+.paragrafos {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 p {
   color: #fff;
   font-size: 18px;
   letter-spacing: -.03px;
   line-height: 1.58;
+}
+
+@media screen and (max-width: 349px) {
+  header {
+    height: 1200px;
+  }
+}
+@media screen and (min-width: 350px) and (max-width: 429px) {
+  header {
+    height: 1100px;
+  }
+}
+@media screen and (min-width: 430px) and (max-width: 534px) {
+  header {
+    height: 1000px;
+  }
+}
+@media screen and (min-width: 535px) {
+  .div-introducao {
+    height: auto;
+    width: 500px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .cabecalho{
+    flex-direction: column;
+    align-items: center;
+  } 
+  img {
+    height: 300px;
+    width: 300px;
+  }
+  .div-introducao {
+    display: flex;
+    text-align: center;
+    justify-content: center;
+  }
+}
+
+@media screen and (min-width: 992px) {
+  .secao-artigo{
+    padding: 0 50px;
+  }
+  header {
+    padding: 0 50px
+  }
+  .introducao {
+    height: 400px;
+    width: 500px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .secao-artigo{
+    padding: 0 100px;
+  }
+  header {
+    padding: 0 100px
+  }
+  img {
+    height: 400px;
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+  .secao-artigo{
+    padding: 0 150px;
+  }
+  header {
+    height: 700px;
+    margin-bottom: 20px;
+    padding: 0 150px
+  }
 }

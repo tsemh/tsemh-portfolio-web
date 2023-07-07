@@ -1,20 +1,21 @@
-/* CATEGORIAS */
-
 .recipiente-categorias {
   margin:1.6rem 1rem 0 0;
   font-weight: 500;
   padding: 0;
 }
-.recipiente-categorias h4 {
-  color:#ff79c6;
+h3 {
   padding: 0;
-  margin: 0 0 1rem 0 ;
+  margin: 0 0 1rem 0;
+  font-size: 24px;
 }
 .lista-categorias {
   display: grid;
   grid-template-columns: 1fr;
   padding: 0;
-
+}
+.categorias {
+  display: flex;
+  justify-content: space-around;
 }
 .lista-categorias button {
   text-transform: capitalize;
@@ -32,4 +33,22 @@
   color: #bd93f9;
 }
 
-/* FIM DE CATEGORIAS */
+@media screen and (max-width: 615px) {
+  .recipiente-categorias {
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .lista-categorias button {
+    margin: 0 10px;
+  }
+}
+@media screen and (min-width: 616px) {
+  .categorias {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+  }
+}

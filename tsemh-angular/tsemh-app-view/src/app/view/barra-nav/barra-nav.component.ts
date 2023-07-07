@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, HostListener, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegistroService } from 'src/app/service/registro.service';
 import { UtilService } from 'src/app/service/util.service';
@@ -12,10 +12,13 @@ export class BarraNavComponent implements OnInit {
 
   public acessoPainel = true;
   public tiposDeRegistro: string[] = [];
+  public isHamburgerMenu: boolean = false;
 
-  constructor(private router: Router,
-              private registroService: RegistroService,
-              private utilService: UtilService) { }
+  constructor(private registroService: RegistroService,
+              private utilService: UtilService, 
+              private renderer: Renderer2, 
+              private elementRef: ElementRef) { 
+               }
 
   ngOnInit(): void {
     this.carregarTiposDeRegistro();
@@ -32,8 +35,13 @@ export class BarraNavComponent implements OnInit {
       }
     );
   }
-  pegaTipo(tipo: string){
+  pegaTipo(tipo: string): void{
     this.utilService.setRegistroTipo(tipo)
   }
+
+  hamburguerClique(): void{
+      this.isHamburgerMenu = !this.isHamburgerMenu;
+  }
 }
+
 
