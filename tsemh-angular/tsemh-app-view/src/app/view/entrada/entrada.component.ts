@@ -1,5 +1,5 @@
 import { LoginService } from './../../service/login.service';
-import { Component, OnInit, HostListener} from '@angular/core';
+import { Component, OnInit, HostListener, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
@@ -8,21 +8,30 @@ import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
   templateUrl: './entrada.component.html',
   styleUrls: ['./entrada.component.css']
 })
-export class EntradaComponent implements OnInit{
-
+export class EntradaComponent implements AfterViewInit{
+@ViewChild('email') emailElement!: ElementRef;
   
   public modalRef?: BsModalRef;
   public formEntrada!: FormGroup;
- 
+  public visualizaSenha!: boolean;
+  public visualizaSenhaText: string;
+
+
   constructor(private modalService: BsModalService,
               private fb: FormBuilder,
               private loginService: LoginService) {
                 this.criarForm();
+                this.visualizaSenha = false;
+                this.visualizaSenhaText = "Ver senha";
               }
+  ngAfterViewInit(){
+    this.adicionarFoco()    
+  }
 
   criarForm() {
+    const emailArmazenado = localStorage.getItem('emailArmazenado');
     this.formEntrada = this.fb.group({
-      email: ['', Validators.required],
+      email: [emailArmazenado, Validators.required],
       senha:  ['', Validators.required]
     })
   }
@@ -35,9 +44,9 @@ export class EntradaComponent implements OnInit{
     };
     const dadosLogin = JSON.stringify(dados);
     this.loginService.login(dadosLogin);
+    localStorage.setItem('emailArmazenado', email);
   }
   
-
   openModal() {
     this.modalRef = this.modalService.show(EntradaComponent);
   }
@@ -48,7 +57,19 @@ export class EntradaComponent implements OnInit{
       this.openModal();
     }
   }
-  
-  ngOnInit() {
+
+  adicionarFoco() {
+    setTimeout(()=>{
+      this.emailElement.nativeElement.focus();
+    }, 0)
+  }
+
+  verSenha() {
+    this.visualizaSenha = !this.visualizaSenha;
+    if(this.visualizaSenha == false) {
+      this.visualizaSenhaText = "Ver senha";
+    } else {
+      this.visualizaSenhaText = "Esconder senha";
+    }
   }
 }

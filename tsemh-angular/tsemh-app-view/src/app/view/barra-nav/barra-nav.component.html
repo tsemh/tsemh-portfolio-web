@@ -10,7 +10,7 @@
     <!-- Links -->
     <div [ngClass]="{ 'nav-links': !isHamburgerMenu, 'hamburger-links': isHamburgerMenu }">
       <a routerLink="" class="nav-link">Home</a>
-      <a *ngFor="let tipo of tiposDeRegistro" (click)="pegaTipo(tipo)" routerLink="registros/{{tipo}}s"
+      <a *ngFor="let tipo of tiposDeRegistro"  (click)="pegaTipo(tipo)" routerLink="registros/{{tipo}}s"
         class="nav-link">{{ tipo }}s</a>
 
       <ul class="socials">

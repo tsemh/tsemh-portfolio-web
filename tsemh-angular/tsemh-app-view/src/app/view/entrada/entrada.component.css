@@ -8,7 +8,7 @@ div {
 /* BOTÔES */
 .left-side {
   display: flex;
-  justify-content: end;
+  justify-content: flex-end;
 }
 .btn {
   cursor: pointer;
@@ -31,4 +31,11 @@ div {
 /* INPUTS */
 .input-style {
   margin: 0.5em;
+}
+.ver-senha {
+  color: #bd93f9;
+}
+.ver-senha:hover {
+  cursor: pointer;
+  color: #ff79c6;
 }

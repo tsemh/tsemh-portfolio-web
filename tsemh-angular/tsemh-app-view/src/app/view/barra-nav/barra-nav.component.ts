@@ -1,5 +1,5 @@
-import { Component, ElementRef, HostListener, OnInit, Renderer2, RendererFactory2 } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, HostListener, OnInit} from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
 import { RegistroService } from 'src/app/service/registro.service';
 import { UtilService } from 'src/app/service/util.service';
 
@@ -14,14 +14,15 @@ export class BarraNavComponent implements OnInit {
   public tiposDeRegistro: string[] = [];
   public isHamburgerMenu: boolean = false;
 
-  constructor(private registroService: RegistroService,
-              private utilService: UtilService, 
-              private renderer: Renderer2, 
-              private elementRef: ElementRef) { 
+  constructor(private router: Router,
+              private registroService: RegistroService,
+              private utilService: UtilService) { 
                }
 
   ngOnInit(): void {
     this.carregarTiposDeRegistro();
+    this.onResize(null);
+    this.hamburguerClicadoQuando()
   }
 
   carregarTiposDeRegistro(): void {
@@ -42,6 +43,18 @@ export class BarraNavComponent implements OnInit {
   hamburguerClique(): void{
       this.isHamburgerMenu = !this.isHamburgerMenu;
   }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: any) {
+    if(window.innerWidth >= 992) {
+      this.isHamburgerMenu = false;
+    }
+  }  
+  hamburguerClicadoQuando() {
+    this.router.events.subscribe((event) => {
+      if(event instanceof NavigationEnd) {
+        this.isHamburgerMenu = false
+      }
+    })
+  }
 }
-
-
