@@ -3,7 +3,7 @@
   <header class="header">
     <div class="recipiente-header">
       <div class="header-texto">
-        <h4> {{ usuario.titulo }} </h4>
+        <h4 *ngIf="usuario && usuario.titulo != null"> {{ usuario.titulo }} </h4>
         <a class="curriculo" href="../../../../../../banco-arquivos/" download>Baixar curriculo </a>
       </div>
     </div>
@@ -32,7 +32,7 @@
     <div class="foto-sobre" alt=""></div>
     <article class="texto-sobre">
       <h6>O Desenvolvedor</h6>
-      <h4> {{ usuario.nome }}</h4>
+      <h4 *ngIf="usuario && usuario.titulo != null"> {{ usuario.nome }}</h4>
       <p class="paragrafo-sobre"*ngFor="let paragrafo of paragrafos">{{ paragrafo }}</p>
     </article>
     </div>

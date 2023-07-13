@@ -1,5 +1,5 @@
 import { LoginService } from './../../service/login.service';
-import { Component, OnInit, HostListener, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
+import { Component, HostListener, AfterViewInit, ElementRef, ViewChild, Input } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 

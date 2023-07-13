@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
 import { Router } from '@angular/router';
+import { Location } from '@angular/common';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,9 @@ export class LoginService {
   
   private baseUrl = `${environment.apiUrl}/login`;
 
-  constructor(private httpClient: HttpClient, private router: Router) {}
+  constructor(private httpClient: HttpClient, 
+              private router: Router,
+              private location: Location) {}
 
   login(dadosLogin: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
@@ -21,8 +24,7 @@ export class LoginService {
   
         const token = data.token;
         localStorage.setItem('token', token);
-  
-        this.router.navigate(['/painel-de-controle']);
+        window.location.href = '/painel-de-controle';
       },
       error => {
         console.error('Erro ao fazer login', error);

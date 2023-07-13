@@ -16,6 +16,7 @@ import { PainelControleComponent } from './view/painel-controle/painel-controle.
 import { RodapeComponent } from './view/rodape/rodape.component';
 import { Error404Component } from './view/error404/error404.component';
 import { RegistroComponent } from './view/registro/registro.component';
+import { AuthGuard } from './config/auth.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,7 @@ import { RegistroComponent } from './view/registro/registro.component';
     PainelControleComponent,
     RodapeComponent,
     Error404Component,
-    RegistroComponent
+    RegistroComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +38,7 @@ import { RegistroComponent } from './view/registro/registro.component';
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

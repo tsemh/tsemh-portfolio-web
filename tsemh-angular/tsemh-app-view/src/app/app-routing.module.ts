@@ -5,11 +5,14 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { Error404Component } from './view/error404/error404.component';
 import { RegistroComponent } from './view/registro/registro.component';
+import { AuthGuard } from './config/auth.guard';
 
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'painel-de-controle', component: PainelControleComponent },
+  { path: 'home', component: HomeComponent },
+  { path: 'login', component: HomeComponent },
+  { path: 'painel-de-controle', component: PainelControleComponent, canActivate: [AuthGuard] },
   { path: 'registros', component: RegistroComponent },
   { path: 'registros/artigos', component: RegistroComponent },
   { path: 'registros/certificados', component: RegistroComponent },
