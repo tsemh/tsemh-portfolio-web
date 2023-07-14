@@ -16,6 +16,9 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioRepository usuarioRepository; 
+	
+	@Autowired
+    private PasswordEncoder passwordEncoder;
 
 	@PostMapping("/cadastrar")
 	@Transactional
@@ -23,7 +26,9 @@ public class UsuarioController {
 	    List<Usuario> usuarios = usuarioRepository.findAll();
 
 	    if (usuarios.isEmpty()) {
-	        return usuarioRepository.save(usuario);
+	    	 String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
+	         usuario.setSenha(senhaCriptografada);
+	         return usuarioRepository.save(usuario);
 	    } else {
 	        throw new RuntimeException("Não é possível criar um novo usuário. Já existe um usuário cadastrado.");
 	    }

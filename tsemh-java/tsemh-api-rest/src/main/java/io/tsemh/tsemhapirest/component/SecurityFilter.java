@@ -10,6 +10,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import io.tsemh.tsemhapirest.repository.UsuarioRepository;
 import io.tsemh.tsemhapirest.service.TokenService;
+import io.tsemh.tsemhapirest.config.SecurityConfig;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
