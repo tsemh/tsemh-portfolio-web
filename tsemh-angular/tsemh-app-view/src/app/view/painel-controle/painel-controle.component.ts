@@ -1,4 +1,9 @@
-import { Component, OnInit, Input} from '@angular/core';
+import { Usuario } from 'src/app/models/usuariro';
+import { Component, OnInit } from '@angular/core';
+import { UsuarioService } from 'src/app/service/usuario.service';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { RegistroService } from 'src/app/service/registro.service';
+import { Registro } from 'src/app/models/Registro';
 
 @Component({
   selector: 'tsemh-painel-controle',
@@ -7,164 +12,108 @@ import { Component, OnInit, Input} from '@angular/core';
 })
 export class PainelControleComponent implements OnInit{
 
-  @Input() pages: number = 1;
-  @Input() visaoPaginacao: boolean = false;
+  public visaoPaginacao: boolean = true;
+  public tiposDeRegistro: string[] = [];
+  public formUsuario!: FormGroup;
+  public usuario!: Usuario;
+  public registros: Registro[] = [];
+  public pages: number = 1;
+  public tipo!: string;
 
 
-constructor() {}
+constructor(private usuarioService: UsuarioService,
+            private fb: FormBuilder,
+            private registroService: RegistroService) { 
+              this.criarForm();
+             }
 
-ngOnInit(): void {
-  
+ngOnInit(): void { 
+  this.carregaUsuario();
+  this.carregaTiposDeRegistro();
+  this.carregaRegistro();
 }
-public itens= [
-  { id: 1,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
+
+carregaUsuario(): void {
+  this.usuarioService.getAll().subscribe(
+    (tiago: Usuario[]) => {
+      this.usuario = tiago[0];
+      this.formUsuario.patchValue(this.usuario);
     },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-  { id: 2,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-  { id: 2,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-  { id: 2,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-  { id: 2,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-  { id: 2,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-  { id: 2,
-    titulo: 'Primeiro Destaque',
-    link: '00',
-    imagem: 'image',
-    imgDesc: 'descrição',
-    descricao: 'descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item v descricão do item descricão do item descricão do item descricão do item vdescricão do item descricão do item descricão do item descricão do item descricão do item descricão do item descricão do item',
-    tags: [
-    { id: 1,
-      titulo: 'tag 1',
-      link: 'postagens' 
-    },
-    { id: 2,
-      titulo: 'tag 2',
-      link: 'link da tag' 
-    },
-    { id: 3,
-      titulo: 'tag 3',
-      link: 'link da tag' 
-    },
-  ],
- },
-]
+    (e: any) => {
+      console.error(e);
+    }
+  );
+} 
+
+criarForm() {
+    this.formUsuario = this.fb.group({
+      nome: ['', Validators.required],
+      titulo: ['', Validators.required],
+      descricao: ['', Validators.required]
+    });
+}
 
 
+enviarUsuario() {
+  const { email, senha } = this.formUsuario.value;
+  const dados = {
+    email: email,
+    senha: senha
+  };
+  const dadosLogin = JSON.stringify(dados);
+}
+
+carregaTiposDeRegistro(): void {
+  this.registroService.getTiposDeRegistro().subscribe(
+    tipos => {
+      this.tiposDeRegistro = tipos;
+    },
+    error => {
+      console.error(error);
+      // Adicione tratamento de erro adequado aqui
+    }
+    );
+  }
+  pegaTipo(tipo: string): void{
+    this.tipo = tipo;
+    this.carregaRegistroPorTipo();
+  }
+  
+  carregaRegistro() {
+  this.registroService.getAll().subscribe(
+    (registro: Registro[]) => {
+      this.registros = registro;
+    },
+    (e: any) => {
+      console.error(e);
+      // Adicione tratamento de erro adequado aqui
+    }
+  );
+}
+carregaRegistroPorTipo(): void {
+  this.registroService.getByTipo(this.tipo).subscribe(
+    (projeto: Registro[]) => {
+      this.registros = projeto;
+    },
+    (e: any) => {
+      console.error(e);
+    }
+  );
+}
+
+CliqueTipo(tipo: string): void {
+  this.pegaTipo(tipo);
+  this.defineCorTipo();
+}
+
+defineCorTipo(): void {
+  const botoes = document.querySelectorAll('.botao-tipo');
+  botoes.forEach(botao => {
+    botao.addEventListener('click', function() {
+      botoes.forEach(botao => botao.classList.remove('tipoCor'));
+  
+      botao.classList.add('tipoCor');
+    });
+  });
+}
 }

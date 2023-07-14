@@ -2,23 +2,51 @@
   <section class="setor-inicial">
 
     <section class="setor-usuario">
-      <tr>
-        <th colspan="3">Lista de Clientes</th>
-      </tr>
+      <form [formGroup]="formUsuario" (submit)="enviarUsuario()">
+
+          <div class="form-group">
+          <div class="imagePreview">
+            <span class="span-editar-foto">Editar</span>
+            <input type="file" name="image" accept="image/*" class="form-control imageInput form-control-image">
+          </div>
+          </div>
+          
+        <div class="form-group substantivos-proprio">
+          <label>Nome:</label>
+          <input type="text" formControlName="nome" class="form-control input-usuario substantivo-proprio">
+        </div>
+        
+        <div class="form-group substantivos-proprio">
+          <label>Titulo:</label>
+          <input type="text" formControlName="titulo" class="form-control input-usuario substantivo-proprio">
+        </div>
+
+        <div class="form-group">
+          <label>Descrição:</label>
+          <textarea rows="10" formControlName="descricao" class="form-control input-usuario"></textarea>
+        </div>        
+
+        <div class="form-group left-side">
+          <button class="btn">Entrar</button>
+        </div>
+    
+      </form>
     </section>
     
     <section class="setor-vitrine">
       <section class="setor-interno-projetos">
-        <h2>Projetos</h2>
+        <div class="tipos-div">
+          <h4 class="botao-tipo" *ngFor="let tipo of tiposDeRegistro" (click)="CliqueTipo(tipo)">{{ tipo }}s</h4>
+        </div>
         <table class="table">
           <thead >
             <th>ID</th>
             <th>Titulo</th>
         </thead>
         <tbody>
-          <tr class="hover" *ngFor="let projeto of itens | paginate: { itemsPerPage: 10 , currentPage: pages }" >
-            <td>{{ projeto.id }}</td>
-            <td>{{ projeto.titulo }}</td>
+          <tr class="hover" *ngFor="let registro of registros | paginate: { itemsPerPage: 15 , currentPage: pages }" >
+            <td>{{ registro.id }}</td>
+            <td>{{ registro.nome }}</td>
           </tr>
         </tbody>
       </table>
@@ -28,8 +56,4 @@
     </section>
   </section>
 </section>
-
-    <div class="paginacao" *ngIf="visaoPaginacao == true">
-      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
-    </div>
 </main>

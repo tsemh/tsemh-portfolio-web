@@ -24,8 +24,9 @@
         </li>
       </ul>
 
-      <div *ngIf="acessoPainel == false" [ngClass]="{'flex-end': isHamburgerMenu }">
+      <div *ngIf="isLogged == true" class="logado-div" [ngClass]="{'flex-end': isHamburgerMenu }">
         <a routerLink="painel-de-controle" class="nav-link" [ngClass]="{'margin-right': isHamburgerMenu }">Painel</a>
+        <span class="nav-link" (click)="sair()">Sair</span>
       </div>
 
     </div>

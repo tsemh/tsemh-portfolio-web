@@ -11,17 +11,13 @@ export class LoginService {
   
   private baseUrl = `${environment.apiUrl}/login`;
 
-  constructor(private httpClient: HttpClient, 
-              private router: Router,
-              private location: Location) {}
+  constructor(private httpClient: HttpClient) {}
 
   login(dadosLogin: any) {
     const headers = new HttpHeaders().set('Content-Type', 'application/json');
   
     return this.httpClient.post(this.baseUrl, dadosLogin, { headers }).subscribe(
-      (data: any) => {
-        console.log('Login bem-sucedido!', data);
-  
+      (data: any) => {  
         const token = data.token;
         localStorage.setItem('token', token);
         window.location.href = '/painel-de-controle';
@@ -30,6 +26,11 @@ export class LoginService {
         console.error('Erro ao fazer login', error);
       }
     );
+  }
+
+  logout() {
+    localStorage.removeItem('token');
+    window.location.href = '/home';
   }
   
 }

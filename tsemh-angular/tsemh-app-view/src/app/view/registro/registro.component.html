@@ -13,7 +13,7 @@
 
     <div class="recipiente-listas">
       <div class="recipiente-lista" *ngFor="
-    let registro of registro | paginate: { itemsPerPage: 6, currentPage: pages }
+    let registro of registros | paginate: { itemsPerPage: 8, currentPage: pages }
   "(click)="selecionarRegistro(registro.id)" (click)="redirecionaPara('detalhes')">
   
           <h5>{{ registro.nome }}</h5>

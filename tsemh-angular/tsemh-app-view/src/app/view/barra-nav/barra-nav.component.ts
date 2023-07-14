@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit} from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { LoginService } from 'src/app/service/login.service';
 import { RegistroService } from 'src/app/service/registro.service';
 import { UtilService } from 'src/app/service/util.service';
 
@@ -10,19 +11,21 @@ import { UtilService } from 'src/app/service/util.service';
 })
 export class BarraNavComponent implements OnInit {
 
-  public acessoPainel = true;
+  public isLogged = false;
   public tiposDeRegistro: string[] = [];
   public isHamburgerMenu: boolean = false;
 
   constructor(private router: Router,
               private registroService: RegistroService,
-              private utilService: UtilService) { 
+              private utilService: UtilService,
+              private loginService: LoginService) { 
                }
 
   ngOnInit(): void {
     this.carregarTiposDeRegistro();
     this.onResize(null);
     this.hamburguerClicadoQuando()
+    this.isLoggedIn();
   }
 
   carregarTiposDeRegistro(): void {
@@ -50,11 +53,23 @@ export class BarraNavComponent implements OnInit {
       this.isHamburgerMenu = false;
     }
   }  
-  hamburguerClicadoQuando() {
+  hamburguerClicadoQuando(): void {
     this.router.events.subscribe((event) => {
       if(event instanceof NavigationEnd) {
         this.isHamburgerMenu = false
       }
     })
+  }
+  isLoggedIn(): void {
+    const token = localStorage.getItem('token');
+    
+    if (token !== null && token !== undefined) {
+      this.isLogged = true;
+    } else {
+      this.isLogged = false;
+    }
+  }
+  sair() {
+    this.loginService.logout();
   }
 }

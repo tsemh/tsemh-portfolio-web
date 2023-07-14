@@ -1,31 +1,108 @@
 main {
   display: flex;
   flex-direction: column;
-  }
-.setor-inicial{
-  display: flex;
 }
-.setor-usuario {
-  width: 30%;
-}
-.setor-vitrine {
-  width: 70%;
-}
-.setor-corpo{
+
+.setor-inicial {
   display: flex;
   justify-content: space-between;
+}
+
+.substantivos-proprio {
+  display: flex;
+}
+
+.substantivo-proprio {
+  border: none;
+  outline: none;
+  border-bottom: #967db8 1px solid;
+  &:focus {
+    border-bottom-color: #bd93f9; 
+}
+}
+
+.setor-usuario {
+  width: 30%;
+} 
+.imagePreview {
+  background: url('../../../../../../banco-arquivos/foto-sobre.jpg') center/cover no-repeat;
+  height: 350px;
+  width: 180px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.imageInput {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  position: relative;
+}
+.span-editar-foto {
+  width: 100%;
+  font-size: 24px;
+  color: #fff;
+  opacity: 0.8;
+  text-align: center;
+  position: absolute;
+}
+.span-editar-foto:hover {
+  color: #bd93f9;
+}
+
+.input-usuario {
+  background-color: transparent;
+  color: #fff;
+}
+
+textarea {
+  border: #967db8 1px solid;
+  &:focus {
+    border-color: #bd93f9; 
+}
+}
+label {
+  color: #fff;
+  width: 80px;
+}
+.form-control:focus {
+  box-shadow: none;
+}
+.setor-vitrine {
+  width: 50%;
+}
+
+.setor-corpo {
+  display: flex;
+  justify-content: space-between;
+}
+.tipos-div {
+  display: flex;
+  justify-content: space-between;
+}
+.tipoCor {
+  color: #ff79c6;
+}
+h4:hover {
+  cursor: pointer;
+  color: #ff79c6;
 }
 h2 {
   color: #ff79c6;
   width: 100%;
   text-align: center;
 }
+
 .hover:hover {
   background-color: #967db8;
+  cursor: pointer;
 }
-td, th {
+
+td,
+th {
   color: #fff;
 }
-.table{
+
+.table {
   border: #967db8 1px solid;
-} 
+}

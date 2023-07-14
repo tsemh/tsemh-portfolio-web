@@ -11,7 +11,7 @@ import { RegistroService } from 'src/app/service/registro.service';
 })
 export class RegistroComponent  implements OnInit {
 
-  public registro: Registro[] = [];
+  public registros: Registro[] = [];
   public categorias: Categoria[] = [];
   private categoriaSelecionada: number = 0;
   public pages: number = 1;
@@ -28,7 +28,7 @@ export class RegistroComponent  implements OnInit {
     this.recuperaTipoSelecionado()
     this.defineTipo()
     this.carregarTiposDeRegistro();
-    this.carregaRegistroPorTitulo();
+    this.carregaRegistroPorTipo();
     this.transformaEmTitulo();
   }
 
@@ -69,10 +69,10 @@ export class RegistroComponent  implements OnInit {
     this.utilService.redirecionaPara(url);
   }
 
-  carregaRegistroPorTitulo() {
+  carregaRegistroPorTipo() {
     this.registroService.getByTipo(this.utilService.getRegistroTipo()).subscribe(
       (projeto: Registro[]) => {
-        this.registro = projeto;
+        this.registros = projeto;
       },
       (e: any) => {
         console.error(e);
@@ -83,7 +83,7 @@ export class RegistroComponent  implements OnInit {
   carregaRegistroPelaCategoria() {
     this.registroService.getRegistroByCategoria(this.categoriaSelecionada).subscribe(
       (registro: Registro[]) => {
-        this.registro = registro;
+        this.registros = registro;
       },
       (e: any) => {
         console.error(e);
