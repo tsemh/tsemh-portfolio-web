@@ -1,9 +1,10 @@
 import { Usuario } from 'src/app/models/usuariro';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from 'src/app/service/registro.service';
 import { Registro } from 'src/app/models/Registro';
+import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'tsemh-painel-controle',
@@ -12,19 +13,25 @@ import { Registro } from 'src/app/models/Registro';
 })
 export class PainelControleComponent implements OnInit{
 
+  public modalRef?: BsModalRef;
   public visaoPaginacao: boolean = true;
   public tiposDeRegistro: string[] = [];
   public formUsuario!: FormGroup;
+  public formRegistro!: FormGroup;
   public usuario!: Usuario;
   public registros: Registro[] = [];
+  public registro!: Registro;
   public pages: number = 1;
   public tipo!: string;
+  public idRegistroSelecionado!: number;
 
 
 constructor(private usuarioService: UsuarioService,
             private fb: FormBuilder,
-            private registroService: RegistroService) { 
-              this.criarForm();
+            private registroService: RegistroService,
+            private modalService: BsModalService) { 
+              this.criarFormUsuario();
+              this.criarFormRegistro();
              }
 
 ngOnInit(): void { 
@@ -33,6 +40,9 @@ ngOnInit(): void {
   this.carregaRegistro();
 }
 
+openModal(template: TemplateRef<any>) {
+  this.modalRef = this.modalService.show(template);
+}
 carregaUsuario(): void {
   this.usuarioService.getAll().subscribe(
     (tiago: Usuario[]) => {
@@ -45,7 +55,7 @@ carregaUsuario(): void {
   );
 } 
 
-criarForm() {
+criarFormUsuario() {
     this.formUsuario = this.fb.group({
       nome: ['', Validators.required],
       titulo: ['', Validators.required],
@@ -53,15 +63,69 @@ criarForm() {
     });
 }
 
+criarFormRegistro() {
+  this.formRegistro = this.fb.group({
+    id: ['', Validators.required],
+    categoria: ['', Validators.required],
+    tipo: ['', Validators.required],
+    nome: ['', Validators.required],
+    link: ['', Validators.required],
+    descricao: ['', Validators.required],
+    introducao: ['', Validators.required],
+    dataCriacao: ['', Validators.required]
+  });
+}
+
 
 enviarUsuario() {
-  const { email, senha } = this.formUsuario.value;
-  const dados = {
-    email: email,
-    senha: senha
-  };
-  const dadosLogin = JSON.stringify(dados);
+  const { nome, titulo, descricao } = this.formUsuario.value;
+
+  this.usuarioService.putUsuario(nome, titulo, descricao, this.usuario.id).subscribe(
+    (usuario: Usuario) => {
+      alert("Usuário atualizado");
+    },
+    (error: any) => {
+      console.error('Erro ao atualizar o usuário:', error);
+      // Trate o erro de acordo com sua lógica de tratamento de erros
+    }
+  );
 }
+
+
+enviarRegistro() {
+  const { id, tipo, nome, link, descricao, introducao, dataCriacao } = this.formRegistro.value;
+  const dadosRegistro = {
+    id: id,
+    tipo: tipo,
+    nome: nome,
+    link: link,
+    descricao: descricao,
+    introducao: introducao,
+    dataCriacao: dataCriacao
+};
+  
+  this.registroService.putRegistro(dadosRegistro, this.registro.id).subscribe(
+    (registro: Registro) => {
+      alert("Registro atualizado")
+    },
+    (error: any) => {
+      console.error('Erro ao atualizar o registro:', error);
+      // Trate o erro de acordo com sua lógica de tratamento de erros
+    }
+  );
+}
+deletaRegistro(id: number) {
+  this.registroService.deleteRegistro(id).subscribe(
+    () => {
+      alert("Registro deletado");
+      window.location.reload();
+    },
+    (error: any) => {
+      console.error("Erro ao deletar o registro:", error);
+    }
+  );
+}
+
 
 carregaTiposDeRegistro(): void {
   this.registroService.getTiposDeRegistro().subscribe(
@@ -74,6 +138,12 @@ carregaTiposDeRegistro(): void {
     }
     );
   }
+
+  pegaIdRegistro(idRegistro: number): void {
+    this.idRegistroSelecionado = idRegistro;
+    this.carregaRegistroPorId();
+  }
+
   pegaTipo(tipo: string): void{
     this.tipo = tipo;
     this.carregaRegistroPorTipo();
@@ -92,8 +162,20 @@ carregaTiposDeRegistro(): void {
 }
 carregaRegistroPorTipo(): void {
   this.registroService.getByTipo(this.tipo).subscribe(
-    (projeto: Registro[]) => {
-      this.registros = projeto;
+    (registro: Registro[]) => {
+      this.registros = registro;
+    },
+    (e: any) => {
+      console.error(e);
+    }
+  );
+}
+
+carregaRegistroPorId(): void {
+  this.registroService.getById(this.idRegistroSelecionado).subscribe(
+    (registro: Registro) => {
+      this.registro = registro;
+      this.formRegistro.patchValue(this.registro);
     },
     (e: any) => {
       console.error(e);
@@ -105,7 +187,10 @@ CliqueTipo(tipo: string): void {
   this.pegaTipo(tipo);
   this.defineCorTipo();
 }
-
+cliqueRegistro(template: TemplateRef<any>, idRegistro: number) {
+  this.openModal(template);
+  this.pegaIdRegistro(idRegistro);
+}
 defineCorTipo(): void {
   const botoes = document.querySelectorAll('.botao-tipo');
   botoes.forEach(botao => {

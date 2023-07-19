@@ -106,3 +106,48 @@ th {
 .table {
   border: #967db8 1px solid;
 }
+
+.btn-div {
+  display: flex;
+  justify-content: center;
+}
+.btn-editar {
+  background-color: transparent;
+  color: #bd93f9;
+  height: 35px;
+  width: 75px;
+}
+.btn-editar:hover {
+  color: #ff79c6;
+  cursor: pointer;
+  background-color: #313441;
+}
+.editar-excluir-div {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn-editar {
+  background-color: #bd93f9;
+}
+.btn-excluir {
+  background-color: #ff5555;
+}
+.btn-adicionar {
+  background-color: #6272a4;
+}
+.btn-adicionar-registro {
+  font-size: 70px;
+  height: 80px;
+  width: 80px;
+  background-color: #50fa7b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 15px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 10%;
+  left: 85%;
+}

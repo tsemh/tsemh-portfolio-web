@@ -16,4 +16,16 @@ export class UsuarioService {
   getAll(): Observable<Usuario[]> {
     return this.http.get<Usuario[]>(`${this.baseUrl}`);
   }
+  putUsuario(nome: string, titulo: string, descricao: string, id: number): Observable<Usuario> {
+    const usuarioAtualizado: Partial<Usuario> = {
+      nome: nome,
+      titulo: titulo,
+      descricao: descricao
+    };
+  
+    console.log(usuarioAtualizado + "Service");
+    return this.http.put<Usuario>(`${this.baseUrl}/editar-visivel/${id}`, usuarioAtualizado);
+  }
+  
+  
 }

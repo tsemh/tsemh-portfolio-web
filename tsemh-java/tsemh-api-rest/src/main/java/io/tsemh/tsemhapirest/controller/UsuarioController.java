@@ -1,6 +1,9 @@
 package io.tsemh.tsemhapirest.controller;
 
 import java.util.List;
+import java.util.Map;
+import java.util.NoSuchElementException;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -44,12 +47,32 @@ public class UsuarioController {
 		return usuarioRepository.findById(id).get();
 	}
 	
-	@PutMapping("/editar/{id}")
-	public Usuario putUsuario(@RequestBody Usuario usuario, @PathVariable long id) {
-		usuario.setId(id);
-		return usuarioRepository.save(usuario);
+	@PutMapping("/editar-visivel/{id}")
+	public Usuario putUsuarioVisivel(@RequestBody Usuario usuario, @PathVariable long id) {
+	    Optional<Usuario> existingUsuario = usuarioRepository.findById(id);
+	    if (existingUsuario.isPresent()) {
+	        Usuario savedUsuario = existingUsuario.get();
+	        
+	        usuario.setEmail(savedUsuario.getEmail());
+	        usuario.setSenha(savedUsuario.getSenha());
+	        usuario.setId(savedUsuario.getId());
+	        
+	        return usuarioRepository.save(usuario);
+	    } else {
+	        throw new NoSuchElementException("Usuario with ID " + id + " does not exist");
+	    }
 	}
 	
+	@PutMapping("/editar/{id}")
+	public Usuario putUsuario(@RequestBody Usuario usuario, @PathVariable long id) {
+	    Optional<Usuario> existingUsuario = usuarioRepository.findById(id);
+	    if (existingUsuario.isPresent()) {
+	        return usuarioRepository.save(usuario);
+	    } else {
+	        throw new NoSuchElementException("Usuario with ID " + id + " does not exist");
+	    }
+	}
+
 	@DeleteMapping("/deletar/{id}")
 	public void deleteUsuario(@PathVariable long id) {
 		usuarioRepository.deleteById(id);

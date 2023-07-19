@@ -26,8 +26,8 @@
           <textarea rows="10" formControlName="descricao" class="form-control input-usuario"></textarea>
         </div>        
 
-        <div class="form-group left-side">
-          <button class="btn">Entrar</button>
+        <div class="form-group btn-div">
+          <button class="btn-editar">Editar</button>
         </div>
     
       </form>
@@ -44,16 +44,74 @@
             <th>Titulo</th>
         </thead>
         <tbody>
-          <tr class="hover" *ngFor="let registro of registros | paginate: { itemsPerPage: 15 , currentPage: pages }" >
+          <tr class="hover" (click)="cliqueRegistro(template, registro.id)" *ngFor="let registro of registros | paginate: { itemsPerPage: 15 , currentPage: pages }" >
             <td>{{ registro.id }}</td>
             <td>{{ registro.nome }}</td>
           </tr>
         </tbody>
       </table>
-      <div class="paginacao" *ngIf="visaoPaginacao == true">
-        <pagination-controls (pageChange)="pages = $event"></pagination-controls>
-      </div>
     </section>
+    <div class="paginacao" *ngIf="visaoPaginacao == true">
+      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+    </div>
   </section>
+  <button class="btn-adicionar-registro" (click)="openModal(template)">+</button>
 </section>
+
 </main>
+
+
+<ng-template #template>
+  
+  <div class="modal-header center">
+  <h3 class="modal-title">Editar Registro</h3>
+</div>
+
+<div class="modal-body">
+  <form [formGroup]="formRegistro">
+    
+    <div class="form-group">
+      <label for="formGroupExampleInput">ID</label>
+      <input type="email"  #email formControlName="id" class="form-control input-style">
+    </div>
+    
+    <div class="form-group">
+      <label for="formGroupExampleInput">Nome</label>
+      <input formControlName="nome" class="form-control input-style">
+    </div>
+    
+    <div class="form-group">
+      <label for="formGroupExampleInput">Link</label>
+      <input formControlName="link" class="form-control input-style">
+    </div>
+    
+    <div class="form-group">
+      <label for="formGroupExampleInput">Tipo</label>
+      <input formControlName="tipo" class="form-control input-style">
+    </div>
+    
+    <div class="form-group">
+      <label for="formGroupExampleInput">Categoria</label>
+      <input formControlName="categoria" class="form-control input-style">
+    </div>
+
+    <div class="form-group">
+      <label for="formGroupExampleInput">Instrodução</label>
+      <input formControlName="introducao" class="form-control input-style">
+    </div>
+    
+    <div class="form-group">
+      <label for="formGroupExampleInput">Texto</label>
+      <textarea rows="50" formControlName="descricao" class="form-control input-style"></textarea>
+    </div> 
+    
+    <div class="form-group editar-excluir-div">
+      <button class="btn-editar" (click)="enviarRegistro()">Editar</button>
+      <button class="btn-excluir"  (click)="deletaRegistro(registro.id)">Excluir</button>
+      <button class="btn-adicionar" >Adicionar</button>
+    </div>
+    
+  </form>
+  
+</div>
+</ng-template>
