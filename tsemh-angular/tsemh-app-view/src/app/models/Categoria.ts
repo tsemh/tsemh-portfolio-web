@@ -1,5 +1,5 @@
 import { Registro } from "./Registro";
-import { Usuario } from "./usuariro";
+import { Usuario } from "./usuario";
 
 export class Categoria {
   id: number;

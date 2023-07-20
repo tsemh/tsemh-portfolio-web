@@ -28,7 +28,7 @@ export class CategoriaComponent implements OnInit {
     this.categoriaSelecionada.emit(idCategoria);
   }
 
-  carregaCategoria() {
+  carregaCategoriaPorTipo() {
     this.categorias = [];
     this.categoriaService.getByTipo(this.utilService.getRegistroTipo()).subscribe(
       (categoria: Categoria[]) => {
@@ -46,6 +46,6 @@ export class CategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.carregaCategoria();
+    this.carregaCategoriaPorTipo();
   }
 }

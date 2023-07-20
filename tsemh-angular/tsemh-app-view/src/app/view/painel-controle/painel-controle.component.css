@@ -61,7 +61,7 @@ textarea {
     border-color: #bd93f9; 
 }
 }
-label {
+.label-usuario {
   color: #fff;
   width: 80px;
 }
@@ -150,4 +150,12 @@ th {
   position: fixed;
   bottom: 10%;
   left: 85%;
+}
+.label-registro {
+  color:#967db8
+}
+.agrupa-texto {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }

@@ -39,6 +39,10 @@ export class RegistroService {
     const url = `${this.baseUrl}/tipos`;
     return this.http.get<string[]>(url);
   }
+  postRegistro(registro: Registro, idUsuario: number, titulo: string): Observable<Registro> {
+    const url = `${this.baseUrl}/cadastrar?idUsuario=${idUsuario}&titulo=${titulo}`;
+    return this.http.post<Registro>(url, registro);
+  }
   putRegistro(registro: Registro, id: number): Observable<Registro> {
     const url = `${this.baseUrl}/editar/${id}`;
     return this.http.put<Registro>(url, registro);

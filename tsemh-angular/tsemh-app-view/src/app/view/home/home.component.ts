@@ -3,7 +3,7 @@ import { UsuarioService } from './../../service/usuario.service';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Categoria } from 'src/app/models/Categoria';
 import { Registro } from 'src/app/models/Registro';
-import { Usuario } from 'src/app/models/usuariro';
+import { Usuario } from 'src/app/models/usuario';
 import { RegistroService } from 'src/app/service/registro.service';
 
 @Component({

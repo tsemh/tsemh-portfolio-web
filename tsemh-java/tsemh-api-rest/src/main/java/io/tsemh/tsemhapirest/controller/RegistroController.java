@@ -27,21 +27,30 @@ public class RegistroController {
 		
 		@PostMapping("/cadastrar")
 		@Transactional
-		public Registro postRegistro(@RequestBody Registro registro, @RequestParam long idUsuario,  @RequestParam long idCategoria ) {
+		public Registro postRegistro(@RequestBody Registro registro, @RequestParam long idUsuario, @RequestParam String titulo) {
 		    Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
-		    Optional<Categoria> categoriaOptional = categoriaRepository.findById(idCategoria);
-		    if (usuarioOptional.isPresent() && categoriaOptional.isPresent()) {
+
+		    if (usuarioOptional.isPresent()) {
 		        Usuario usuario = usuarioOptional.get();
-		        Categoria categoria = categoriaOptional.get();
-		        
+
+		        Categoria categoria = categoriaRepository.findByTitulo(titulo);
+
+		        if (categoria == null) {
+		            categoria = new Categoria();
+		            categoria.setTipo(registro.getTipo());
+		            categoria.setUsuario(usuario);
+		            categoria.setTitulo(titulo);
+		            categoriaRepository.save(categoria);
+		        }
+
 		        registro.setUsuario(usuario);
-		        registro.setCategoria(categoria);	       
+		        registro.setCategoria(categoria);
 		        return registroRepository.save(registro);
-		        
 		    } else {
 		        throw new RuntimeException("Usuário não encontrado com ID " + idUsuario);
 		    }
-			}
+		}
+
 			
 		@GetMapping
 		public List<Registro> getAllRegistro() {

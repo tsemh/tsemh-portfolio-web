@@ -1,10 +1,13 @@
-import { Usuario } from 'src/app/models/usuariro';
+import { Usuario } from 'src/app/models/usuario';
 import { Component, OnInit, TemplateRef } from '@angular/core';
 import { UsuarioService } from 'src/app/service/usuario.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { RegistroService } from 'src/app/service/registro.service';
 import { Registro } from 'src/app/models/Registro';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
+import { Categoria } from 'src/app/models/Categoria';
+import { CategoriaService } from 'src/app/service/categoria.service';
+import { UtilService } from 'src/app/service/util.service';
 
 @Component({
   selector: 'tsemh-painel-controle',
@@ -16,6 +19,7 @@ export class PainelControleComponent implements OnInit{
   public modalRef?: BsModalRef;
   public visaoPaginacao: boolean = true;
   public tiposDeRegistro: string[] = [];
+  public categorias: Categoria[] = [];
   public formUsuario!: FormGroup;
   public formRegistro!: FormGroup;
   public usuario!: Usuario;
@@ -24,12 +28,14 @@ export class PainelControleComponent implements OnInit{
   public pages: number = 1;
   public tipo!: string;
   public idRegistroSelecionado!: number;
+  public editaRegistro: boolean = true;
 
 
 constructor(private usuarioService: UsuarioService,
             private fb: FormBuilder,
             private registroService: RegistroService,
-            private modalService: BsModalService) { 
+            private modalService: BsModalService, 
+            private categoriaService: CategoriaService) { 
               this.criarFormUsuario();
               this.criarFormRegistro();
              }
@@ -72,7 +78,8 @@ criarFormRegistro() {
     link: ['', Validators.required],
     descricao: ['', Validators.required],
     introducao: ['', Validators.required],
-    dataCriacao: ['', Validators.required]
+    dataCriacao: ['', Validators.required],
+    destaque: ['', Validators.required]
   });
 }
 
@@ -93,7 +100,7 @@ enviarUsuario() {
 
 
 enviarRegistro() {
-  const { id, tipo, nome, link, descricao, introducao, dataCriacao } = this.formRegistro.value;
+  const { id, tipo, nome, link, descricao, introducao, dataCriacao, destaque, categoria } = this.formRegistro.value;
   const dadosRegistro = {
     id: id,
     tipo: tipo,
@@ -101,7 +108,9 @@ enviarRegistro() {
     link: link,
     descricao: descricao,
     introducao: introducao,
-    dataCriacao: dataCriacao
+    dataCriacao: dataCriacao,
+    destaque: destaque,
+    categoria: categoria 
 };
   
   this.registroService.putRegistro(dadosRegistro, this.registro.id).subscribe(
@@ -114,6 +123,34 @@ enviarRegistro() {
     }
   );
 }
+criarRegistro() {
+    const { id, tipo, nome, link, descricao, introducao, dataCriacao, categoria, destaque } = this.formRegistro.value;
+    const tituloCategoria = categoria.titulo;
+    
+    const dadosRegistro = {
+      id: id,
+      tipo: tipo,
+      nome: nome,
+      link: link,
+      descricao: descricao,
+      introducao: introducao,
+      dataCriacao: dataCriacao,
+      tituloCategoria: tituloCategoria,
+      destaque: destaque
+  };
+  
+  
+  this.registroService.postRegistro(dadosRegistro, this.usuario.id, categoria).subscribe(
+    (registro: Registro) => {
+      alert("Registro criado")
+    },
+    (error: any) => {
+      console.error('Erro na criação do registro', error);
+      // Trate o erro de acordo com sua lógica de tratamento de erros
+    }
+  );
+}
+
 deletaRegistro(id: number) {
   this.registroService.deleteRegistro(id).subscribe(
     () => {
@@ -141,7 +178,6 @@ carregaTiposDeRegistro(): void {
 
   pegaIdRegistro(idRegistro: number): void {
     this.idRegistroSelecionado = idRegistro;
-    this.carregaRegistroPorId();
   }
 
   pegaTipo(tipo: string): void{
@@ -170,11 +206,44 @@ carregaRegistroPorTipo(): void {
     }
   );
 }
+carregaCategoriaPorTipo(): void {
+  this.categorias = [];
+  this.categoriaService.getByTipo(this.registro.tipo).subscribe(
+    (categoria: Categoria[]) => {
+      this.categorias = categoria;
+    },
+    (e: any) => {
+      console.error(e);
+    }
+  );
+}
+carregaTodasCategorias(): void {
+  this.categorias = [];
+  this.categoriaService.getAll().subscribe(
+    (categoria: Categoria[]) => {
+      this.categorias = categoria;
+    },
+    (e: any) => {
+      console.error(e);
+    }
+  );
+}
 
 carregaRegistroPorId(): void {
   this.registroService.getById(this.idRegistroSelecionado).subscribe(
     (registro: Registro) => {
       this.registro = registro;
+
+      const tipoIndex = this.tiposDeRegistro.findIndex(tipo => tipo === registro.tipo);
+      
+      if (tipoIndex !== -1) {
+        this.formRegistro.get('tipo')?.setValue(this.tiposDeRegistro[tipoIndex]);
+      }
+
+      this.formRegistro.get('destaque')?.setValue(registro.destaque);
+
+      this.carregaCategoriaPorTipo();
+
       this.formRegistro.patchValue(this.registro);
     },
     (e: any) => {
@@ -183,13 +252,26 @@ carregaRegistroPorId(): void {
   );
 }
 
-CliqueTipo(tipo: string): void {
-  this.pegaTipo(tipo);
-  this.defineCorTipo();
+
+abreCriaRegistro(template: TemplateRef<any>) {
+  this.registro = new Registro();
+  this.formRegistro.patchValue(this.registro);
+  this.carregaTodasCategorias();
+  this.openModal(template);
+  this.editaRegistro = false;
 }
+
+
 cliqueRegistro(template: TemplateRef<any>, idRegistro: number) {
   this.openModal(template);
   this.pegaIdRegistro(idRegistro);
+  this.editaRegistro = true;
+  this.carregaRegistroPorId();
+}
+
+CliqueTipo(tipo: string): void {
+  this.pegaTipo(tipo);
+  this.defineCorTipo();
 }
 defineCorTipo(): void {
   const botoes = document.querySelectorAll('.botao-tipo');

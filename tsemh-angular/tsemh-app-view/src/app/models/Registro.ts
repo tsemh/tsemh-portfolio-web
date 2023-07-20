@@ -1,5 +1,5 @@
 import { Categoria } from "./Categoria";
-import { Usuario } from "./usuariro";
+import { Usuario } from "./usuario";
 
 export class Registro {
   id: number;
@@ -11,20 +11,20 @@ export class Registro {
   descricao: string;
   introducao: string;
   dataCriacao: Date;
+  destaque: boolean;
   //arquivos: Arquivo[];
 
-  constructor(
-    id: number, tipo: string, nome: string, link: string, descricao: string, introducao: string, dataCriacao: Date, 
-    /*arquivos: Arquivo[], usuario: Usuario, categoria: Categoria,*/ ) {
-    this.id = id;
+  constructor() {
+    this.id = 0;
     //this.usuario = usuario;
     //this.categoria = categoria;
-    this.tipo = tipo;
-    this.nome = nome;
-    this.link = link;
-    this.descricao = descricao;
-    this.introducao = introducao;
-    this.dataCriacao = dataCriacao;
+    this.tipo = '';
+    this.nome = '';
+    this.link = '';
+    this.descricao = '';
+    this.introducao = '';
+    this.dataCriacao = new Date('');
+    this.destaque = false;
     //this.arquivos = arquivos;
   }
   

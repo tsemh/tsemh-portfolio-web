@@ -8,5 +8,6 @@ import io.tsemh.tsemhapirest.entity.Categoria;
 public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 
 	List<Categoria> findByTipo(String tipo);
+	Categoria findByTitulo(String titulo);
 	
 }
