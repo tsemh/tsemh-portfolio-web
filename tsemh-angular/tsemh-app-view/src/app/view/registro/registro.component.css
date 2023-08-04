@@ -64,6 +64,10 @@ h5 {
   color: #282a36;
   cursor: pointer;
 }
+.img-registro {
+  height: 100px;
+  width: 100px;  
+}
 
 @media screen and (max-width: 615px) {
   .categorias-itens {

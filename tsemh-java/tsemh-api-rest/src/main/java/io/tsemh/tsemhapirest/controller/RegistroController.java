@@ -24,34 +24,63 @@ public class RegistroController {
 		private UsuarioRepository usuarioRepository; 
 		@Autowired
 		private CategoriaRepository categoriaRepository; 
-		
+	
 		@PostMapping("/cadastrar")
 		@Transactional
 		public Registro postRegistro(@RequestBody Registro registro, @RequestParam long idUsuario, @RequestParam String titulo) {
-		    Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
-
-		    if (usuarioOptional.isPresent()) {
-		        Usuario usuario = usuarioOptional.get();
-
-		        Categoria categoria = categoriaRepository.findByTitulo(titulo);
-
-		        if (categoria == null) {
-		            categoria = new Categoria();
-		            categoria.setTipo(registro.getTipo());
-		            categoria.setUsuario(usuario);
-		            categoria.setTitulo(titulo);
-		            categoriaRepository.save(categoria);
-		        }
-
-		        registro.setUsuario(usuario);
-		        registro.setCategoria(categoria);
-		        return registroRepository.save(registro);
-		    } else {
-		        throw new RuntimeException("Usuário não encontrado com ID " + idUsuario);
-		    }
+		    Usuario usuario = getUsuarioById(idUsuario);
+		    checkDestaqueLimit();
+		    Categoria categoria = getCategoriaByTituloAndTipo(titulo, registro.getTipo(), idUsuario);
+		    registro.setUsuario(usuario);
+		    registro.setCategoria(categoria);
+		    setRegistroDestaque(registro, categoria);
+		    return registroRepository.save(registro);
 		}
-
+	
+			private Usuario getUsuarioById(long idUsuario) {
+			    Optional<Usuario> usuarioOptional = usuarioRepository.findById(idUsuario);
+			    if (usuarioOptional.isPresent()) {
+			        return usuarioOptional.get();
+			    } else {
+			        throw new RuntimeException("Usuário não encontrado com ID " + idUsuario);
+			    }
+			}
+	
+			private void checkDestaqueLimit() {
+			    long count = registroRepository.countByDestaque(true);
+			    if (count >= 4) {
+			        List<Registro> registrosComDestaque = registroRepository.findByDestaqueOrderByDataCriacaoAsc(true);
+			        if (!registrosComDestaque.isEmpty()) {
+			            Registro registroMaisAntigo = registrosComDestaque.get(0);
+			            registroMaisAntigo.setDestaque(false);
+			            registroRepository.save(registroMaisAntigo);
+			        } else {
+			            throw new RuntimeException("Excedeu o limite de registros com destaque, mas não foi possível encontrar o registro mais antigo.");
+			        }
+			    }
+			}
 			
+			private Categoria getCategoriaByTituloAndTipo(String titulo, String tipo, long idUsuario) {
+			    Categoria categoria = categoriaRepository.findByTituloAndTipo(titulo, tipo);
+			    if (categoria == null) {
+			        Usuario usuario = getUsuarioById(idUsuario);
+			        categoria = new Categoria();
+			        categoria.setTipo(tipo);
+			        categoria.setTitulo(titulo);
+			        categoria.setUsuario(usuario);
+			        categoriaRepository.save(categoria);
+			    }
+			    return categoria;
+			}
+	
+			private void setRegistroDestaque(Registro registro, Categoria categoria) {
+			    if (categoria.getTipo().equals(registro.getTipo())) {
+			        registro.setDestaque(true);
+			    } else {
+			        throw new RuntimeException("Tipo de categoria não corresponde ao tipo do registro.");
+			    }
+			}
+		
 		@GetMapping
 		public List<Registro> getAllRegistro() {
 			return registroRepository.findAll();
@@ -81,11 +110,6 @@ public class RegistroController {
 		
 		@GetMapping("destaque")
 		public List<Registro> getRegistroByDestaque(@RequestParam Boolean destaque) {
-		    long count = registroRepository.countByDestaque(true);
-
-		    if (count > 4) {
-		        throw new RuntimeException("Excedeu o limite de registros com destaque");
-		    }
 
 		    return registroRepository.findByDestaque(destaque);
 		}

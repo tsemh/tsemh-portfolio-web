@@ -5,26 +5,13 @@
         <h2>{{ registro.nome }}</h2>
         <h5>{{ dataCriacaoFormatada }}</h5>
       </section>
-
-      <section class="secao-cabecalho">
-        <article class="cabecalho">
-          <div class="div-introducao">
-            <div>
-              <p class="introducao">{{registro.introducao}}</p>
-            </div>
-          </div>
-
-        <section class="image-ShowMeTheCode">
-          <img src="" alt="" class="img">
-          
-          <a *ngIf="registro.tipo != 'artigo' && registro.tipo != 'profissional'" href={{registro.link}} target="_blank">
-            Show me the Code
-          </a>
-        </section>
-
-        </article>
-      </section>
     </header>
+
+    <div class="showme-div">
+      <a class="showme" *ngIf="registro.tipo != 'artigo' && registro.tipo != 'experiencia'" href={{registro.link}} target="_blank">
+        Show me the Code
+      </a>
+    </div>
 
     <section class="secao-artigo">
       <article class="artigo">

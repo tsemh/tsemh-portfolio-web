@@ -13,11 +13,11 @@
 
     <div class="recipiente-listas">
       <div class="recipiente-lista" *ngFor="
-    let registro of registros | paginate: { itemsPerPage: 8, currentPage: pages }
+    let registro of registros | paginate: { itemsPerPage: 8, currentPage: page }
   "(click)="selecionarRegistro(registro.id)" (click)="redirecionaPara('detalhes')">
   
           <h5>{{ registro.nome }}</h5>
-          <img src=" " alt=" " class="img item-img">
+          <img src="../../../assets/logo-hori-bco.png " alt=" " class="img-registro">
         
         <div class="tag-lista">
           <a *ngFor="let categoria of categorias" (click)="redirecionaPara(categoria.link)" class="tag"> {{ categoria.titulo }}
@@ -28,7 +28,7 @@
     </div>
 
     <div class="paginacao">
-      <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
 
   </div>

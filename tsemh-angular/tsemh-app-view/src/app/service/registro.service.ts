@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environments';
 import { Registro } from '../models/Registro';
@@ -13,6 +13,12 @@ export class RegistroService {
 
   constructor(private http: HttpClient) { }
 
+private createAuthorizationHeader(): HttpHeaders {
+  const token = localStorage.getItem('token');
+  const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  return headers;
+}
+
   getAll(): Observable<Registro[]> {
     return this.http.get<Registro[]>(`${this.baseUrl}`);
   }
@@ -24,12 +30,12 @@ export class RegistroService {
   getRegistroByCategoria(categoriaId: number): Observable<Registro[]> {
     return this.http.get<Registro[]>(`${this.baseUrl}/categoria?categoriaId=${categoriaId}`);
   }
-  
+
   getByTipo(tipo: string): Observable<Registro[]> {
     const url = `${this.baseUrl}/tipo?tipo=${tipo}`;
     return this.http.get<Registro[]>(url);
   }
-  
+
   getByDestaque(destaque: boolean): Observable<Registro[]> {
     const url = `${this.baseUrl}/destaque?destaque=${destaque}`;
     return this.http.get<Registro[]>(url);
@@ -41,14 +47,19 @@ export class RegistroService {
   }
   postRegistro(registro: Registro, idUsuario: number, titulo: string): Observable<Registro> {
     const url = `${this.baseUrl}/cadastrar?idUsuario=${idUsuario}&titulo=${titulo}`;
-    return this.http.post<Registro>(url, registro);
+    const headers = this.createAuthorizationHeader();
+    return this.http.post<Registro>(url, registro, { headers });
   }
+
   putRegistro(registro: Registro, id: number): Observable<Registro> {
     const url = `${this.baseUrl}/editar/${id}`;
-    return this.http.put<Registro>(url, registro);
+    const headers = this.createAuthorizationHeader();
+    return this.http.put<Registro>(url, registro, { headers });
   }
+
   deleteRegistro(id: number): Observable<Registro> {
     const url = `${this.baseUrl}/deletar/${id}`;
-    return this.http.delete<Registro>(url)
+    const headers = this.createAuthorizationHeader();
+    return this.http.delete<Registro>(url, { headers });
   }
 }

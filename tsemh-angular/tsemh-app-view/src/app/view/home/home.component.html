@@ -17,7 +17,7 @@
       <div class="recipiente-lista" *ngFor="let registro of registro" (click)="selecionarRegistro(registro.id)" (click)="redirecionaPara('detalhes')">
 
         <h5>{{ registro.nome }}</h5>
-        <img src=" " alt=" " class="img item-img">
+        <img src="../../../assets/logo-hori-bco.png " alt=" " class="img-registro">
 
         <div class="tag-lista">
           <a *ngFor="let categoria of categorias" class="tag"> {{ categoria.titulo }}

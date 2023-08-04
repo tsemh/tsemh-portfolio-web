@@ -13,6 +13,7 @@ public interface RegistroRepository extends JpaRepository<Registro, Long> {
 	List<Registro> findByCategoria(Categoria categoria);
 	List<Registro> findByTipo(String tipo);
 	List<Registro> findByDestaque(Boolean destaque);
+    List<Registro> findByDestaqueOrderByDataCriacaoAsc(Boolean destaque);
 	
     @Query("SELECT COUNT(r) FROM Registro r WHERE r.destaque = true")
     long countByDestaque(Boolean destaque);

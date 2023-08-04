@@ -94,6 +94,10 @@ h5 {
 h6, .paragrafo-sobre {
   color: #ffffffb3;
 }
+.img-registro {
+  height: 100px;
+  width: 100px;  
+}
 
 @media screen and (max-width: 304px) {
   .foto-sobre {

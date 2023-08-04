@@ -22,24 +22,17 @@
 
 .nav-header {
   height: 6rem;
-  width: 100%;
-  display: flex;
-  justify-content: space-between;
 }
 
 .nav-logo {
   display: flex;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
+  justify-content: flex-start;
   height: auto;
+  width: 150px;
 }
-
-.nav-header p {
-  font-family: 'Montez', cursive;
-  font-size: 4rem;
-  margin: 0;
-  color: #ffb86c;
+.logo {
+  height: 70px;
+  opacity: 90%;
 }
 
 .nav-link {
@@ -187,7 +180,7 @@
 
   .nav-header {
     height: auto;
-    width: 100%;
+    width: 20%;
     margin-right: 2rem;
   }
 

@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'registros/certificados', component: RegistroComponent },
   { path: 'registros/diplomas', component: RegistroComponent },
   { path: 'registros/experiencias', component: RegistroComponent },
+  { path: 'registros/projetos', component: RegistroComponent },
   { path: 'detalhes', component: DetalheComponent },
   { path: 'error404', component: Error404Component },
 ];

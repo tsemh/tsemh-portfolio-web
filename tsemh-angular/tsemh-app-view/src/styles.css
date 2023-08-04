@@ -27,6 +27,7 @@ h2, h3 {
   width: auto;
   color: #ff79c6;
   text-transform: uppercase;
+  text-align: center;
 }
 h4 {
   color: #fff;

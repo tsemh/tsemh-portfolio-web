@@ -1,20 +1,9 @@
-header {
-  margin-bottom: 20px;
-}
-.cabecalho{
-  height: auto;
+
+.titulo-data {
   display: flex;
-  justify-content: space-between;
-}
-.div-introducao {
-  height: auto;
-  width: auto;
-}
-.image-ShowMeTheCode{
-  display: flex;
+  align-items: center;
   flex-direction: column;
 }
-
 a{
   font-size: 24px;
   transition: 0.3s ease-in-out all;
@@ -22,10 +11,11 @@ a{
 h5 {
   text-transform: lowercase;
 }
-
-.image-ShowMeTheCode, h2, h5, h4 {
-  text-align: center;
+.showme-div {
+  display: flex;
+  justify-content: flex-end;
 }
+
 .secao-artigo{
   width: 100%;
   margin: 0px 0 100px 0;
@@ -45,43 +35,6 @@ p {
   line-height: 1.58;
 }
 
-@media screen and (max-width: 349px) {
-  header {
-    height: 1200px;
-  }
-}
-@media screen and (min-width: 350px) and (max-width: 429px) {
-  header {
-    height: 1100px;
-  }
-}
-@media screen and (min-width: 430px) and (max-width: 534px) {
-  header {
-    height: 1000px;
-  }
-}
-@media screen and (min-width: 535px) {
-  .div-introducao {
-    height: auto;
-    width: 500px;
-  }
-}
-
-@media screen and (max-width: 992px) {
-  .cabecalho{
-    flex-direction: column;
-    align-items: center;
-  } 
-  img {
-    height: 300px;
-    width: 300px;
-  }
-  .div-introducao {
-    display: flex;
-    text-align: center;
-    justify-content: center;
-  }
-}
 
 @media screen and (min-width: 992px) {
   .secao-artigo{
@@ -90,9 +43,8 @@ p {
   header {
     padding: 0 50px
   }
-  .introducao {
-    height: 400px;
-    width: 500px;
+  .showme-div {
+    padding: 0 50px
   }
 }
 
@@ -103,19 +55,19 @@ p {
   header {
     padding: 0 100px
   }
-  img {
-    height: 400px;
-    width: 400px;
+  .showme-div {
+    padding: 0 100px
   }
 }
 
 @media screen and (min-width: 1400px) {
   .secao-artigo{
-    padding: 0 150px;
+    padding: 0 250px;
   }
   header {
-    height: 700px;
-    margin-bottom: 20px;
-    padding: 0 150px
+    padding: 0 250px
+  }
+  .showme-div {
+    padding: 0 250px
   }
 }

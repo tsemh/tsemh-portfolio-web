@@ -1,5 +1,7 @@
 package io.tsemh.tsemhapirest.entity;
 
+import java.sql.Clob;
+import java.sql.NClob;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
@@ -41,11 +43,8 @@ public class Registro {
 	@Column(name="lk_registro")
 	private String link;
 	
-	@Column(name = "ds_registro", length = 4000)
+	@Column(name = "ds_registro")
 	private String descricao;
-
-	@Column(name = "in_registro", length = 4000)
-	private String introducao;
 	
     @CreationTimestamp
     @Column(name = "dt_criacao")
@@ -62,7 +61,7 @@ public class Registro {
 	}
 
 	public Registro(long id, Usuario usuario, Categoria categoria, String tipo, String nome, String link,
-			String descricao, String introducao, LocalDateTime dataCriacao, Boolean destaque, List<Arquivo> arquivos) {
+			String descricao, LocalDateTime dataCriacao, Boolean destaque, List<Arquivo> arquivos) {
 		super();
 		this.id = id;
 		this.usuario = usuario;
@@ -71,7 +70,6 @@ public class Registro {
 		this.nome = nome;
 		this.link = link;
 		this.descricao = descricao;
-		this.introducao = introducao;
 		this.dataCriacao = dataCriacao;
 		this.destaque = destaque;
 		this.arquivos = arquivos;
@@ -84,15 +82,7 @@ public class Registro {
 	public void setDestaque(Boolean destaque) {
 		this.destaque = destaque;
 	}
-
-	public String getIntroducao() {
-		return introducao;
-	}
-
-	public void setIntroducao(String introducao) {
-		this.introducao = introducao;
-	}
-
+	
 	public long getId() {
 		return id;
 	}

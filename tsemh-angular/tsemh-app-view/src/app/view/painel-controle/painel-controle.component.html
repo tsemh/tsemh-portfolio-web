@@ -6,7 +6,6 @@
 
         <div class="form-group">
           <div class="imagePreview">
-            <span class="span-editar-foto">Editar</span>
             <input type="file" name="image" accept="image/*" class="form-control imageInput form-control-image">
           </div>
         </div>
@@ -45,7 +44,7 @@
           </thead>
           <tbody>
             <tr class="hover" (click)="cliqueRegistro(template, registro.id)"
-              *ngFor="let registro of registros | paginate: { itemsPerPage: 15 , currentPage: pages }">
+              *ngFor="let registro of registros | paginate: { itemsPerPage: 15 , currentPage: page }">
               <td>{{ registro.id }}</td>
               <td>{{ registro.nome }}</td>
             </tr>
@@ -53,7 +52,7 @@
         </table>
       </section>
       <div class="paginacao" *ngIf="visaoPaginacao == true">
-        <pagination-controls (pageChange)="pages = $event"></pagination-controls>
+        <pagination-controls (pageChange)="page = $event"></pagination-controls>
       </div>
     </section>
     <button class="btn-adicionar-registro" (click)="abreCriaRegistro(template)">+</button>
@@ -84,9 +83,9 @@
       <div class="agrupa-texto">
         <div class="form-group">
           <label class="label-registro">Tipo</label>
-          <select class="form-control input-style" formControlName="tipo">
-            <option *ngFor="let tipo of tiposDeRegistro" [ngValue]="tipo">{{ tipo }}</option>
-          </select>
+            <select class="form-control input-style" formControlName="tipo">
+              <option *ngFor="let tipo of tiposDeRegistro" [ngValue]="tipo">{{ tipo}}</option>
+            </select>
         </div>
         
         <div class="form-group" *ngIf="editaRegistro == false">
@@ -112,11 +111,6 @@
           </select>
         </div>   
       </div>     
-        
-        <div class="form-group">
-          <label class="label-registro">Instrodução</label>
-          <textarea rows="15" formControlName="introducao" class="form-control input-style"></textarea>
-      </div>
 
       <div class="form-group">
         <label class="label-registro">Texto</label>
@@ -124,9 +118,9 @@
       </div>
 
       <div class="form-group editar-excluir-div">
-        <button class="btn-editar" *ngIf="registro.id != 0" (click)="enviarRegistro()">Editar</button>
-        <button class="btn-excluir" *ngIf="registro.id != 0" (click)="deletaRegistro(registro.id)">Excluir</button>
-        <button class="btn-adicionar" *ngIf="registro.id == 0" (click)="criarRegistro()">Adicionar</button>
+        <button class="btn-editar" *ngIf="registro?.id != 0" (click)="enviarRegistro()">Editar</button>
+        <button class="btn-excluir" *ngIf="registro?.id != 0" (click)="deletaRegistro(registro.id)">Excluir</button>
+        <button class="btn-adicionar" *ngIf="registro?.id == 0" (click)="criarRegistro()">Adicionar</button>
       </div>
     </form>
 

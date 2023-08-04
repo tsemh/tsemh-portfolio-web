@@ -14,12 +14,11 @@ export class RegistroComponent  implements OnInit {
   public registros: Registro[] = [];
   public categorias: Categoria[] = [];
   private categoriaSelecionada: number = 0;
-  public pages: number = 1;
+  public page: number = 1;
 
   public tituloMain: string = "";
   public tipoSelecionado: string = "";
   public tiposDeRegistro: string[] = [];
-
 
   constructor(private registroService: RegistroService,
               private utilService: UtilService) { }
@@ -84,6 +83,7 @@ export class RegistroComponent  implements OnInit {
     this.registroService.getRegistroByCategoria(this.categoriaSelecionada).subscribe(
       (registro: Registro[]) => {
         this.registros = registro;
+        this.page = 1;
       },
       (e: any) => {
         console.error(e);

@@ -17,6 +17,7 @@ import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/login")
+@CrossOrigin(origins = "http://localhost:4200")
 public class AutenticacaoController {
 	
 	@Autowired
@@ -32,5 +33,4 @@ public class AutenticacaoController {
 		var tokenJwt = tokenService.geraToken((Usuario) authentication.getPrincipal());
 		return ResponseEntity.ok(new TokenJwt(tokenJwt));
 	}
-
 }

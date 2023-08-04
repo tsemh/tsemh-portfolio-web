@@ -9,5 +9,6 @@ public interface CategoriaRepository extends JpaRepository<Categoria, Long>{
 
 	List<Categoria> findByTipo(String tipo);
 	Categoria findByTitulo(String titulo);
+	Categoria findByTituloAndTipo(String titulo, String tipo);
 	
 }
