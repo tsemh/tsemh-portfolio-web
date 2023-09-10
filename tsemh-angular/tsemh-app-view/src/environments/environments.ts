@@ -1,4 +1,4 @@
 export const environment = {
-  production: false,
-  apiUrl: 'http://localhost:8080/tsemhapi'
+  production: true,
+  apiUrl: 'https://tsemhweb-api-production.up.railway.app/tsemhapi'
 };
